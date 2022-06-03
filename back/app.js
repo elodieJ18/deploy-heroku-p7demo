@@ -4,24 +4,27 @@ const sequelize = new Sequelize("groupomania", "root", "root", {
   dialect: "mysql",
 });
 
+sequelize.sync({ alter: true });
+
 const Users = sequelize.define(
   "users",
   {
-    Id: {
+    id: {
       type: Sequelize.DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     username: {
       type: Sequelize.DataTypes.STRING,
+      allowNull: false,
     },
     password: {
       type: Sequelize.DataTypes.STRING,
     },
-    age: {
-      type: Sequelize.DataTypes.INTEGER,
-    },
   },
   {
     freezeTableName: true,
+    timestamps: false,
   }
 );
 
@@ -35,6 +38,7 @@ Users.sync()
     console.log("Error syncing the table and model!");
   });
 
+/*ou --> console.log(sequelize.models.user) */
 /*
 sequelize
   .authenticate()
