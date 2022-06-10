@@ -5,7 +5,9 @@ function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route exact path="" element=""></Route>
+        <Route exact path="" element="">
+          <p>test un deux</p>
+        </Route>
       </Routes>
     </Router>
   );

@@ -1,52 +1,43 @@
-const { Sequelize } = require("sequelize");
+const express = require("express");
+//crééer un application express
+const path = require("path");
 
-const sequelize = new Sequelize("groupomania", "root", "root", {
-  dialect: "mysql",
+//variable d'environnement
+
+require("dotenv").config();
+console.log(process.env);
+//mysql importation connexio
+
+const mysql = require("./config/db");
+
+const app = express();
+//import des routes
+/*const authRoutes = require("./routes/user");
+const saucesRoutes = require("./routes/sauces");*/
+
+//intercepter toute requête d'un contenttype.json
+app.use(express.json());
+
+// middlewear general qui s'applique à toute les roots
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
 });
 
-sequelize.sync({ alter: true });
+//Gestion de la ressource images de façon statique
+/*app.use("/images", express.static(path.join(__dirname, "images")));
 
-const Users = sequelize.define(
-  "users",
-  {
-    id: {
-      type: Sequelize.DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    username: {
-      type: Sequelize.DataTypes.STRING,
-      allowNull: false,
-    },
-    password: {
-      type: Sequelize.DataTypes.STRING,
-    },
-  },
-  {
-    freezeTableName: true,
-    timestamps: false,
-  }
-);
+//routes
+app.use("/api/auth", authRoutes);
+app.use("/api/sauces", saucesRoutes);*/
 
-/*synchronisation de la base de donnée */
-
-Users.sync()
-  .then((data) => {
-    console.log("Table and model synced successfully!");
-  })
-  .catch((err) => {
-    console.log("Error syncing the table and model!");
-  });
-
-/*ou --> console.log(sequelize.models.user) */
-/*
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("connection successful!");
-  })
-  .catch((err) => {
-    console.log("Error connecting to databes !");
-  });
-
-console.log("another test");*/
+// pour exporter l'application/constante pour acceder aux fichiers depuis notre server node
+module.exports = app;

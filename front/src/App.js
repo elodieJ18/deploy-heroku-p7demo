@@ -1,8 +1,15 @@
+import { Component } from "react";
 import "./App.css";
 import AppRouter from "./components/Routes";
 
-function App() {
-  return <AppRouter />;
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <AppRouter />
+      </div>
+    );
+  }
 }
 
 export default App;

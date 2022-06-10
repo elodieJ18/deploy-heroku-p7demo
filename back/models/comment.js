@@ -1,0 +1,25 @@
+const { Sequelize, DataTypes } = require("sequelize/types");
+
+const { Model } = require("sequelize");
+
+module.exports = (Sequelize, DataTypes) => {
+  class Comment extends Model {
+    /*  static associate(models) {
+        }*/
+    toJSON() {
+      return {
+        ...this.get(),
+      };
+    }
+  }
+  Comment.init(
+    {
+      id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4 }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
+      nom: { type: DataTypes.STRING, allowNull: false },
+      prenom: { type: DataTypes.STRING, allowNull: false },
+      message: { type: DataTypes.STRING, allowNull: false },
+      date: { type: DataTypes.DATE, allowNull: false },
+    },
+    { sequelize, tableName: "comment", modelName: "Comment" }
+  );
+};
