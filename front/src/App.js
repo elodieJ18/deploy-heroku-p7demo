@@ -1,15 +1,11 @@
-import { Component } from "react";
 import "./App.css";
-import AppRouter from "./components/Routes";
+import { Component } from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <AppRouter />
-      </div>
-    );
-  }
+function App() {
+  return <Navbar />;
 }
 
 export default App;
