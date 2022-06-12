@@ -33,9 +33,9 @@ function Login() {
             />
 
             <div class="clearfix">
-              <a type="submit" class="btn-bleu">
+              <button type="submit" class="btn-bleu">
                 Login
-              </a>
+              </button>
               <a class="btn-blanc" href="/">
                 cancel
               </a>

@@ -98,6 +98,10 @@ form {
   width: 225px;
 }
 
+button {
+  border: none;
+}
+
 .btn-bleu-navy {
   padding: 14px 60px;
 
@@ -122,6 +126,11 @@ form {
   background-color: #fff;
   color: #312e3e;
   text-align: center;
+}
+
+.cart__order__form__question {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 720px) {

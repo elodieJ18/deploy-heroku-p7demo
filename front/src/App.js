@@ -1,5 +1,4 @@
 import "./App.css";
-import { Component } from "react";
 import Signup from "./log/Signup";
 import Login from "./log/Login";
 import Home from "./pages/Home";

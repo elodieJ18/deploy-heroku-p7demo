@@ -171,7 +171,9 @@ function Signup() {
         <div className="from-signup">
           <form>
             <div class="cart__order__form__question">
-              <label htmlFor="first-name">FirstName</label>
+              <label htmlFor="first-name">
+                <b>FirstName</b>
+              </label>
               <input
                 type="text"
                 placeholder="FirstName"
@@ -195,7 +197,9 @@ function Signup() {
             </div>
 
             <div class="cart__order__form__question">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">
+                <b>Email</b>
+              </label>
               <input type="text" placeholder="Email" name="email" required />
               <p id="emailErrorMsg"></p>
             </div>
@@ -213,9 +217,9 @@ function Signup() {
             </div>
 
             <div class="clearfix">
-              <a type="submit" class="btn-bleu-navy">
+              <button type="submit" class="btn-bleu-navy">
                 sign up
-              </a>
+              </button>
               <a class="btn-blanc" href="/">
                 cancel
               </a>
