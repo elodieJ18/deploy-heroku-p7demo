@@ -19,6 +19,11 @@ module.exports = (Sequelize, DataTypes) => {
       nom: { type: DataTypes.STRING, allowNull: false },
       message: { type: DataTypes.STRING, allowNull: false },
       date: { type: DataTypes.DATE, allowNull: false },
+      imageUrl: { type: String, required: false },
+      likes: { type: Number, required: false, default: 0 },
+      dislikes: { type: Number, required: false, default: 0 },
+      usersLiked: { type: [String], required: false },
+      usersDisliked: { type: [String], required: false },
     },
     { sequelize, tableName: "post", modelName: "Post" }
   );

@@ -8,6 +8,7 @@ const index = () => {
       <Navbar />
       <Routes>
         <Route></Route>
+        <Redirect to="/" />
       </Routes>
     </BrowserRouter>
   );

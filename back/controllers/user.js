@@ -3,8 +3,9 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/users");
 
 const db = require("../config/db");
+const app = require("../app");
 
-exports.signup = (req, res) => {
+/*exports.signup = (req, res) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
@@ -39,6 +40,16 @@ db.query("SELECT * FROM user WHERE email = ?", email, (error, results) => {
     console.log(results);
     res.json({ message: "email présent dans la base de donnée" });
   }
+});*/
+
+app.get("/", (req, res) => {
+  db.query(
+    "INSERT INTO users (email, password) VALUES ('el@gmail.com', 'test' );",
+    (err, results) => {
+      console.log(err);
+      res.send(results);
+    }
+  );
 });
 
 /*exports.login = (req, res, next) => {

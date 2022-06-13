@@ -1,10 +1,9 @@
 import "./App.css";
-import Signup from "./log/Signup";
-import Login from "./log/Login";
 import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Connexion from "./log/Connexion";
+import Connexion from "./pages/Connexion";
+import Login from "./pages/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -12,10 +11,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Connexion />}></Route>
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/home" element={<Home />}></Route>
         </Routes>
       </Router>
     </div>

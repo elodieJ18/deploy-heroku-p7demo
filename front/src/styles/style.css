@@ -15,6 +15,12 @@ a {
   text-decoration: none;
 }
 
+a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -35,6 +41,11 @@ input[type="password" i] {
   border: 1.5px solid #312e3e;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 10px;
+}
+
+input[type="text" i],
+input[type="password" i]:focus-visible {
+  outline: none;
 }
 
 b {
@@ -104,11 +115,11 @@ button {
 
 .btn-bleu-navy {
   padding: 14px 60px;
-
   border-radius: 1.5em;
   background-color: #312e3e;
   color: #fff;
   text-align: center;
+  box-shadow: 0px 5px 11px rgba(60, 104, 170, 0.48);
 }
 
 .btn-bleu {
@@ -117,6 +128,8 @@ button {
   background-color: #3c68aa;
   color: #fff;
   text-align: center;
+  border-width: 0px;
+  box-shadow: 0px 5px 11px rgba(60, 104, 170, 0.48);
 }
 
 .btn-blanc {
@@ -126,11 +139,16 @@ button {
   background-color: #fff;
   color: #312e3e;
   text-align: center;
+  box-shadow: 0px 5px 11px rgba(60, 104, 170, 0.12);
 }
 
 .cart__order__form__question {
   display: flex;
   flex-direction: column;
+}
+
+.cart__order__form__question p {
+  margin: 0;
 }
 
 @media (max-width: 720px) {
