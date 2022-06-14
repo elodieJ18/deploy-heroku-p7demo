@@ -1,5 +1,4 @@
 const http = require("http");
-
 const app = require("./app");
 
 const normalizePort = (val) => {
@@ -14,6 +13,7 @@ const normalizePort = (val) => {
   return false;
 };
 const port = normalizePort(process.env.PORT || "3000");
+app.set("port", port);
 
 const errorHandler = (error) => {
   if (error.syscall !== "listen") {
@@ -36,7 +36,9 @@ const errorHandler = (error) => {
   }
 };
 
-//le server qu'on a créer dans "app.js"
+app.get("/", (req, res) => {
+  res.json({ message: "Connecté mais rien dedans" });
+});
 
 const server = http.createServer(app);
 
