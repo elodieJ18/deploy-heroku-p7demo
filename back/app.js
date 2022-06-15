@@ -12,7 +12,8 @@ const mysql = require("./config/db");
 
 const app = express();
 //import des routes
-/*const authRoutes = require("./routes/user");
+//const authRoutes = require("./routes/user");
+/*
 const saucesRoutes = require("./routes/sauces");*/
 
 //intercepter toute requête d'un contenttype.json
@@ -32,11 +33,15 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/users", (req, res) => res.send("test depuis app.js"));
+app.get("/", (req, res) => res.send("test depuis app.js"));
+
 //Gestion de la ressource images de façon statique
-/*app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 //routes
-app.use("/api/auth", authRoutes);
+//app.use("/api/auth", authRoutes);
+/*
 app.use("/api/sauces", saucesRoutes);*/
 
 // pour exporter l'application/constante pour acceder aux fichiers depuis notre server node

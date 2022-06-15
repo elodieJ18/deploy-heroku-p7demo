@@ -4,8 +4,8 @@ const User = require("../models/users");
 
 const db = require("../config/db");
 const app = require("../app");
-
-/*exports.signup = (req, res) => {
+/*
+exports.signup = (req, res) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
@@ -40,19 +40,9 @@ db.query("SELECT * FROM user WHERE email = ?", email, (error, results) => {
     console.log(results);
     res.json({ message: "email présent dans la base de donnée" });
   }
-});*/
-
-app.get("/", (req, res) => {
-  db.query(
-    "INSERT INTO users (email, password) VALUES ('el@gmail.com', 'test' );",
-    (err, results) => {
-      console.log(err);
-      res.send(results);
-    }
-  );
 });
 
-/*exports.login = (req, res, next) => {
+exports.login = (req, res, next) => {
   const user = User.findOne({
     where: { email: req.body.email },
   })
@@ -77,5 +67,17 @@ app.get("/", (req, res) => {
     })
     .catch((error) => res.status(500).json({ error }));
 };*/
+
+app.get("/", (req, res) => {
+  db.query(
+    "INSERT INTO users (email, password) VALUES ('el@gmail.com', 'test' );",
+    (err, results) => {
+      console.log(err);
+      console.log(req);
+      console.log(res);
+      res.send(results);
+    }
+  );
+});
 
 console.log({ email: "pas d'erreur" });

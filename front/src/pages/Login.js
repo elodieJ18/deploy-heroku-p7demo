@@ -40,7 +40,7 @@ function Login() {
         <img className="logo" src={logo} alt="groupomania" />
       </div>
       <div className="form-signup-element">
-        <h1>Sign-Up</h1>
+        <h1>Login</h1>
         <div className="from-signup">
           <form action="" onSubmit={handleLogin} id="login-form">
             <label htmlFor="email">

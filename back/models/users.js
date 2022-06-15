@@ -23,6 +23,7 @@ module.exports = (Sequelize, DataTypes) => {
         validate: { notNull: true, notEmpty: true, isEmail: true },
       },
       status: { type: DataTypes.STRING, allowNull: false },
+      password: { type: DataTypes.STRING, required: true },
     },
     { sequelize, tableName: "users", modelName: "User" }
   );
