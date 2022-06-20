@@ -4,6 +4,7 @@ const User = require("../models/users");
 
 const db = require("../config/db");
 
+//la requête SQL pour envoyer les données dans la table user
 exports.signup = (req, res) => {
   bcrypt
     .hash(req.body.password, 10)
@@ -12,8 +13,6 @@ exports.signup = (req, res) => {
         email: req.body.email,
         password: hash,
       });
-
-      //la requête SQL pour envoyer les adonnées dans la table user
       db.query("INSERT INTO users SET ?", user, (error, results) => {
         if (error) {
           console.log(error);
@@ -28,9 +27,9 @@ exports.signup = (req, res) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
+//la requête SQL pour comparer les données dans la table user
 exports.login = (req, res) => {
   const email = req.body.email;
-
   db.query("SELECT * FROM user WHERE email = ?", email, (error, results) => {
     if (error) {
       console.log(error);

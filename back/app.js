@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 //routes
-app.use("/api/auth", authRoutes);
+app.use("/api/users", authRoutes);
 
 // pour exporter l'application/constante pour acceder aux fichiers depuis notre server node
 module.exports = app;
