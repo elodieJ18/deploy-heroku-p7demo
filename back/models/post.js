@@ -1,5 +1,3 @@
-const { Sequelize, DataTypes } = require("sequelize/types");
-
 const { Model } = require("sequelize");
 
 module.exports = (Sequelize, DataTypes) => {
@@ -25,6 +23,6 @@ module.exports = (Sequelize, DataTypes) => {
       usersLiked: { type: [String], required: false },
       usersDisliked: { type: [String], required: false },
     },
-    { sequelize, tableName: "post", modelName: "Post" }
+    { Sequelize, tableName: "post", modelName: "Post" }
   );
 };

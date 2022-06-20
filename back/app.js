@@ -1,25 +1,27 @@
 const express = require("express");
 //crééer un application express
 const path = require("path");
+const models = require("./models");
 
 //variable d'environnement
 
 require("dotenv").config();
 console.log(process.env);
-//mysql importation connexio
 
-const mysql = require("./config/db");
+const morgan = require("morgan");
+
+//mysql importation connexion
 
 const app = express();
+
+app.use(morgan("dev"));
 //import des routes
-//const authRoutes = require("./routes/user");
-/*
-const saucesRoutes = require("./routes/sauces");*/
+const authRoutes = require("./routes/user");
 
 //intercepter toute requête d'un contenttype.json
 app.use(express.json());
 
-// middlewear general qui s'applique à toute les roots
+// middlewear general qui s'applique à toute les roots qui permet de gerer les CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -33,16 +35,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/users", (req, res) => res.send("test depuis app.js"));
-app.get("/", (req, res) => res.send("test depuis app.js"));
-
 //Gestion de la ressource images de façon statique
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 //routes
-//app.use("/api/auth", authRoutes);
-/*
-app.use("/api/sauces", saucesRoutes);*/
+app.use("/api/auth", authRoutes);
 
 // pour exporter l'application/constante pour acceder aux fichiers depuis notre server node
 module.exports = app;

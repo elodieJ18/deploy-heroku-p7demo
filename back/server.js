@@ -1,6 +1,5 @@
 const http = require("http");
 const app = require("./app");
-const morgan = require("morgan");
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
@@ -13,7 +12,7 @@ const normalizePort = (val) => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || "3000");
+const port = normalizePort(process.env.PORT || "3001");
 app.set("port", port);
 
 const errorHandler = (error) => {
@@ -47,5 +46,5 @@ server.on("listening", () => {
 });
 
 server.listen(port, () =>
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Server listening at http://localhost:${port}`)
 );

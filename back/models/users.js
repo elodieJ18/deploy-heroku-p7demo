@@ -1,11 +1,7 @@
-const { Sequelize, DataTypes } = require("sequelize/types");
-
 const { Model } = require("sequelize");
 
 module.exports = (Sequelize, DataTypes) => {
   class User extends Model {
-    /*  static associate(models) {
-        }*/
     toJSON() {
       return {
         ...this.get(),
@@ -25,6 +21,7 @@ module.exports = (Sequelize, DataTypes) => {
       status: { type: DataTypes.STRING, allowNull: false },
       password: { type: DataTypes.STRING, required: true },
     },
-    { sequelize, tableName: "users", modelName: "User" }
+    { Sequelize, tableName: "users", modelName: "User" }
   );
+  return User;
 };
