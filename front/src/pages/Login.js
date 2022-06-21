@@ -15,7 +15,7 @@ function Login() {
 
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}api/users/login`,
+      url: `${process.env.REACT_APP_API_URL}users/login`,
       withCredentials: true,
       data: email,
       password,
@@ -24,6 +24,7 @@ function Login() {
         console.log(res);
         if (res.data.errors) {
           emailError.innerHTML = res.data.errors.email;
+          console.log("erreur");
           passwordError.innerHTML = res.data.errors.password;
         } else {
           window.location = "/home";

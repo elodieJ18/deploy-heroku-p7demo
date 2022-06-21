@@ -42,5 +42,3 @@ exports.login = (req, res) => {
     }
   });
 };
-
-console.log({ email: "pas d'erreur" });

@@ -1,7 +1,7 @@
 const express = require("express");
 //crééer un application express
 const path = require("path");
-const models = require("./models");
+const app = express();
 
 //variable d'environnement
 
@@ -11,8 +11,6 @@ console.log(process.env);
 const morgan = require("morgan");
 
 //mysql importation connexion
-
-const app = express();
 
 app.use(morgan("dev"));
 //import des routes
@@ -39,7 +37,7 @@ app.use((req, res, next) => {
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 //routes
-app.use("/api/users", authRoutes);
+app.use("/users", authRoutes);
 
 // pour exporter l'application/constante pour acceder aux fichiers depuis notre server node
 module.exports = app;

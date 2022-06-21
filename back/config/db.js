@@ -1,17 +1,6 @@
-//sequelize importe
-const { Sequelize } = require("sequelize");
-
-const sequelize = new Sequelize("groupomania", "root", "root", {
-  dialect: "mysql",
-});
-
 //importer mysql
-
 const mysql = require("mysql");
-console.log(mysql);
-
 //les paramètre de connexion BDD
-
 const db = mysql.createConnection({
   host: "localhost",
   database: "groupomania",
