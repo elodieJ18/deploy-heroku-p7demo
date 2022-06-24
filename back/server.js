@@ -1,5 +1,6 @@
 const http = require("http");
 const app = require("./app");
+const sequelize = require("./models");
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
@@ -45,6 +46,8 @@ server.on("listening", () => {
   console.log("Listening on " + bind);
 });
 
-server.listen(port, () =>
-  console.log(`Server listening at http://localhost:${port}`)
-);
+server.listen(port, async () => {
+  console.log(`Server listening at http://localhost:${port}`);
+  await sequelize.authenticate();
+  console.log("connected");
+});

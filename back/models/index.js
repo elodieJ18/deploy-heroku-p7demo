@@ -1,4 +1,4 @@
-/*"use strict";
+"use strict";
 
 const fs = require("fs");
 const path = require("path");
@@ -10,8 +10,10 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
+  console.log("connecté à la base");
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
+  console.log("connecté à la base");
   sequelize = new Sequelize(
     config.database,
     config.username,
@@ -43,4 +45,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;*/
+module.exports = db;

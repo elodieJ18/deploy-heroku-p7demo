@@ -1,10 +1,10 @@
-const { Model } = require("sequelize");
+/*const { Model } = require("sequelize");
 
 module.exports = (Sequelize, DataTypes) => {
   class Comment extends Model {
     /*  static associate(models) {
         }*/
-    toJSON() {
+/* toJSON() {
       return {
         ...this.get(),
       };
@@ -25,4 +25,4 @@ module.exports = (Sequelize, DataTypes) => {
     },
     { Sequelize, tableName: "comment", modelName: "Comment" }
   );
-};
+};*/

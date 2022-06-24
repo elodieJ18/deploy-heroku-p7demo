@@ -10,7 +10,7 @@ module.exports = (Sequelize, DataTypes) => {
   }
   User.init(
     {
-      id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4 }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
+      id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4 },
       nom: { type: DataTypes.STRING, allowNull: false },
       prenom: { type: DataTypes.STRING, allowNull: false },
       email: {

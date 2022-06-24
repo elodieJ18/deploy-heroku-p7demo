@@ -2,6 +2,7 @@ const express = require("express");
 //crééer un application express
 const path = require("path");
 const app = express();
+const sequelize = require("./models");
 
 //variable d'environnement
 
@@ -40,4 +41,5 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/users", authRoutes);
 
 // pour exporter l'application/constante pour acceder aux fichiers depuis notre server node
+
 module.exports = app;
