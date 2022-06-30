@@ -2,18 +2,17 @@ const express = require("express");
 //crééer un application express
 const path = require("path");
 const app = express();
-const sequelize = require("./models");
 
 //variable d'environnement
 
 require("dotenv").config();
 console.log(process.env);
 
-const morgan = require("morgan");
+//const morgan = require("morgan");
 
 //mysql importation connexion
 
-app.use(morgan("dev"));
+//app.use(morgan("dev"));
 //import des routes
 const authRoutes = require("./routes/user");
 
