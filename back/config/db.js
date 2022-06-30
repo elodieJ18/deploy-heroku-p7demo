@@ -1,31 +1,17 @@
 //sequelize importe
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("groupomania", "root", "root", {
+const sequelizeConnection = new Sequelize("groupomania", "root", "root", {
   dialect: "mysql",
 });
 
-//importer mysql
+sequelizeConnection
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully!");
+  })
+  .catch((err) => {
+    console.log("Can't establish database connection:\n" + err);
+  });
 
-const mysql = require("mysql");
-console.log(mysql);
-
-//les paramètre de connexion BDD
-
-const db = mysql.createConnection({
-  host: "localhost",
-  database: "groupomania",
-  user: "root",
-  password: "root",
-});
-
-db.connect((err) => {
-  if (err) {
-    console.error(`error connecting: ${err.stack}`);
-  } else {
-    console.log("connecté à la base de donnée - groupomania");
-    console.log(`connected as id ${db.threadId} `);
-  }
-});
-
-module.exports = db;
+module.exports = sequelizeConnection;
