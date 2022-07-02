@@ -1,6 +1,7 @@
 const express = require("express");
 //crééer un application express
 const path = require("path");
+const Sequelize = require("sequelize");
 const app = express();
 
 //variable d'environnement
