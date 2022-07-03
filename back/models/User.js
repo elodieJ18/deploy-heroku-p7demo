@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: { notNull: true, notEmpty: true, isEmail: true },
       },
-      status: { type: DataTypes.STRING, allowNull: false },
+      status: { type: DataTypes.STRING },
       password: { type: DataTypes.STRING, required: true },
       createdAt: { type: DataTypes.JSON, timestamps: false},
     },
@@ -29,3 +29,5 @@ module.exports = (sequelize, DataTypes) => {
   );
   return User;
 };
+
+/* defaultValue: DataTypes.UUIDV4, */

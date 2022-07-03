@@ -3,14 +3,37 @@ const jwt = require("jsonwebtoken");*/
 const { User } = require("../models");
 
 module.exports.signup = async (req, res) => {
-    const user = await User.create({
-      nom: "Jp",
-      prenom: "test11",
-      email: "test11@gmail.fr",
-      password: "motdepasse",
-      status: "toz"
+  if (!req.body.email || !req.body.password) {
+    res.status(400).send({
+        status: false,
+        message: ''
     });
-    res.status(200);
-    console.log("inscription-enregisté");
+} else {
+  const { nom, prenom, email, password, status} = req.body
+    const user = await User.create({
+      nom, prenom, email, password, status
+    })
+    .then((user) => res.status(201).send(user)).catch((error) => {
+      console.log(error);
+      res.status(400).send(error);
+  });
+  }
 };
+
+
+/*exports.signup = (req, res, next) => {
+  bcrypt
+    .hash(req.body.password, 10)
+    .then((hash) => {
+      const user = new User({
+        email: req.body.email,
+        password: hash,
+      });
+      user
+        .save()
+        .then(() => res.status(201).json({ message: "Utilisateur créé !" }))
+        .catch((error) => res.status(500).json({ error }));
+    })
+    .catch((error) => res.status(500).json({ error }));
+};*/
 
