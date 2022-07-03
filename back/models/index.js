@@ -8,6 +8,9 @@ const basename = path.basename(__filename);
 let sequelize = new Sequelize("groupomania", "root", "root", {
   host: "localhost",
   dialect: "mysql",
+  define:{
+      timestamps: false
+  },
 });
 
 sequelize
@@ -22,7 +25,6 @@ sequelize
 
 fs.readdirSync(__dirname)
   .filter((file) => {
-    console.log( file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js");
     return (
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
     );

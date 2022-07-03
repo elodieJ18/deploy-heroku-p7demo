@@ -1,6 +1,6 @@
 const { Model } = require("sequelize");
 
-module.exports = (Sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toJSON() {
       return {
@@ -11,7 +11,7 @@ module.exports = (Sequelize, DataTypes) => {
   }
   User.init(
     {
-      id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4 },
+      id: { type: DataTypes.UUID, primaryKey: true },
       nom: { type: DataTypes.STRING, allowNull: false },
       prenom: { type: DataTypes.STRING, allowNull: false },
       email: {
@@ -21,8 +21,11 @@ module.exports = (Sequelize, DataTypes) => {
       },
       status: { type: DataTypes.STRING, allowNull: false },
       password: { type: DataTypes.STRING, required: true },
+      createdAt: { type: DataTypes.JSON, timestamps: false},
     },
-    { Sequelize, tableName: "users", modelName: "User" }
+
+    
+    { sequelize, tableName: "users", modelName: "User" }
   );
   return User;
 };
