@@ -20,10 +20,12 @@ module.exports = (sequelize, DataTypes) => {
         validate: { notNull: true, notEmpty: true, isEmail: true },
       },
       status: { type: DataTypes.STRING },
-      password: { type: DataTypes.STRING, required: true },
-      createdAt: { type: DataTypes.JSON, timestamps: false},
+      password: { type: DataTypes.STRING, required: true }
     },
 
+    /*User.beforeCreate ((user, options) => {
+        let 
+    }),*/
     
     { sequelize, tableName: "users", modelName: "User" }
   );

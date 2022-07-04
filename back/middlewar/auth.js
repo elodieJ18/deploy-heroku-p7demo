@@ -1,20 +1,31 @@
-const jwt = require("jsonwebtoken");
+// middleware/authjwt.js
 
-module.exports = (req, res, next) => {
-  try {
-    const token = req.headers.authorization.split(" ")[1];
-    //La méthode  verify()  du package jsonwebtoken permet de vérifier la validité d'un token
-    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
-    const userId = decodedToken.userId;
-    req.auth = { userId };
-    if (req.body.userId && req.body.userId !== userId) {
-      throw "Invalid user ID";
-    } else {
-      next();
-    }
-  } catch {
-    res.status(401).json({
-      error: new Error("Invalid request!"),
-    });
+const jwt = require("jsonwebtoken");
+const config = require("../config/auth.config.js");
+const db = require("../models");
+const User = db.user;
+
+
+
+module.exports.checkUser = (req, res, next) => {
+  const token = req.cookies.jwt;
+  if(token){
+    jwt.verify(token, process.env.KEY_TOKEN, async(error, decodedtoken) => {
+      if(error){
+        res.locals.user = null;
+        res.cookie("jwt", "", {maxAge: 1});
+        next();
+      }
+      else {
+        let user = await User.findByPK(decodedtoken.id);
+        res.locals.user = user;
+        next();
+      }
+      
+    })
   }
-};
+  else {
+    res.locals.user = null;
+    next();
+  }
+}
