@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const config = require("../config/auth.config");
 const { User } = require("../models");
-
 
 
 module.exports.signup = async (req, res) => {
@@ -24,17 +24,41 @@ module.exports.signup = async (req, res) => {
   }
 };
 
-/*
+
 module.exports.login = async (req, res) => {
- const { email, password} = req.body
-const user = await User.findOne ({
-  where: {
-    email: req.body.email
-  }
-})
- if (!email || !password){
-  return res.status(400).json({ message: 'mauvais email ou password'})
- }
-};*/
+  const user = await User.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({ message: "User Not found." });
+      }
+      var passwordIsValid = bcrypt.compare(
+        req.body.password,
+        user.password
+      );
+      if (!passwordIsValid) {
+        return res.status(401).send({
+          accessToken: null,
+          message: "Invalid Password!"
+        });
+      }
+      var token = jwt.sign({ id: user.id }, config.secret, {
+        expiresIn: 86400 // 24 hours
+      });
+      res.status(200).send({
+        id: user.id,
+        nom: user.nom,
+        email: user.email,
+        password: user.password,
+        accessToken: token
+      });
+    })
+    .catch(err => {
+      res.status(500).send({ message: err.message });
+    });
+};
 
 

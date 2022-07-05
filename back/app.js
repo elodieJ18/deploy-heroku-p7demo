@@ -4,6 +4,7 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const app = express();
 
+
 //variable d'environnement
 
 require("dotenv").config();
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 //routes
-app.use("/users", authRoutes);
+app.use("/api/auth", authRoutes);
 
 // pour exporter l'application/constante pour acceder aux fichiers depuis notre server node
 
