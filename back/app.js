@@ -21,13 +21,23 @@ const authRoutes = require("./routes/user");
 //intercepter toute requête d'un contenttype.json
 app.use(express.json());
 
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000/', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors({credentials: true, origin: 'http://localhost:3000/'}));
+
 // middlewear general qui s'applique à toute les roots qui permet de gerer les CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization",
+    "x-access-token, Origin, Content-Type, Accept"
   );
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, PATCH, OPTIONS"

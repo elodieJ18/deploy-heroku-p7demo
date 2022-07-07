@@ -35,10 +35,8 @@ module.exports.login = async (req, res) => {
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
       }
-      var passwordIsValid = bcrypt.compare(
-        req.body.password,
-        user.password
-      );
+   
+      const passwordIsValid =   bcrypt.compareSync(req.body.password, user.password);
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,

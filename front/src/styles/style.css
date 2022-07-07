@@ -27,15 +27,28 @@ h1 {
 }
 
 /*sign-up*/
+.size-column-form {
+  width: 100%;
+}
+
 label {
   padding-bottom: 4px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 12px;
+  margin-left: 10px;
+}
+
+.input-form input {
+  padding: 15px 12px;
+  border-radius: 2em;
+  border: 1.5px solid #312e3e;
+  width: 90%;
 }
 
 input[type="text" i],
-input[type="password" i] {
+input[type="password" i], 
+input[type="email" i] {
   padding: 15px 12px;
   border-radius: 2em;
   border: 1.5px solid #312e3e;
@@ -59,6 +72,17 @@ form {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+}
+
+.is-invalid {
+    border: 2px solid red !important;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .from-signup {
