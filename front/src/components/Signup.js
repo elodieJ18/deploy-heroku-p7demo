@@ -34,8 +34,12 @@ export const Signup = () => {
         onSubmit={values => {
              axios({
                 method: "post",
-                url: `http://localhost:3001/api/auth/signup`,
-                withCredentials: true, values,
+                url: `http://localhost:3001/api/auth/signup`, 
+                data: values,
+                headers: {
+                  'Content-Type': 'application/json'
+                   },
+                  body: JSON.stringify(values),
               }).then(function (res) {
                 console.log("envoie-avant erreur")
                 console.log(res);
