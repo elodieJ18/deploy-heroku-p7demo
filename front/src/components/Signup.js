@@ -41,18 +41,13 @@ export const Signup = () => {
                    },
                   body: JSON.stringify(values),
               }).then(function (res) {
-                console.log("envoie-avant erreur")
-                console.log(res);
-                console.log(res.values);
-                console.log("values");
+                console.log(res.error);
+              alert("The response data is invalid")
               }).catch((err) => {
-                  console.log(err); 
-                  console.log("error-value")
-                  console.log(values)
-                  console.log("lecture de values après refus")
+                let message = typeof err.response !== "undefined" ? err.response.data.message : err.message;
+                alert(message);
                 });
-            console.log(values)
-            console.log("test-values")
+            
         }}>
             { formik => (
                 <div className="size-column-form">
@@ -64,7 +59,8 @@ export const Signup = () => {
                         <TextField label="Status" name="status" type="text"/>
                         <TextField label="Email *" name="email" type="email"/> 
                         <TextField label="password *" name="password" type="password"/>  
-                        <button className="btn-bleu" type="submit">Connexion</button>   
+                        <button className="btn-bleu btn-connexion" type="submit">Connexion</button>
+                        <a className="btn-blanc btn-connexion" href="/">cancel</a>   
                     </Form>
                 </div>
             )}

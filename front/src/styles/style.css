@@ -3,6 +3,10 @@
   src: url(https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap);
 }
 
+body {
+  margin: 0;
+}
+
 h1,
 h2,
 h3,
@@ -95,7 +99,7 @@ form {
   align-items: flex-start;
   width: 280px;
   box-shadow: 0px 0px 20px rgb(60 104 170 / 35%);
-  padding: 34px 74px;
+  padding: 28px 41px 80px 41px;
   margin-bottom: 42px;
 }
 
@@ -157,7 +161,7 @@ button {
 }
 
 .btn-blanc {
-  padding: 10px 60px;
+  padding: 12px 60px;
   border-radius: 1.5em;
   border: 1.5px solid #312e3e;
   background-color: #fff;
@@ -175,8 +179,95 @@ button {
   margin: 0;
 }
 
+
+.btn-connexion {
+  margin-top: 40px;
+}
+
+.home-container  {
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 70px;
+  padding: 8px 0px 0px 0px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 5px 11px rgba(60, 104, 170, 0.48);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-element p{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  font-size: 12px;
+}
+
+.navbar-element p svg {
+  font-size: 24px;
+}
+
+/*home*/
+
+.home-card-post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0px 0px 20px rgb(60 104 170 / 35%);
+  margin-bottom: 42px;
+  
+}
+
+.home-actuality {
+  width: 50%;
+}
+
+.home-card-userProfil {
+  column-gap: 20px;
+  display: flex;
+  padding: 28px 41px 30px 41px;
+}
+
+.home-card-userProfil img {
+  border-radius: 50%;
+  width: 31%;
+  height: 100%;
+  }
+
+  .home-card-description-status {
+    margin: 0;
+  }
+
+  .home-card-description-name {
+    margin-bottom: 0;
+  }
+
+  .home-card-description {
+      background-color: #FBFCFC;
+      padding: 28px 41px 30px 41px;
+  }
+
+
 @media (max-width: 720px) {
   .bloc-connexion-content {
     padding: 92px 37px;
+  }
+
+  .form-signup-element {
+    width: 200px;
   }
 }

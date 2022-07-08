@@ -31,15 +31,16 @@ export const Login = () => {
                },
               body: JSON.stringify(values),
           }) .then((res) => {
-            if (res.error.request) { 
-              console.log(res.error.request);
+            if (res.error) { 
+              console.log(res.error);
               alert("The response data is invalid")
             } else {
               window.location = "/home";
             }
           })
           .catch((err) => {
-            console.log(err);
+            let errorMessage = typeof err.response !== "undefined" ? err.response.data.message : err.message;
+            alert(errorMessage);
           });
         }}
         
@@ -51,7 +52,8 @@ export const Login = () => {
            <Form>
                 <TextField label="Email" name="email" type="email"/> 
                 <TextField label="password" name="password" type="password"/>
-                <button className="btn-bleu" type="submit">Se Connecter</button>               
+                <button className="btn-bleu btn-connexion" type="submit">Login</button>
+                <a className="btn-blanc btn-connexion" href="/">cancel</a>              
            </Form>
       </div>
         )}
