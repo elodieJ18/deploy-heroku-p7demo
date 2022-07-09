@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userCtrl = require("../controllers/user");
-const { verifySignUp } = require("../middlewar");
+const { verifySignUp } = require("../middleware");
 
 router.post("/signup", [
     verifySignUp.checkDuplicateEmail
