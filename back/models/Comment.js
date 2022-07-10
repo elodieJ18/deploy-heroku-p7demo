@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   Comment.init(
     {
       id: { type: DataTypes.UUID, primaryKey: true }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
-      nom: { type: DataTypes.STRING, allowNull: false },
-      prenom: { type: DataTypes.STRING, allowNull: false },
+      nom: { type: DataTypes.STRING },
+      prenom: { type: DataTypes.STRING },
       message: { type: DataTypes.STRING, allowNull: false },
-      date: { type: DataTypes.DATE, allowNull: false },
-      image: {  type: DataTypes.BLOB('long'), required: false,  allowNull: false },
+      //date: { type: DataTypes.DATE, allowNull: false },
+      image: {  type: DataTypes.BLOB('long'), required: false },
       likes: { type: DataTypes.STRING, required: false, default: 0 },
       dislikes: { type: DataTypes.STRING, required: false, default: 0 },
       //usersLiked: { type: DataTypes.ARRAY(DataTypes.STRING), required: false },

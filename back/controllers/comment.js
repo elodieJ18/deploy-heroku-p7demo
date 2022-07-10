@@ -3,23 +3,48 @@ const fs = require("fs");
 const path = require('path')
 
 //créer post comment
-module.exports.createComment = async (req, res) => {
-
-  let info = {
-      image: req.file.path,
-      title: req.body.title,
-      price: req.body.price,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
-  }
-
-  const comment = await Comment.create(info)
-  res.status(200).send(comment)
-  console.log(comment)
+/*module.exports.createComment = async (req, res) => {
+  const comment = await Comment.create({image: req.file.path})
+  .then((comment) => {
+    res.status(200).send(comment)
+    console.log(comment)
+  })  
   .catch(err => {
-    res.status(500).send({ message: err.message });
+    res.status(500)
+    .send({ message: err.message });
   });
-}
+}*/
+
+module.exports.createComment  = async (req, res) => {
+  if (!req.body.message) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  try {
+    console.log(req.file);
+   /* if (req.file == undefined) {
+      return res.send(`You must select a file.`);
+    }*/
+    let { id, message, date, image} = req.body;
+    /*image = fs.readFileSync(
+      __basedir + "/resources/static/assets/uploads/" + req.file.filename
+    )*/
+    Comment.create({
+      id, message, date, 
+    })/*.then((image) => {
+      fs.writeFileSync(
+        __basedir + "/resources/static/assets/tmp/" + image.name,
+        image.data
+      );
+      return res.send(`File has been uploaded.`);
+    })*/.then((comment) => res.status(201).send(comment))
+  } catch (error) {
+    console.log(error);
+    return res.send(`Error when trying upload images: ${error}`);
+  }
+};
+
 
 // 2. get all products
 
