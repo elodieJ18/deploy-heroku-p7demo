@@ -16,17 +16,19 @@ module.exports.createComment  = async (req, res) => {
     }
     let { id, message, date, image} = req.body;
     image = fs.readFileSync(
-      __dirname + "/images/" + req.file.filename
+      __dirname + "/src/images/" + req.
+      file.filename
     )
     Comment.create({
-      id, message, date, 
+      id, message, date, image
     }).then((image) => {
       console.log(image)
       fs.writeFileSync(
-        __dirname + "/images/" + image.name,
-        image.data
+        __dirname + "/src/images/" + image.name
       );
-      return res.send(`File has been uploaded.`);
+      return res.send({
+        message: "Content can not be empty!"
+      });
     }).then((comment) => res.status(201).send(comment))
   } catch (error) {
     console.log(error);
