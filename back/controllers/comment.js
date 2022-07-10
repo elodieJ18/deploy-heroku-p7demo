@@ -1,20 +1,8 @@
 const { Comment } = require("../models");
 const fs = require("fs");
-const path = require('path')
+const path = require('path');
 
 //créer post comment
-/*module.exports.createComment = async (req, res) => {
-  const comment = await Comment.create({image: req.file.path})
-  .then((comment) => {
-    res.status(200).send(comment)
-    console.log(comment)
-  })  
-  .catch(err => {
-    res.status(500)
-    .send({ message: err.message });
-  });
-}*/
-
 module.exports.createComment  = async (req, res) => {
   if (!req.body.message) {
     res.status(400).send({
@@ -23,22 +11,23 @@ module.exports.createComment  = async (req, res) => {
   }
   try {
     console.log(req.file);
-   /* if (req.file == undefined) {
+   if (req.file == undefined) {
       return res.send(`You must select a file.`);
-    }*/
+    }
     let { id, message, date, image} = req.body;
-    /*image = fs.readFileSync(
-      __basedir + "/resources/static/assets/uploads/" + req.file.filename
-    )*/
+    image = fs.readFileSync(
+      __dirname + "/images/" + req.file.filename
+    )
     Comment.create({
       id, message, date, 
-    })/*.then((image) => {
+    }).then((image) => {
+      console.log(image)
       fs.writeFileSync(
-        __basedir + "/resources/static/assets/tmp/" + image.name,
+        __dirname + "/images/" + image.name,
         image.data
       );
       return res.send(`File has been uploaded.`);
-    })*/.then((comment) => res.status(201).send(comment))
+    }).then((comment) => res.status(201).send(comment))
   } catch (error) {
     console.log(error);
     return res.send(`Error when trying upload images: ${error}`);
