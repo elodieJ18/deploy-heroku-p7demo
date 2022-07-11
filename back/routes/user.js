@@ -8,6 +8,8 @@ router.post("/signup", [
   ], userCtrl.signup);
 
 router.post("/login", userCtrl.login);
+
+router.post("/profil", userCtrl.profil)
 /*
 router.put("/:id", userCtrl.modifyUser);
 router.get("/:id", userCtrl.modifyUser);

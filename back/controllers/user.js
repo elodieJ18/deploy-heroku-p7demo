@@ -60,3 +60,17 @@ module.exports.login = async (req, res) => {
 };
 
 
+module.exports.profil  = async (req, res) => {
+  try {
+    let { status, image} = req.body;
+    image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
+    Comment.create({
+      status, image
+    }).then((comment) => res.status(201).send(comment))
+  } catch (error) {
+    console.log(error);
+    return res.send(`Error when trying upload images: ${error}`);
+  }
+};
+
+

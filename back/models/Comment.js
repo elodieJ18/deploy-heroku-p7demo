@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       prenom: { type: DataTypes.STRING },
       message: { type: DataTypes.STRING, allowNull: false },
       //date: { type: DataTypes.DATE, allowNull: false },
-      image: {  type: DataTypes.BLOB('long'), required: false },
+      image: {  type: DataTypes.BLOB('long'), required: false, allowNull: true },
       likes: { type: DataTypes.STRING, required: false, default: 0 },
       dislikes: { type: DataTypes.STRING, required: false, default: 0 },
       //usersLiked: { type: DataTypes.ARRAY(DataTypes.STRING), required: false },
