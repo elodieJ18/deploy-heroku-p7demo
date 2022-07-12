@@ -2,7 +2,6 @@
   font-family: "Montserrat", sans-serif;
   src: url(https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap);
 }
-
 body {
   margin: 0;
 }
@@ -50,9 +49,9 @@ label {
   width: 90%;
 }
 
-input[type="text" i],
-input[type="password" i], 
-input[type="email" i] {
+input[type=text i],
+input[type=password i],
+input[type=email i] {
   padding: 15px 12px;
   border-radius: 2em;
   border: 1.5px solid #312e3e;
@@ -60,8 +59,8 @@ input[type="email" i] {
   margin-bottom: 10px;
 }
 
-input[type="text" i],
-input[type="password" i]:focus-visible {
+input[type=text i],
+input[type=password i]:focus-visible {
   outline: none;
 }
 
@@ -79,7 +78,7 @@ form {
 }
 
 .is-invalid {
-    border: 2px solid red !important;
+  border: 2px solid red !important;
 }
 
 .error {
@@ -98,7 +97,7 @@ form {
   flex-direction: column;
   align-items: flex-start;
   width: 280px;
-  box-shadow: 0px 0px 20px rgb(60 104 170 / 35%);
+  box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
   padding: 28px 41px 80px 41px;
   margin-bottom: 42px;
 }
@@ -117,7 +116,6 @@ form {
 }
 
 /*connexion*/
-
 .bloc-connexion {
   display: flex;
   flex-direction: column;
@@ -125,7 +123,7 @@ form {
 }
 
 .bloc-connexion-content {
-  box-shadow: 0px 0px 20px rgb(60 104 170 / 35%);
+  box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
   padding: 172px 112px;
 }
 
@@ -179,16 +177,15 @@ button {
   margin: 0;
 }
 
-
 .btn-connexion {
   margin-top: 40px;
 }
 
-.home-container  {
+.home-container {
   display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-content {
@@ -210,7 +207,7 @@ button {
   right: 0;
 }
 
-.navbar-element p{
+.navbar-element p {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -222,14 +219,12 @@ button {
 }
 
 /*home*/
-
 .home-card-post {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  box-shadow: 0px 0px 20px rgb(60 104 170 / 35%);
+  box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
   margin-bottom: 42px;
-  
 }
 
 .home-actuality {
@@ -246,28 +241,28 @@ button {
   border-radius: 50%;
   width: 31%;
   height: 100%;
-  }
+}
 
-  .home-card-description-status {
-    margin: 0;
-  }
+.home-card-description-status {
+  margin: 0;
+}
 
-  .home-card-description-name {
-    margin-bottom: 0;
-  }
+.home-card-description-name {
+  margin-bottom: 0;
+}
 
-  .home-card-description {
-      background-color: #FBFCFC;
-      padding: 28px 41px 30px 41px;
-  }
-
+.home-card-description {
+  background-color: #FBFCFC;
+  padding: 28px 41px 30px 41px;
+}
 
 @media (max-width: 720px) {
   .bloc-connexion-content {
     padding: 92px 37px;
   }
-
   .form-signup-element {
     width: 200px;
   }
 }
+
+/*# sourceMappingURL=styles.css.map */
