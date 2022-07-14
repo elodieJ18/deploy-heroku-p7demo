@@ -2,7 +2,6 @@ import React from "react";
 import {Formik, Form} from 'formik';
 import { TextField } from "./TextField";
 import * as Yup from 'yup';
-import logo from "../../assets/logo-groupomania.png";
 import axios from "axios";
 
 export const Login = () => {
@@ -18,11 +17,6 @@ export const Login = () => {
 
    
     return (
-      <div className="form-signup-content">
-      <div className="navbar">
-        <img className="logo" src={logo} alt="groupomania" />
-      </div>
-      <div className="form-signup-element">
         <Formik initialValues={{
             email: "",
             password: "",
@@ -48,9 +42,7 @@ export const Login = () => {
             let errorMessage = typeof err.response !== "undefined" ? err.response.data.message : err.message;
             alert(errorMessage);
           });
-        }}
-        
-        >
+        }}>
             
         { formik => (
           <div className="size-column-form">
@@ -58,13 +50,10 @@ export const Login = () => {
            <Form>
                 <TextField label="Email" name="email" type="email"/> 
                 <TextField label="password" name="password" type="password"/>
-                <button className="btn-bleu btn-connexion" type="submit">Login</button>
-                <p>Besoin d'un compte ? <a id="subscribe">s'inscrire</a></p>           
+                <button className="btn-bleu btn-connexion" type="submit">Login</button>         
            </Form>
       </div>
         )}
     </Formik>
-    </div>
-    </div>
     )
 }
