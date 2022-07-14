@@ -1,0 +1,39 @@
+/*navbar*/
+  
+.home-container  {
+    display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 70px;
+    padding: 8px 0px 0px 0px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 5px 11px rgba(60, 104, 170, 0.48);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .navbar-element p{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    font-size: 12px;
+  }
+  
+  .navbar-element p svg {
+    font-size: 24px;
+  }
+  

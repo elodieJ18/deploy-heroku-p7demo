@@ -2,6 +2,7 @@ import React from "react";
 import {Formik, Form} from 'formik';
 import { TextField } from "./TextField";
 import * as Yup from 'yup';
+import logo from "../../assets/logo-groupomania.png";
 import axios from 'axios';
 
 export const Signup = () => {
@@ -22,6 +23,11 @@ export const Signup = () => {
       })
       
     return (
+      <div className="form-signup-content">
+      <div className="navbar">
+        <img className="logo" src={logo} alt="groupomania" />
+      </div>
+      <div className="form-signup-element">
         <Formik
         initialValues={{
             prenom: '',
@@ -34,7 +40,7 @@ export const Signup = () => {
         onSubmit={values => {
              axios({
                 method: "post",
-                url: `http://localhost:3001/api/auth/signup`, 
+                url: `${process.env.REACT_APP_API_URL}/api/auth/signup`, 
                 data: values,
                 headers: {
                   'Content-Type': 'application/json'
@@ -60,10 +66,13 @@ export const Signup = () => {
                         <TextField label="Email *" name="email" type="email"/> 
                         <TextField label="password *" name="password" type="password"/>  
                         <button className="btn-bleu btn-connexion" type="submit">Connexion</button>
-                        <a className="btn-blanc btn-connexion" href="/">cancel</a>   
+                        <p>Besoin d'un compte ? <a id="subscribe">s'inscrire</a></p>    
                     </Form>
                 </div>
             )}
         </Formik>
+        </div>
+        </div>
     )
 }
+

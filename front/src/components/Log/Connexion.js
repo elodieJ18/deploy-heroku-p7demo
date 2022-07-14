@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/style.css";
-import logo from "../assets/logo-groupomania.png";
+import "../../css/styles.css";
+import logo from "../../assets/logo-groupomania.png";
 
-function Connexion() {
+export const Connexion = () => {
   return (
     <div className="bloc-connexion">
       <div className="navbar">

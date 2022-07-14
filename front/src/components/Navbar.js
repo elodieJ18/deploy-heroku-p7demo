@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/style.css";
+import "../css/styles.css";
 import logo from "../assets/logo-groupomania.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';

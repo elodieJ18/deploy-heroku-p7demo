@@ -1,12 +1,24 @@
-@mixin a-transform {
-    text-decoration: none;
-    color: #ffff;
+
+  @mixin btn-bleu-navy {
+    padding: 14px 60px;
+    border-radius: 1.5em;
+    color: #fff;
+    text-align: center;
   }
   
-  @mixin btn-form {
-    border-radius: 1.5rem;
-    padding: 16px;
-    margin-bottom: 8vh;
-    margin-top: 4vh;
+  @mixin  btn-bleu {
+    padding: 14px 60px;
+    border-radius: 1.5em;
+    color: #fff;
+    text-align: center;
+    border-width: 0px;
+  }
+  
+  @mixin btn-blanc {
+    padding: 12px 60px;
+    border-radius: 1.5em;
+    border: 1.5px solid #312e3e;
+    color: #312e3e;
+    text-align: center;
   }
   

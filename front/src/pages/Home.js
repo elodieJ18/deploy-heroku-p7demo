@@ -1,12 +1,14 @@
 import React from "react";
-import "../styles/style.css";
+import "../css/styles.css";
 import {Navbar} from "../components/Navbar"
+import {Connexion} from '../components/Log/Connexion'
 import profil from "../assets/user-200.png";
 
 function Home() {
   return (
     <div className="home-container">
        <Navbar />
+       <Connexion />
       <div className="home-actuality">
         <div className="home-card-post">
           <div className="home-card-userProfil">
