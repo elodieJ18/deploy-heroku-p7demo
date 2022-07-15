@@ -2,19 +2,15 @@ const express = require("express");
 //crééer un application express
 const path = require("path");
 const Sequelize = require("sequelize");
+const cookieParser = require('cookie-parser')
 const app = express();
 
-
+const {verifyToken, authJwt} = require('./middleware/authJwt');
 //variable d'environnement
 
 require("dotenv").config();
 console.log(process.env);
 
-//const morgan = require("morgan");
-
-//mysql importation connexion
-
-//app.use(morgan("dev"));
 //import des routes
 const authRoutes = require("./routes/user");
 const commentRoutes = require("./routes/comment");
@@ -28,17 +24,21 @@ const corsOptions ={
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true,
+             origin: 'http://localhost:3000', 
+             allowedHeaders: ["sessionId", "Content-Type"],
+             exposedHeaders: ["sessionId"],
+             methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+             preflightContinue: true,
+            }));
 
-// middlewear general qui s'applique à toute les roots qui permet de gerer les CORS
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
+app.use(cookieParser());
+
+
+//jwt
+app.get('/jwtid', verifyToken, (req, res) => {
+  res.status(200).send(res.locals.id)
 });
-
 
 //Gestion de la ressource images de façon statique
 app.use("/images", express.static(path.join(__dirname, "images")));

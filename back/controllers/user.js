@@ -46,12 +46,14 @@ module.exports.login = async (req, res) => {
       var token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 86400 // 24 hours
       });
-      res.status(200).send({
+      const maxAge = 3*24*60*60*1000;
+      res.cookie("jwt", token, {httpOnly: true, maxAge});
+      res.status(201).send({
         id: user.id,
         nom: user.nom,
         email: user.email,
         password: user.password,
-        accessToken: token
+        token: token
       });
     })
     .catch(err => {

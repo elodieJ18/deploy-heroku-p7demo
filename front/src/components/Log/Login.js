@@ -24,12 +24,17 @@ export const Login = () => {
         validationSchema={validate} onSubmit={values => {
           axios({
             method: "post",
-            url: `http://localhost:3001/api/auth/login`, 
+            url: `${process.env.REACT_APP_API_URL}api/auth/login`, 
             data: values,
             headers: {
               'Content-Type': 'application/json'
                },
               body: JSON.stringify(values),
+          }) .then((response) => {
+            if (response.data.email) {
+              localStorage.setItem("user", JSON.stringify(response.data));
+            }
+            return response.data;
           }) .then((res) => {
             if (res.error) { 
               console.log(res.error);
@@ -42,7 +47,9 @@ export const Login = () => {
             let errorMessage = typeof err.response !== "undefined" ? err.response.data.message : err.message;
             alert(errorMessage);
           });
-        }}>
+        }}
+        
+        >
             
         { formik => (
           <div className="size-column-form">
@@ -50,10 +57,11 @@ export const Login = () => {
            <Form>
                 <TextField label="Email" name="email" type="email"/> 
                 <TextField label="password" name="password" type="password"/>
-                <button className="btn-bleu btn-connexion" type="submit">Login</button>         
+                <button className="btn-bleu btn-connexion" type="submit">Login</button>             
            </Form>
       </div>
         )}
     </Formik>
     )
 }
+

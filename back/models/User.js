@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       id: { type: DataTypes.UUID, primaryKey: true },
       nom: { type: DataTypes.STRING, allowNull: false },
       prenom: { type: DataTypes.STRING, allowNull: false },
+      imageProfil: {  type: DataTypes.STRING, required: false, allowNull: true },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -23,10 +24,6 @@ module.exports = (sequelize, DataTypes) => {
       password: { type: DataTypes.STRING, required: true }
     },
 
-    /*User.beforeCreate ((user, options) => {
-        let 
-    }),*/
-    
     { sequelize, tableName: "users", modelName: "User" }
   );
   return User;

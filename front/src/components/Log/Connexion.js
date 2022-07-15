@@ -3,7 +3,7 @@ import "../../css/styles.css";
 import logo from "../../assets/logo-groupomania.png";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
-import axios from "axios";
+
 
 export const Connexion = () => {
 
@@ -30,8 +30,9 @@ export const Connexion = () => {
         {loginModal && <Login />}
           <p className={loginModal ? null : "active-btn-connexion" }>Need an account ? <a  id="loginRegister" onClick={handleModals} >Register</a></p>      
          
-          {signUpModal && <Signup />}
-         <p><a id="register" onClick={handleModals} className={signUpModal ? null : "active-btn-connexion" }>Already have an account ?</a></p> 
+        {signUpModal && <Signup />}
+         <p className={signUpModal ? null : "active-btn-connexion" }>Already have an account ?<a id="register" onClick={handleModals}> Login</a></p> 
+ 
         </div>
 
       </div>
