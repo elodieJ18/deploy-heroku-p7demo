@@ -11,7 +11,12 @@ module.exports.createComment  = async (req, res) => {
       });
     }
     let { id, message, date, image} = req.body;
-    image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
+    if (req.file) {
+       image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+      }
+      else {
+        image = null;
+    }
     Comment.create({
       id, message, date, image
     }).then((comment) => res.status(201).send(comment))
