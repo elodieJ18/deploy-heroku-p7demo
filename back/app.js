@@ -34,7 +34,6 @@ app.use(cors({credentials: true,
 
 app.use(cookieParser());
 
-
 //jwt
 app.get('/jwtid', verifyToken, (req, res) => {
   res.status(200).send(res.locals.id)

@@ -1,6 +1,5 @@
-const jwt = require("jsonwebtoken");
-const config = require("../config/auth.config.js");
 
+const jwt = require("jsonwebtoken");
 
 verifyToken = (req, res, next) => {
   const token = req.cookies.jwt;
@@ -10,7 +9,7 @@ verifyToken = (req, res, next) => {
       message: "No token provided!"
     });
   }
-  jwt.verify(token, config.secret, (err, decoded) => {
+  jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).send({  
         message: "Unauthorized!"
@@ -26,3 +25,4 @@ const authJwt = {
 };
 
 module.exports = authJwt;
+

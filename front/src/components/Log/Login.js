@@ -26,14 +26,12 @@ export const Login = () => {
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/auth/login`, 
             data: values,
+            withCredentials: true,
             headers: {
               'Content-Type': 'application/json'
                },
               body: JSON.stringify(values),
           }) .then((response) => {
-            if (response.data.email) {
-              localStorage.setItem("user", JSON.stringify(response.data));
-            }
             return response.data;
           }) .then((res) => {
             if (res.error) { 

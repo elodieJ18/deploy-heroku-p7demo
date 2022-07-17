@@ -8,14 +8,14 @@ const  multer  = require("../middleware/multer-config");
 router.post("/upload", [authJwt.verifyToken], multer, commentCtrl.createComment);
 //afficher toutes les sauces
 router.get("/",[authJwt.verifyToken], commentCtrl.getallComment);
-//modification d'un produit
-/*router.put("/:id", auth, multer, commentCtrl.modifyComment);
 //affichage du produit dans sa propre page
-router.get("/:id", auth, commentCtrl.getOneSauces);
+router.get("/:id",[authJwt.verifyToken], commentCtrl.getOneComment);
+//modification d'un produit
+router.put("/:id", [authJwt.verifyToken], multer, commentCtrl.modifyComment);
 //suppression d'un produit
-router.delete("/:id", auth, commentCtrl.deleteComment);
+router.delete("/:id", [authJwt.verifyToken], commentCtrl.deleteComment);
 
 //like des sauces (pas encore créer)
-router.post("/:id/like", auth, commentCtrl.likeComment);
-*/
+router.post("/:id/like", [authJwt.verifyToken], commentCtrl.likeComment);
+
 module.exports = router;
