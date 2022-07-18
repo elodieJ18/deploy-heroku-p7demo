@@ -20,9 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       image: {  type: DataTypes.STRING, required: false, allowNull: true },
       likes: { type: DataTypes.STRING, required: false, default: 0 },
       dislikes: { type: DataTypes.STRING, required: false, default: 0 },
-     // usersLiked: { type: DataTypes.STRING, required: false },
-      //usersDisliked: { type: DataTypes.STRING, required: false },
+      usersLikes: { type: DataTypes.STRING, required: false },
+      usersDislikes: { type: DataTypes.STRING, required: false },
       status: { type: DataTypes.STRING },
+
     },
     { sequelize, tableName: "comment", modelName: "Comment" }
   );
