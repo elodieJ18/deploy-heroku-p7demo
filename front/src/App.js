@@ -24,8 +24,7 @@ const App = () => {
     };
       fetchToken();
     }, [uid]);
-    
-    console.log(uid)
+ 
  
   return (
     <UidContext.Provider value={uid}> 

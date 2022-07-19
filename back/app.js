@@ -36,7 +36,7 @@ app.use(cookieParser());
 
 //jwt
 app.get('/jwtid', verifyToken, (req, res) => {
-  res.status(200).send(res.locals.id)
+  res.status(200).send(res.locals.user.id.toString())
 });
 
 //Gestion de la ressource images de façon statique

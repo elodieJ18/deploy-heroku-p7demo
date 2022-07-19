@@ -1,23 +1,25 @@
 
 const jwt = require("jsonwebtoken");
+const { User } = require("../models");
 
 verifyToken = (req, res, next) => {
   const token = req.cookies.jwt;
-  console.log(req.cookies.jwt);
-  if (!token) {
-    return res.status(403).send({
-      message: "No token provided!"
+  if (token) {
+    jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
+      if (err) {
+        res.locals.user = null;
+        res.cookie("jwt", "", { maxAge: 1 });
+        next();
+      } else {
+        let user = await User.findByPk(decodedToken.id);
+        res.locals.user = user;
+        next();
+      }
     });
-  }
-  jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(401).send({  
-        message: "Unauthorized!"
-      });
-    }
-    req.id = decoded.id;
+  } else {
+    res.locals.user = null;
     next();
-  });
+  }
 };
 
 const authJwt = {
