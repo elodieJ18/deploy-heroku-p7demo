@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import {Formik, Form} from 'formik';
 import { TextField } from "./TextField";
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Login } from "./Login";
 
+
 export const Signup = () => {
+  const [formSubmit, setFormSubmit] = useState(false);
 
     const validate = Yup.object({
         prenom: Yup.string()
@@ -26,6 +28,16 @@ export const Signup = () => {
     return (
       <div className="form-signup-content">
       <div className="form-signup-element">
+        <>
+        {formSubmit ? (
+        <>
+        <Login />
+        <p className="sucess">Enregistrement réussi vous pouvez maintenant vous connecter !</p>
+        
+        </>
+        ) : (
+
+       
         <Formik
         initialValues={{
             prenom: '',
@@ -50,7 +62,7 @@ export const Signup = () => {
                   console.log(res.error);
                   alert("The response data is invalid")
                } else {
-                alert("Registration OK! you can know login !")
+                setFormSubmit(true);
                 }
               }).catch((err) => {
                 let message = typeof err.response !== "undefined" ? err.response.data.message : err.message;
@@ -72,6 +84,8 @@ export const Signup = () => {
                 </div>
             )}
         </Formik>
+         )}
+        </>
         </div>
         </div>
     )

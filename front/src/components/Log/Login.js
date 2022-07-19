@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import {Formik, Form} from 'formik';
 import { TextField } from "./TextField";
+import { Signup } from "./Signup";
 import * as Yup from 'yup';
 import axios from "axios";
 
@@ -38,7 +39,7 @@ export const Login = () => {
               console.log(res.error);
               alert("The response data is invalid")
             } else {
-              window.location = "/home";
+              window.location = "/";
             }
           })
           .catch((err) => {
@@ -55,7 +56,7 @@ export const Login = () => {
            <Form>
                 <TextField label="Email" name="email" type="email"/> 
                 <TextField label="password" name="password" type="password"/>
-                <button className="btn-bleu btn-connexion" type="submit">Login</button>             
+                <button className="btn-bleu btn-connexion" type="submit">Login</button> 
            </Form>
       </div>
         )}

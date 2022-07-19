@@ -137,9 +137,14 @@ form {
 }
 .form-signup-content .form-signup-element {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-start;
   width: 280px;
+}
+.form-signup-content .form-signup-element .sucess {
+  font-size: 14px;
+  color: #3c68aa;
+  font-weight: 500;
 }
 
 .clearfix {

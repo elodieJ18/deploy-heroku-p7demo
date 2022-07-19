@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../css/styles.css";
 import {Navbar} from "../components/Navbar"
 import profil from "../assets/user-200.png";
+import { UidContext } from "../components/AppContext";
+import {Connexion} from "../components/Log/Connexion";
+
 
 function Home() {
+  const uid = useContext(UidContext);
+
   return (
-    <div className="home-container">
+   <div>
+   
+    
+    {uid ? (  <div className="home-container"> 
       <Navbar />
       <div className="home-actuality">
         <div className="home-card-post">
@@ -31,7 +39,13 @@ function Home() {
         </div>
         <div></div>
         </div>
+        </div>) : (
+      <div>
+          <Connexion/>
+      </div>
+        )}
     </div>
+ 
   );
 }
 

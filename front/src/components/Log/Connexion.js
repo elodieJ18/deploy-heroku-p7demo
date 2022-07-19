@@ -11,12 +11,12 @@ export const Connexion = () => {
   const [loginModal, setLoginModal] = useState(false);
 
   const handleModals = (e) => {
-    if (e.target.id === "register"){
-      setSignUpModal(false);
-      setLoginModal(true);
-    } else if (e.target.id === "loginRegister") {
+    if (e.target.id === "loginRegister"){
       setLoginModal(false);
       setSignUpModal(true);
+    } else if (e.target.id === "register") {
+      setSignUpModal(false);
+      setLoginModal(true);
     }
   }
 
@@ -28,8 +28,8 @@ export const Connexion = () => {
       <div className="bloc-connexion-content">
         <div className="bloc-connexion-element">
         {loginModal && <Login />}
-          <p className={loginModal ? null : "active-btn-connexion" }>Need an account ? <a  id="loginRegister" onClick={handleModals} >Register</a></p>      
-         
+          <p className={loginModal ? null : "active-btn-connexion" }>Need an account ? <a  id="loginRegister" onClick={handleModals} >Register</a></p>
+      
         {signUpModal && <Signup />}
          <p className={signUpModal ? null : "active-btn-connexion" }>Already have an account ?<a id="register" onClick={handleModals}> Login</a></p> 
  
