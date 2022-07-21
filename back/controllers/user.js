@@ -70,9 +70,20 @@ module.exports.logout = (req, res) => {
     res.redirect('/');
 }
 
+module.exports.userInfo = async (req, res, next) => {
+  let id = req.params.id;
+  User.findByPk(id)  
+  .then(user => {
+    console.log(id)
+     res.json(user)
+  })
+.catch((err) => console.log(err));
+};
 
 
-module.exports.profil  = async (req, res) => {
+
+
+module.exports.createprofil  = async (req, res) => {
   try {
     let { status, image} = req.body;
     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
@@ -83,6 +94,43 @@ module.exports.profil  = async (req, res) => {
     console.log(error);
     return res.send(`Error when trying upload images: ${error}`);
   }
+};
+
+
+module.exports.modifyProfil = (req, res, next) => {
+  try {
+      let { prenom, nom, message, date, image, status} = req.body;
+  let id = req.params.id;
+  if (req.file) {
+     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+    }
+    else {
+      image = null;
+  }
+  User.update(
+    { prenom, nom, message, date, image, status},
+    { where: { id: id } }
+  ) 
+    .then(() => 
+    res.status(200).json({ message: "Objet modifié !" }),
+    )
+  }
+    catch{((error) => 
+    res.status(500).json({ error: "une erreur est survenu" }),
+    res.status(400).json({ error: "une erreur de synthax est survenu" })
+    );}
+};
+
+exports.deleteUser = (req, res, next) => {
+  let id = req.params.id;
+  try {
+        User.destroy({ where: { id: id } })
+          .then(() => res.status(200).json({ message: "Objet supprimé !" }))
+      }
+    catch {((error) => 
+      res.status(500).json({ error }),
+      res.status(400).json({ error: "une erreur de synthax est survenu" })
+    );}
 };
 
 

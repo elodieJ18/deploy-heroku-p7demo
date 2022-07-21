@@ -13,8 +13,13 @@
     align-items: center;
     justify-content: center;
 
+    a {
+      color: black;
+    }
+
     .profil-icon {
       padding-left: 177px;
+      font-size: 21px;
     }
 
     img {
@@ -37,29 +42,37 @@
     right: 0;
   }
   
-  .navbar-element p{
+  .navbar-element {
+    color: black;
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
-    font-size: 12px;
+      .linkName{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        font-size: 12px;
+        margin-top: 0;
+      }
+      
+      .linkicon {
+        margin: 0;
+        font-size: 24px;
+        text-align: center;
+      }
   }
-  
-  .navbar-element p svg {
-    font-size: 24px;
-  }
-  
 
   
   @media (max-width: 720px) {
     .header-content {
-       img {
-      padding-left: 50px;
-      width: 157px;
-    }
+          img {
+          padding-left: 50px;
+          width: 157px;
+        }
 
-    .profil-icon {
-      padding-left: 44px;
-    }
+        .profil-icon {
+          padding-left: 44px;
+          color: black;
+        }
     }
 
     .home-actuality {

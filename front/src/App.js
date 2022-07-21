@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import Route from './components/Route';
 import { UidContext } from "./components/AppContext";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { getUser } from "./actions/user.actions";
 
 const App = () => {
     const [uid, setUid] = useState(null);
-
+    const dispacth = useDispatch();
     useEffect(() => {
       const fetchToken = async () => {
         await axios({
@@ -23,6 +25,7 @@ const App = () => {
       .catch((err) => console.log("No token"));
     };
       fetchToken();
+      if (uid) dispacth(getUser(uid))
     }, [uid]);
  
  

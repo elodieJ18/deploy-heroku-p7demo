@@ -286,8 +286,12 @@ button {
   align-items: center;
   justify-content: center;
 }
+.header-content a {
+  color: black;
+}
 .header-content .profil-icon {
   padding-left: 177px;
+  font-size: 21px;
 }
 .header-content img {
   padding-left: 177px;
@@ -307,15 +311,22 @@ button {
   right: 0;
 }
 
-.navbar-element p {
+.navbar-element {
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+.navbar-element .linkName {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   font-size: 12px;
+  margin-top: 0;
 }
-
-.navbar-element p svg {
+.navbar-element .linkicon {
+  margin: 0;
   font-size: 24px;
+  text-align: center;
 }
 
 @media (max-width: 720px) {
@@ -325,6 +336,7 @@ button {
   }
   .header-content .profil-icon {
     padding-left: 44px;
+    color: black;
   }
   .home-actuality {
     width: 88%;
