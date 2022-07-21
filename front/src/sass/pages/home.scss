@@ -44,7 +44,7 @@
         flex-direction: column;
         align-items: flex-start;
         box-shadow: $shadow-blue;
-        margin-bottom: 42px;
+        margin-bottom: 28px;
 
           .home-card-userProfil {
             column-gap: 20px;
@@ -66,15 +66,69 @@
          
       }
   }
+
+  .home-card-userStatus {
+    display: flex;
+    column-gap: 48px;
+    align-items: flex-start;
+  .home-card-description-name {
+  font-size: 16px;
+  margin-bottom: 0;
+  }
+  .home-card-description-status{
+    font-size: 12px;
+    margin: 0;
+  }
+  .home-card-description-date{
+    font-size: 12px;
+    margin-top: 17px;
+  }
+}
+
  
 
+
+  @media (max-width: 720px) {
   .home-card-description-status {
     margin: 0;
 
    
   }
  .home-card-description-name {
-      margin-bottom: 0;
+      margin: 0;
     }
 
+    .home-card-description p {
+      font-size: 12px;
+     
+    }
   
+    .home-actuality .home-card-post
+    .home-card-description {
+       padding: 0px 41px 20px 41px;
+    }
+  
+    .home-actuality .home-card-post .home-card-userProfil {
+      padding: 21px 41px 10px 41px;
+      img {
+        width: 20%;
+      }
+    }
+  
+    .home-card-userStatus {
+        display: flex;
+        column-gap: 48px;
+        align-items: flex-start;
+      .home-card-description-name {
+      font-size: 16px;
+      }
+      .home-card-description-status{
+        font-size: 12px;
+      }
+      .home-card-description-date{
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+    
+  } 

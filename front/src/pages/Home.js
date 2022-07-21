@@ -20,9 +20,13 @@ function Home() {
           <div className="home-card-userProfil">
             <img src={profil} />
             <div className="home-card-userStatus">
+            <div className="home-card-usersStatus-second-col">
               <p className="home-card-description-name">Name</p>
-              <p className="home-card-description-status">Status</p>
-              <p>Date</p>
+              <p className="home-card-description-status">Status</p> 
+            </div>
+            <div className="home-card-usersStatus-second-col"> 
+              <p className="home-card-description-date">Date</p>
+              </div> 
             </div>
           </div>
           <div className="home-card-description">

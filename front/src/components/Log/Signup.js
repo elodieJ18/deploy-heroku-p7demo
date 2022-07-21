@@ -33,10 +33,8 @@ export const Signup = () => {
         <>
         <Login />
         <p className="sucess">Enregistrement réussi vous pouvez maintenant vous connecter !</p>
-        
         </>
         ) : (
-
        
         <Formik
         initialValues={{
@@ -80,14 +78,15 @@ export const Signup = () => {
                         <TextField label="Email *" name="email" type="email"/> 
                         <TextField label="password *" name="password" type="password"/>  
                         <button className="btn-bleu btn-connexion" type="submit">Signup</button> 
+                        
                     </Form>
                 </div>
             )}
         </Formik>
          )}
         </>
-        </div>
-        </div>
+      </div>
+    </div>
     )
 }
 

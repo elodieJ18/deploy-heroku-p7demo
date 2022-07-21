@@ -38,7 +38,7 @@ h1 {
   flex-direction: column;
   align-items: flex-start;
   box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
-  margin-bottom: 42px;
+  margin-bottom: 28px;
 }
 .home-actuality .home-card-post .home-card-userProfil {
   column-gap: 20px;
@@ -55,14 +55,59 @@ h1 {
   padding: 28px 41px 30px 41px;
 }
 
-.home-card-description-status {
-  margin: 0;
+.home-card-userStatus {
+  display: flex;
+  column-gap: 48px;
+  align-items: flex-start;
 }
-
-.home-card-description-name {
+.home-card-userStatus .home-card-description-name {
+  font-size: 16px;
   margin-bottom: 0;
 }
+.home-card-userStatus .home-card-description-status {
+  font-size: 12px;
+  margin: 0;
+}
+.home-card-userStatus .home-card-description-date {
+  font-size: 12px;
+  margin-top: 17px;
+}
 
+@media (max-width: 720px) {
+  .home-card-description-status {
+    margin: 0;
+  }
+  .home-card-description-name {
+    margin: 0;
+  }
+  .home-card-description p {
+    font-size: 12px;
+  }
+  .home-actuality .home-card-post .home-card-description {
+    padding: 0px 41px 20px 41px;
+  }
+  .home-actuality .home-card-post .home-card-userProfil {
+    padding: 21px 41px 10px 41px;
+  }
+  .home-actuality .home-card-post .home-card-userProfil img {
+    width: 20%;
+  }
+  .home-card-userStatus {
+    display: flex;
+    column-gap: 48px;
+    align-items: flex-start;
+  }
+  .home-card-userStatus .home-card-description-name {
+    font-size: 16px;
+  }
+  .home-card-userStatus .home-card-description-status {
+    font-size: 12px;
+  }
+  .home-card-userStatus .home-card-description-date {
+    font-size: 12px;
+    margin: 0;
+  }
+}
 /*sign-up*/
 .size-column-form {
   width: 100%;
@@ -145,6 +190,11 @@ form {
   font-size: 14px;
   color: #3c68aa;
   font-weight: 500;
+}
+
+.RegisterorSignup {
+  margin-left: 6vw;
+  font-size: 12px;
 }
 
 .clearfix {
@@ -231,8 +281,16 @@ button {
 }
 
 .header-content {
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
+}
+.header-content .profil-icon {
+  padding-left: 177px;
+}
+.header-content img {
+  padding-left: 177px;
 }
 
 .navbar-container {
@@ -258,6 +316,30 @@ button {
 
 .navbar-element p svg {
   font-size: 24px;
+}
+
+@media (max-width: 720px) {
+  .header-content img {
+    padding-left: 50px;
+    width: 157px;
+  }
+  .header-content .profil-icon {
+    padding-left: 44px;
+  }
+  .home-actuality {
+    width: 88%;
+  }
+  .navbar-container {
+    column-gap: 28px;
+  }
+  .navbar-element p {
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+  }
+  .navbar-element p svg {
+    font-size: 24px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

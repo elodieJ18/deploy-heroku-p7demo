@@ -28,13 +28,10 @@ export const Connexion = () => {
       <div className="bloc-connexion-content">
         <div className="bloc-connexion-element">
         {loginModal && <Login />}
-          <p className={loginModal ? null : "active-btn-connexion" }>Need an account ? <a  id="loginRegister" onClick={handleModals} >Register</a></p>
-      
-        {signUpModal && <Signup />}
-         <p className={signUpModal ? null : "active-btn-connexion" }>Already have an account ?<a id="register" onClick={handleModals}> Login</a></p> 
- 
+        {signUpModal && <Signup />} 
+        <p /*className={loginModal ? null : "active-btn-connexion" }*/>Need an account ? <a  id="loginRegister" onClick={handleModals} >Signup</a><br /><span className="RegisterorSignup">or</span><br />
+        Already have an account ?<a id="register" onClick={handleModals}> Login</a></p>
         </div>
-
       </div>
     </div>
   );

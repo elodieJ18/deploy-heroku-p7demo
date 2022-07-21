@@ -8,8 +8,19 @@
   }
   
   .header-content {
+    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
+
+    .profil-icon {
+      padding-left: 177px;
+    }
+
+    img {
+      padding-left: 177px;
+    }
+   
   }
   
   .navbar-container {
@@ -35,5 +46,39 @@
   
   .navbar-element p svg {
     font-size: 24px;
+  }
+  
+
+  
+  @media (max-width: 720px) {
+    .header-content {
+       img {
+      padding-left: 50px;
+      width: 157px;
+    }
+
+    .profil-icon {
+      padding-left: 44px;
+    }
+    }
+
+    .home-actuality {
+      width: 88%;
+  }
+
+  .navbar-container {
+    column-gap: 28px;
+  }
+  
+  .navbar-element p{
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+    
+    svg {
+    font-size: 24px;
+    }
+  } 
+    
   }
   

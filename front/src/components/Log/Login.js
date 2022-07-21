@@ -15,8 +15,7 @@ export const Login = () => {
           //.min(6, 'Password must be at least 6 charaters')
           .required('Password is required'),
       })
-
-   
+      
     return (
         <Formik initialValues={{
             email: "",
