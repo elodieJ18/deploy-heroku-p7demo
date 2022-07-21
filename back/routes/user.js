@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const userCtrl = require("../controllers/user");
 const { verifySignUp } = require("../middleware");
+const  multer  = require("../middleware/multer-config");
 
 router.post("/signup", [
     verifySignUp.checkDuplicateEmail
@@ -10,11 +11,11 @@ router.post("/login", userCtrl.login);
 
 router.get('/logout', userCtrl.logout);
 
-router.post("/profil", userCtrl.createprofil);
+router.post("/profil",  multer, userCtrl.createprofil);
 
 router.get('/:id', userCtrl.userInfo);
 
-router.put("/:id", userCtrl.modifyProfil);
+router.put("/:id", multer, userCtrl.modifyProfil);
 
 router.delete("/:id", userCtrl.deleteUser);
 

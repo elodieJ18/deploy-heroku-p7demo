@@ -4,21 +4,20 @@ import logo from "../assets/logo-groupomania.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas, faHomeLg, faComments, faUserPen, faCommentDots, faUser, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 
 library.add(fas, faHomeLg, faComments, faCommentDots,faUserPen, faUser, faCirclePlus);
 
 
 export const Navbar = () => {
-  const userData = useSelector((state) => state.userReducer);
+
   return (
     <div className="header">
       <div className="header-content">
       <NavLink  to="/">
         <img className="logo" src={logo} alt="groupomania" />
       </NavLink>
-      <NavLink  to="/profil">
+      <NavLink to="/profil" >
         <FontAwesomeIcon className="profil-icon" icon="user" />
       </NavLink>
       

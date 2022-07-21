@@ -1,0 +1,29 @@
+@import "../utils/mixin";
+@import "../utils/variables";
+
+.profil-card-post {
+    .profil-card-userProfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    .profil-card-usersStatus-second-col{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            .profil-card-description-name {
+            display: flex;
+            column-gap: 14px;
+            }
+
+            .profil-card-description-email {
+                margin: 0;
+                color: #3B68AA;
+            }
+        }
+    }
+      
+}
+
+
+

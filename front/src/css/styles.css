@@ -272,6 +272,25 @@ button {
     width: 200px;
   }
 }
+.profil-card-post .profil-card-userProfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .profil-card-description-name {
+  display: flex;
+  column-gap: 14px;
+}
+.profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .profil-card-description-email {
+  margin: 0;
+  color: #3B68AA;
+}
+
 /*navbar*/
 .home-container {
   display: flex;
@@ -290,11 +309,20 @@ button {
   color: black;
 }
 .header-content .profil-icon {
-  padding-left: 177px;
   font-size: 21px;
+  padding-left: 135px;
 }
 .header-content img {
   padding-left: 177px;
+  padding-right: 170px;
+}
+.header-content .active img {
+  padding-left: 177px;
+  padding-right: 0px;
+}
+
+.active .profil-icon {
+  display: none;
 }
 
 .navbar-container {

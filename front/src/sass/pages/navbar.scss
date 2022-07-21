@@ -18,14 +18,28 @@
     }
 
     .profil-icon {
-      padding-left: 177px;
       font-size: 21px;
+      padding-left: 135px;
     }
 
     img {
       padding-left: 177px;
+      padding-right: 170px;
     }
-   
+    
+    .active {
+     img {
+      padding-left: 177px;
+    padding-right: 0px;
+
+    }
+   }
+  }
+
+  .active {
+    .profil-icon {
+      display: none;
+    }
   }
   
   .navbar-container {
@@ -60,6 +74,10 @@
         text-align: center;
       }
   }
+
+ 
+  
+  
 
   
   @media (max-width: 720px) {
