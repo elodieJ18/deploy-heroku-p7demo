@@ -53,8 +53,8 @@ module.exports.getOneComment = async (req, res, next) => {
 
 
 
-//modifier une sauce
-//Récupère une sauce unique par l'id
+//modifier une comment
+//Récupère une comment unique par l'id
 module.exports.modifyComment = (req, res, next) => {
   try {
       let { prenom, nom, message, date, image, status} = req.body;
@@ -109,13 +109,13 @@ exports.likeComment = (req, res, next) => {
         .then((comment) => {
           //On compare les user_id
           if (comment.usersLikes.find((user) => user === req.body.id)) {
-            comment.updateOne(
+            Comment.updateOne(
               { id: req.params.id },
               //met a jour la requete dans les data pour un like
               {
                 $inc: { likes: -1 },
-                $pull: { usersLiked: req.body.userId },
-                _id: req.params.id,
+                $pull: { usersLiked: req.body.id },
+                id: req.params.id,
               }
             )
               .then(() => {
@@ -128,9 +128,9 @@ exports.likeComment = (req, res, next) => {
               });
           }
           //même methode pour dislike
-          if (sauces.usersDisliked.find((user) => user === req.body.userId)) {
-            Sauces.updateOne(
-              { _id: req.params.id },
+          if (comment.usersDisliked.find((user) => user === req.body.id)) {
+            Comment.updateOne(
+              { id: req.params.id },
               {
                 $inc: { dislikes: -1 },
                 $pull: { usersDisliked: req.body.userId },
@@ -156,12 +156,12 @@ exports.likeComment = (req, res, next) => {
     //case 1 ---> dislike 1 = 1
     case 1:
       // on appelle l'id du post
-      Sauces.updateOne(
-        { _id: req.params.id },
+      Comment.updateOne(
+        { id: req.params.id },
         {
           $inc: { likes: 1 },
-          $push: { usersLiked: req.body.userId },
-          _id: req.params.id,
+          $push: { usersLiked: req.body.id },
+          id: req.params.id,
         }
       )
         .then(() => {
@@ -174,12 +174,12 @@ exports.likeComment = (req, res, next) => {
     //deuxième cas dislike non user sur post et si c'est le même user
     //case -1 ---> dislike 1 = 0
     case -1:
-      Sauces.updateOne(
-        { _id: req.params.id },
+      Comment.updateOne(
+        { id: req.params.id },
         {
           $inc: { dislikes: 1 },
-          $push: { usersDisliked: req.body.userId },
-          _id: req.params.id,
+          $push: { usersDisliked: req.body.id },
+          id: req.params.id,
         }
       )
         .then(() => {
