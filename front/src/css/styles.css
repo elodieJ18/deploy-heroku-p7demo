@@ -291,6 +291,12 @@ button {
   color: #3B68AA;
 }
 
+img {
+  border-radius: 50%;
+  width: 31%;
+  height: 100%;
+}
+
 /*navbar*/
 .home-container {
   display: flex;
