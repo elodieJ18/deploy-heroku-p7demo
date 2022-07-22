@@ -1,8 +1,8 @@
 import React from "react";
 import "../../css/styles.css";
 import { useSelector } from "react-redux";
-import profil from "../../assets/user-200.png";
 import {Navbar} from "../Navbar";
+import UploadImg from "./UploadImg";
 
 
 export const ProfilUser = () => {
@@ -17,6 +17,7 @@ export const ProfilUser = () => {
         <div className="profil-card-post">
           <div className="profil-card-userProfil">
             <img src={userData.image} alt="userimage"/>
+            <UploadImg />
             <div className="profil-card-userStatus">
             <div className="profil-card-usersStatus-second-col">
               <div className="profil-card-description-name">

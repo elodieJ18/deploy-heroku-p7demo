@@ -8,7 +8,7 @@ import { getUser } from "./actions/user.actions";
 
 const App = () => {
     const [uid, setUid] = useState(null);
-    const dispacth = useDispatch();
+    const dispatch = useDispatch();
     useEffect(() => {
       const fetchToken = async () => {
         await axios({
@@ -18,14 +18,12 @@ const App = () => {
       })  .then((res) => {
         setUid(res.data)
         console.log(res.data)
-        console.log("console.log (res.data)")
         console.log(res)
-        console.log("console.log (res)")
       })
       .catch((err) => console.log("No token"));
     };
       fetchToken();
-      if (uid) dispacth(getUser(uid))
+      if (uid) dispatch(getUser(uid))
     }, [uid]);
  
  

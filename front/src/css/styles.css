@@ -319,12 +319,14 @@ img {
   padding-left: 135px;
 }
 .header-content img {
-  padding-left: 177px;
+  padding-left: 135px;
   padding-right: 170px;
+  width: 52%;
 }
 .header-content .active img {
   padding-left: 177px;
   padding-right: 0px;
+  width: 52%;
 }
 
 .active .profil-icon {
