@@ -30,14 +30,14 @@ export const uploadPicture = (data, id) => {
     }
 };
 
-export const updateInfo = (userId, status) => {
+export const updateInfo = (id, nom, prenom, status) => {
     return (dispatch) => {
         return axios ({
             method: "put",
-            url: `${process.env.REACT_APP_API_URL}api/auth/` + userId,
-            data: {status}
+            url: `${process.env.REACT_APP_API_URL}api/auth/` + id,
+            data: { nom, prenom, status}
         }).then((res) => {
-            dispatch({type: UPDATE_INFO, payload: status})
+            dispatch({type: UPDATE_INFO, payload: {nom, prenom, status}})
         }).catch((err) => console.log(err))
         
     }

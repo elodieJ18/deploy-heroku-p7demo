@@ -10,12 +10,14 @@ export default function userReducer(state = initialState, action) {
                 ... state, //on écrase pas les données déjà existante
                 picture: action.payload,
             }
-        case UPDATE_INFO:
-            return {
-                ...state,
-                status: action.payload
-            }
-        default:
-        return state;
+            case UPDATE_INFO:
+                return {
+                    ...state,
+                    nom: action.payload.nom,
+                    prenom: action.payload.prenom,
+                    status:action.payload.status, 
+                }
+            default:
+            return state;
     }
 }
