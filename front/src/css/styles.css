@@ -289,17 +289,48 @@ button {
 }
 .profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .profil-card-description-name {
   display: flex;
-  column-gap: 14px;
+  column-gap: 5px;
 }
 .profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .profil-card-description-email {
   margin: 0;
   color: #3B68AA;
 }
+.profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .update-btn-profil {
+  width: 100%;
+  padding: 10px 11px;
+}
+.profil-card-post .image-form {
+  height: 155px;
+  width: 155px;
+  overflow: hidden;
+}
+
+.image-align-col {
+  height: 155px;
+}
 
 .user-name-image {
-  border-radius: 50%;
-  width: 52%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.btn-plus {
+  position: relative;
+  bottom: 109px;
+  right: 20px;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 6px 12px 35px 12px;
+  height: 0;
+  box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
 }
 
 /*navbar*/

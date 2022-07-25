@@ -12,6 +12,7 @@ export const ProfilUser = () => {
   const [nom, setNom] = useState('');
   const [status, setStatus] = useState('');
  const [updateForm, setUpdateForm] = useState(false);
+ const [updateImg, setUpdateImg] = useState(false);
  const userData = useSelector((state) => state.userReducer);
  const dispatch = useDispatch();
 
@@ -27,11 +28,28 @@ export const ProfilUser = () => {
       <div className="profil-actuality">
         <div className="profil-card-post">
           <div className="profil-card-userProfil">
-            <img className="user-name-image" src={userData.image} alt="userimage"/>
-            <UploadImg />
+          {updateImg === false && (
+          <>
+            <div className="image-align-col">
+              <div className="image-form"> 
+                <img className="user-name-image" src={userData.image} alt="userimage"/>
+              </div>
+              <button className="btn-plus" onClick={() => setUpdateImg(!updateImg)}>+</button>
+            </div>
+            </>
+             )}
+              {updateImg && (
+                <>
+                  <div className="image-form"> 
+              <img className="user-name-image" src={userData.image} alt="userimage"/>
+            </div>
+           <UploadImg />
+           <button onClick={() => setUpdateImg(updateImg)}>Cancel</button>
+           </>
+           )}
             <div className="profil-card-userStatus">
             <div className="profil-card-usersStatus-second-col">   
-              {updateForm === false && (
+              {updateForm === false && ( 
                 <> 
                 <div className="profil-card-description-name">
                   <p>{userData.nom}</p>
@@ -39,7 +57,7 @@ export const ProfilUser = () => {
                 </div> 
                 <p className="profil-card-description-email">{userData.email}</p>
                 <p className="profil-card-description-status">{userData.status}</p> 
-                <button onClick={() => setUpdateForm(!updateForm)}>Update</button>
+                <button className="update-btn-profil" onClick={() => setUpdateForm(!updateForm)}>Update</button>
                 </>
               )}
               {updateForm && (
@@ -61,7 +79,8 @@ export const ProfilUser = () => {
                         type="text" defaultValue={userData.status} onChange={(e) => setStatus(e.target.value)}
                       />
                     </label>
-                    <button onClick={handleUpdate}>Enregistrer</button>
+                    <button onClick={handleUpdate}>Send</button>
+                    <button onClick={() => setUpdateForm(updateForm)}>Cancel</button>
                   </form>
                 </>
               )}
