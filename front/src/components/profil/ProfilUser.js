@@ -16,7 +16,6 @@ export const ProfilUser = () => {
  const dispatch = useDispatch();
 
  const handleUpdate = () => {
-  
   dispatch(updateInfo(userData.id, nom, prenom, status));
   setUpdateForm(false)
  }

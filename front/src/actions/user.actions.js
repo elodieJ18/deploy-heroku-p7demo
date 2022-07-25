@@ -15,20 +15,19 @@ export const getUser = (uid) => {
     }
 }
 
-export const uploadPicture = (data, id) => {
+export const uploadPicture = (data, uid) => {
     return (dispatch) => {
-       return axios
-    .post(`${process.env.REACT_APP_API_URL}api/auth/profil`, data)
-    .then((res) => {
-        return axios
-            .get(`${process.env.REACT_APP_API_URL}api/auth/${id}`)
-            .then((res) => {
-                dispatch({type: UPLOAD_PICTURE, payload: res.data.picture} )
-            })
-            .catch(err => console.log(err));
-    }) 
-    }
-};
+        return axios ({
+            method: "put",
+            url: `${process.env.REACT_APP_API_URL}api/auth/` + uid,
+            data: data,
+              body: JSON.stringify(data),
+        })
+        .then((res) => {
+            dispatch({type: UPDATE_INFO, payload: data})
+          }).catch((err) => console.log(err))
+        
+    }}
 
 export const updateInfo = (id, nom, prenom, status) => {
     return (dispatch) => {
