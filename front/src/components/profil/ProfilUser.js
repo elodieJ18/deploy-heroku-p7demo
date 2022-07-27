@@ -1,10 +1,12 @@
 import React, { useState} from "react";
 import "../../css/styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import {Navbar} from "../Navbar";
+import Navbar from "../Navbar";
 import UploadImg from "./UploadImg";
+import Logout from "../Log/Logout";
+import logo from "../../assets/user-200.png";
 import { updateInfo } from "../../actions/user.actions";
-
+import { deleteProfil } from "../../actions/user.actions";
 
 export const ProfilUser = () => {
   
@@ -20,6 +22,11 @@ export const ProfilUser = () => {
   dispatch(updateInfo(userData.id, nom, prenom, status));
   setUpdateForm(false)
  }
+
+ const handleDeleteProfil = () => {
+  dispatch(deleteProfil(userData.id));
+  
+ }
     
   return (
     <div className="bloc-connexion">
@@ -32,7 +39,7 @@ export const ProfilUser = () => {
           <>
             <div className="image-align-col">
               <div className="image-form"> 
-                <img className="user-name-image" src={userData.image} alt="userimage"/>
+                <img className="user-name-image" src={userData.image === null || userData.image === 'undefined' ? logo : userData.image}  alt="userimage"/>
               </div>
               <button className="btn-plus" onClick={() => setUpdateImg(!updateImg)}>+</button>
             </div>
@@ -41,10 +48,11 @@ export const ProfilUser = () => {
               {updateImg && (
                 <>
                   <div className="image-form"> 
-              <img className="user-name-image" src={userData.image} alt="userimage"/>
+              <img className="user-name-image" src={userData.image === null || userData.image === 'undefined' ? logo :  userData.image} alt="userimage"/>
             </div>
+            
            <UploadImg />
-           <button onClick={() => setUpdateImg(updateImg)}>Cancel</button>
+           <button className="update-btn-profil btn-cancel-profil" onClick={() => setUpdateImg(!updateImg)}>Cancel</button>
            </>
            )}
             <div className="profil-card-userStatus">
@@ -52,35 +60,45 @@ export const ProfilUser = () => {
               {updateForm === false && ( 
                 <> 
                 <div className="profil-card-description-name">
-                  <p>{userData.nom}</p>
-                  <p>{userData.prenom}</p>
+                  <p>{userData.nom === '' ? 'nom' : userData.nom}</p>
+                  <p>{userData.prenom === '' ? 'prenom' : userData.prenom}</p>
                 </div> 
                 <p className="profil-card-description-email">{userData.email}</p>
-                <p className="profil-card-description-status">{userData.status}</p> 
+                <p className="profil-card-description-status">{userData.status === '' ? 'status' : userData.status}</p> 
+             
                 <button className="update-btn-profil" onClick={() => setUpdateForm(!updateForm)}>Update</button>
+                 <div className="btn-connexion-profil">
+                    <Logout />
+                    <button className="btn-profil-delete" onClick={handleDeleteProfil}>Delete Account</button>
+                </div>
                 </>
               )}
               {updateForm && (
                 <>
                  <form>
-                    <label>
-                      <input type="text" defaultValue={userData.nom}
+                  <div className="form-profil-nom-prenom">
+                    <div className="form-profil-flex-label">
+                    <label label="nom" name="nom" type="text" defaultValue={userData.nom}>Nom</label>
+                      <input type="text"  name="nom" defaultValue={userData.nom}
                         onChange={(e) => setNom(e.target.value)}
                       />
-                    </label>
-                    <label>
+                    </div>
+                    <div className="form-profil-flex-label">
+                    <label label="prenom" name="prenom" type="text" defaultValue={userData.prenom}>Prenom</label>
                       <input
-                         type="text" defaultValue={userData.prenom} 
+                         type="text" name="prenom" defaultValue={userData.prenom} 
                          onChange={(e) => setPrenom(e.target.value)}
                       />
-                    </label>
-                    <label>
+                    </div>
+                  </div>
+                    <label label="Status" name="status" type="text" defaultValue={userData.status}>Status</label>
                       <input
-                        type="text" defaultValue={userData.status} onChange={(e) => setStatus(e.target.value)}
+                        type="text"  name="status" defaultValue={userData.status} onChange={(e) => setStatus(e.target.value)}
                       />
-                    </label>
-                    <button onClick={handleUpdate}>Send</button>
-                    <button onClick={() => setUpdateForm(updateForm)}>Cancel</button>
+                   <div className="duo-update-btn-profil">
+                    <button className="update-btn-profil" onClick={handleUpdate}>Send</button>
+                    <button className="update-btn-profil btn-cancel-profil" onClick={() => setUpdateForm(updateForm)}>Cancel</button>
+                    </div>
                   </form>
                 </>
               )}

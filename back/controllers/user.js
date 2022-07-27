@@ -83,30 +83,6 @@ module.exports.userInfo = async (req, res, next) => {
 
 
 
-/*module.exports.createprofil  = async (req, res) => {
-  try {
-    let { prenom, nom, message, date, image, status} = req.body;
-let id = req.params.id;
-if (req.file) {
-   image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
-  }
-  else {
-    image = null;
-}
-User.create(
-  { prenom, nom, message, date, image, status},
-  { where: { id: id } }
-) 
-  .then(() => 
-  res.status(200).json({ message: "Objet modifié !" }),
-  )
-}
-  catch{((error) => 
-  res.status(500).json({ error: "une erreur est survenu" }),
-  res.status(400).json({ error: "une erreur de synthax est survenu" })
-  );}
-};*/
-
 
 module.exports.createprofil  = async (req, res) => {
   try {
@@ -120,8 +96,6 @@ module.exports.createprofil  = async (req, res) => {
     return res.send(`Error when trying upload images: ${error}`);
   }
 };
-
-
 
 
 module.exports.modifyProfil = (req, res, next) => {

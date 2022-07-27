@@ -22,3 +22,12 @@
     text-align: center;
   }
   
+  @mixin btn-send-profil {
+    width: 100%;
+    padding: 10px 11px;
+  }
+
+  @mixin btn-cancel-profil {
+    margin-top: 17px;
+    border: 1px solid black;
+  }

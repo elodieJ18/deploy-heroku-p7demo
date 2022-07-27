@@ -1,6 +1,14 @@
 @import "../utils/mixin";
 @import "../utils/variables";
 
+.profil-container {
+    margin-bottom: 136px;
+}
+
+.profil-actuality {
+    margin-top: 50px;
+}
+
 .profil-card-post {
     .profil-card-userProfil {
     display: flex;
@@ -14,26 +22,45 @@
             .profil-card-description-name {
             display: flex;
             column-gap: 5px;
+            p{
+                font-size: 17px;
+                margin-bottom: 4px;
+                margin-top: 0px;
+                font-weight: 500;
+            }
             }
 
             .profil-card-description-email {
                 margin: 0;
                 color: #3B68AA;
+                font-size: 14px;
             }
 
-            .update-btn-profil{
-                width: 100%;
-                padding: 10px 11px;
+            .profil-card-description-status {
+                margin-top: 4px;
+                font-weight: 300;
             }
+
         }
     }
 
       .image-form {
-        height: 155px;
-        width: 155px;
+        height: 124px;
+        width: 124px;
         overflow: hidden;
 }
 
+}
+
+.profil-card-userStatus {
+    width: 100%;
+}
+
+.upload-pic {
+    width: 100%;
+    .update-btn-profil {
+        border: none;
+    }
 }
 
 .image-align-col {
@@ -54,7 +81,7 @@
 
 .btn-plus {
     position: relative;
-    bottom: 109px;
+    bottom: 100px;
     right: 20px;
     border: none;
     border-radius: 50%;
@@ -68,3 +95,49 @@
 
 
 
+.form-profil-nom-prenom{
+    display: flex;
+    column-gap: 10px;
+
+    .form-profil-flex-label {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.update-btn-profil{
+    @include btn-send-profil;
+    color: #8c8b8d;
+}
+
+.btn-cancel-profil {
+    @include btn-cancel-profil;
+}
+
+.duo-update-btn-profil {
+    margin-top: 20px;
+}
+
+.btn-connexion-profil {
+    display: flex;
+    margin-top: 78px;
+    flex-direction: column;
+    row-gap: 26px;
+    align-items: stretch;
+    width: 100%;
+
+    .btn-profil-logout{
+        border-radius: 1.5em;
+        padding: 10px 0px;
+        background: unset;
+        border: 2px solid;
+    }
+
+    .btn-profil-delete {
+        border-radius: 1.5em;
+        padding: 10px 0px;
+        background: unset;
+        border: 2px solid #b8b6bf;
+        color: #8c8b8d;
+    }
+}

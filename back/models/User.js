@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       id: { type: DataTypes.UUID, primaryKey: true },
       nom: { type: DataTypes.STRING },
       prenom: { type: DataTypes.STRING},
-      image: {  type: DataTypes.STRING, required: false, allowNull: true,  default: "./images/random-user.png" },
+      image: {  type: DataTypes.STRING, required: false, allowNull: true },
       email: {
         type: DataTypes.STRING,
         allowNull: true,
@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     { sequelize, tableName: "users", modelName: "User" }
+    
   );
   return User;
 };

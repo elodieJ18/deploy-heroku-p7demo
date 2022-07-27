@@ -158,15 +158,62 @@
     margin-top: 22px;
   }
 
+  .choice-signup-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px 38px;
+    font-size: 12px;
+    .RegisterorSignup {
+      font-size: 12px;
+      text-align: center;
+  }
+  }
+ 
+
+  
+
   
 
   @media (max-width: 720px) {
-    .bloc-connexion-content {
-      padding: 92px 37px;
-    }
-  
+    .form-signup-content 
     .form-signup-element {
-      width: 200px;
+      width: auto;
+      padding-top: 32px;
+      padding-left: 24px;
+      padding-right: 23px;
+    } 
+   
+    
+    input[type=text i], input[type=password i]:focus-visible {
+      width: auto;
     }
-  }
+
+    .input-form input{
+      width: auto;
+    }
+
+    .bloc-connexion .bloc-connexion-content
+    {
+      padding: 0px; 
+      
+      .bloc-connexion-element {
+      width: auto;
+    }
+
+    } 
+
+    .choice-signup-login {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 10px 38px;
+      font-size: 12px;
+      .RegisterorSignup {
+        font-size: 12px;
+        text-align: center;
+    }
+    }
+   
   
+  }

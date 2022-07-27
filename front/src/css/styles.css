@@ -16,6 +16,7 @@ p,
 a {
   font-family: "Montserrat", sans-serif;
   text-decoration: none;
+  white-space: normal;
 }
 
 a {
@@ -32,13 +33,17 @@ h1 {
 /*home*/
 .home-actuality {
   width: 50%;
+  margin-left: 24%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
 }
 .home-actuality .home-card-post {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
-  margin-bottom: 28px;
+  row-gap: 38px;
 }
 .home-actuality .home-card-post .home-card-userProfil {
   column-gap: 20px;
@@ -71,6 +76,10 @@ h1 {
 .home-card-userStatus .home-card-description-date {
   font-size: 12px;
   margin-top: 17px;
+}
+
+.home-card-container {
+  box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
 }
 
 @media (max-width: 720px) {
@@ -269,14 +278,57 @@ button {
   margin-top: 22px;
 }
 
+.choice-signup-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px 38px;
+  font-size: 12px;
+}
+.choice-signup-login .RegisterorSignup {
+  font-size: 12px;
+  text-align: center;
+}
+
 @media (max-width: 720px) {
-  .bloc-connexion-content {
-    padding: 92px 37px;
+  .form-signup-content .form-signup-element {
+    width: auto;
+    padding-top: 32px;
+    padding-left: 24px;
+    padding-right: 23px;
   }
-  .form-signup-element {
-    width: 200px;
+  input[type=text i], input[type=password i]:focus-visible {
+    width: auto;
+  }
+  .input-form input {
+    width: auto;
+  }
+  .bloc-connexion .bloc-connexion-content {
+    padding: 0px;
+  }
+  .bloc-connexion .bloc-connexion-content .bloc-connexion-element {
+    width: auto;
+  }
+  .choice-signup-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px 38px;
+    font-size: 12px;
+  }
+  .choice-signup-login .RegisterorSignup {
+    font-size: 12px;
+    text-align: center;
   }
 }
+.profil-container {
+  margin-bottom: 136px;
+}
+
+.profil-actuality {
+  margin-top: 50px;
+}
+
 .profil-card-post .profil-card-userProfil {
   display: flex;
   flex-direction: column;
@@ -291,18 +343,36 @@ button {
   display: flex;
   column-gap: 5px;
 }
+.profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .profil-card-description-name p {
+  font-size: 17px;
+  margin-bottom: 4px;
+  margin-top: 0px;
+  font-weight: 500;
+}
 .profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .profil-card-description-email {
   margin: 0;
   color: #3B68AA;
+  font-size: 14px;
 }
-.profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .update-btn-profil {
-  width: 100%;
-  padding: 10px 11px;
+.profil-card-post .profil-card-userProfil .profil-card-usersStatus-second-col .profil-card-description-status {
+  margin-top: 4px;
+  font-weight: 300;
 }
 .profil-card-post .image-form {
-  height: 155px;
-  width: 155px;
+  height: 124px;
+  width: 124px;
   overflow: hidden;
+}
+
+.profil-card-userStatus {
+  width: 100%;
+}
+
+.upload-pic {
+  width: 100%;
+}
+.upload-pic .update-btn-profil {
+  border: none;
 }
 
 .image-align-col {
@@ -322,7 +392,7 @@ button {
 
 .btn-plus {
   position: relative;
-  bottom: 109px;
+  bottom: 100px;
   right: 20px;
   border: none;
   border-radius: 50%;
@@ -331,6 +401,52 @@ button {
   padding: 6px 12px 35px 12px;
   height: 0;
   box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
+}
+
+.form-profil-nom-prenom {
+  display: flex;
+  column-gap: 10px;
+}
+.form-profil-nom-prenom .form-profil-flex-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-btn-profil {
+  width: 100%;
+  padding: 10px 11px;
+  color: #8c8b8d;
+}
+
+.btn-cancel-profil {
+  margin-top: 17px;
+  border: 1px solid black;
+}
+
+.duo-update-btn-profil {
+  margin-top: 20px;
+}
+
+.btn-connexion-profil {
+  display: flex;
+  margin-top: 78px;
+  flex-direction: column;
+  row-gap: 26px;
+  align-items: stretch;
+  width: 100%;
+}
+.btn-connexion-profil .btn-profil-logout {
+  border-radius: 1.5em;
+  padding: 10px 0px;
+  background: unset;
+  border: 2px solid;
+}
+.btn-connexion-profil .btn-profil-delete {
+  border-radius: 1.5em;
+  padding: 10px 0px;
+  background: unset;
+  border: 2px solid #b8b6bf;
+  color: #8c8b8d;
 }
 
 /*navbar*/

@@ -21,6 +21,7 @@
   a {
     font-family: "Montserrat", sans-serif;
     text-decoration: none;
+    white-space: normal ;
   }
   
   a {
@@ -38,13 +39,17 @@
   /*home*/
    .home-actuality {
     width: 50%;
+    margin-left: 24%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
 
       .home-card-post {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        box-shadow: $shadow-blue;
-        margin-bottom: 28px;
+        row-gap: 38px;
 
           .home-card-userProfil {
             column-gap: 20px;
@@ -85,6 +90,9 @@
   }
 }
 
+.home-card-container {
+  box-shadow: $shadow-blue;
+}
  
 
 

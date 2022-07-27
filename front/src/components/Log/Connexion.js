@@ -29,7 +29,7 @@ export const Connexion = () => {
         <div className="bloc-connexion-element">
         {loginModal && <Login />}
         {signUpModal && <Signup />} 
-        <p /*className={loginModal ? null : "active-btn-connexion" }*/>Need an account ? <a  id="loginRegister" onClick={handleModals} >Signup</a><br /><span className="RegisterorSignup">or</span><br />
+        <p className="choice-signup-login">Need an account ? <a  id="loginRegister" onClick={handleModals} >Signup</a><span className="RegisterorSignup">or</span>
         Already have an account ?<a id="register" onClick={handleModals}> Login</a></p>
         </div>
       </div>

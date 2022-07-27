@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import e from "cors";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPicture } from "../../actions/user.actions";
 
@@ -16,11 +15,11 @@ const UploadImg = () => {
     }
     return(
        <form action="" onSubmit={handlePicture} className="upload-pic">
-        <label htmlFor="file">Changer d'image</label>
+        <label htmlFor="file"></label>
         <input type="file" id="file" name="image" accept=".jpg, .jpeg, .png" 
         onChange={(e) => setFile(e.target.files[0])}/>
         <br />
-        <input type="submit" value="Envoyer" />
+        <input className="update-btn-profil" type="submit" value="Envoyer" />
        </form>
     );
 }
