@@ -68,3 +68,50 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Resumé p7:
+
+Backend:
+  -Installation de Mysql:
+  -Creation d'une base de donnée dans workbench
+  -Installation des tables: User + Comment + Post
+  -Creation des routes models selon Sequelize avec connexion à la base de données
+  -Creation des controllers avec sequelize (équivalent de mongoose)
+  -Installation du token(cookie) avec la verification de la validation de l'email
+  -Creation d'une route token pour verifier le token dès la connexion 
+  -Toute les routes de postman: + découverte en plus de postman
+
+FrontEnd:
+  -Création de component:
+	-Des routes
+  -Installatio de SASS:
+	-npm run sass
+	-main.scss compilation de tout les block scss
+  -Création du component signup + Login:
+	-Utilisation du forumulaire formik pour simplifier la récupération des données
+	-Vérification du formulaire avec Yup: validation + regex
+	-Appelle a axios pour une méthode Post
+  -Installation du token à la connexion:
+	-Avec la méthode axios pour un get récupérer avec hook
+	 le token dans les cookies + validation à la connexion
+	-Création de la NavBar dans component
+	-Installation de Fontawesome et compréhension de son utilisation sur Réact
+	-Compréhension du fonctionnement d'une fonction dans React avec
+	 le Signup + Redirection automatique vers Login
+
+   -Appelle de l'utilisateur:
+	-Utilisation de useEffect pour lire tout le state de l'utilisateur
+	-Installation de redux: 
+		-Reduceur: Pour chaque table/route
+		-Action: Pour les appelles axios de chaque Route
+		-Utils pour les méthodes utiliser pour l'affichage:
+		  isEmpty: Obeservation des tableaux empty or not
+		  dateParser: Pour l'affichage correct de la date du post
+	-Dans redux:
+		-User:-Création de la partie Profil (UpdateImage, Update: Nom, Prenom, Status) 
+			-Avec Option: Déconnexion et Suppression User.
+		-Comment: -map() de tout les elements d'un post(commentaire) (Messsage, Date, Image)
+			    -map() de comment avec comparaison des id entre Id du comment et Id du poster
+
+  

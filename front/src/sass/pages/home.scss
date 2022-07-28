@@ -55,17 +55,11 @@
             column-gap: 20px;
             display: flex;
             padding: 28px 41px 30px 41px;
-            
-            img {
-            border-radius: 50%;
-            width: 31%;
-            height: 100%;
-            }
           }
 
           .home-card-description {
             background-color: #FBFCFC;
-            padding: 28px 41px 30px 41px;
+            padding: 0px 41px 30px 41px;
         }
       
          
@@ -91,12 +85,53 @@
 }
 
 .home-card-container {
+  width: 728px;
   box-shadow: $shadow-blue;
 }
- 
+
+.image-profil-form-home {
+  height: 100px;
+  width: 100px;
+    overflow: hidden;
+}
+
+.home-profil-names {
+  display: flex;
+  column-gap: 7px;
+  font-weight: 500;
+}
+
+.home-image-post {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  text-align: center;
+}
+
+
+.home-image-post-container {
+  height: 368px;
+  width: 642px;
+  overflow: hidden;
+}
+
 
 
   @media (max-width: 720px) {
+
+    .home-actuality {
+      width: 100%;
+      margin-left: 0px;
+    }
+
+    .home-card-container {
+      width: 276px;
+     
+    }
+
   .home-card-description-status {
     margin: 0;
 
@@ -117,10 +152,9 @@
     }
   
     .home-actuality .home-card-post .home-card-userProfil {
-      padding: 21px 41px 10px 41px;
-      img {
-        width: 20%;
-      }
+    padding: 20px 16px 10px 16px;
+
+     
     }
   
     .home-card-userStatus {
@@ -128,7 +162,7 @@
         column-gap: 48px;
         align-items: flex-start;
       .home-card-description-name {
-      font-size: 16px;
+      font-size: 13px;
       }
       .home-card-description-status{
         font-size: 12px;

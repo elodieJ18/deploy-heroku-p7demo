@@ -2,7 +2,6 @@ export const dateParser = (num) => {
     let options = {
       hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit",
       weekday: "long",
       year: "numeric",
       month: "short",
@@ -15,6 +14,7 @@ export const dateParser = (num) => {
   
     return date.toString();
   };
+
   
   export const timestampParser = (num) => {
     let options = {
@@ -41,4 +41,4 @@ export const dateParser = (num) => {
     );
   };
 
-  export default isEmpty;
+ 

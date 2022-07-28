@@ -90,14 +90,21 @@
         }
 
         .profil-icon {
-          padding-left: 44px;
+          padding-left: 0px;
+          padding-right: 33px;
           color: black;
         }
+
+        .active {
+          .logo {
+           padding-left: 100px;
+         padding-right: 0px;
+         width: 52%;
+      
+         }
     }
 
-    .home-actuality {
-      width: 88%;
-  }
+    
 
   .navbar-container {
     column-gap: 28px;
@@ -112,6 +119,15 @@
     font-size: 24px;
     }
   } 
+
+ 
+  }
+
+  .image-profil-form-home {
+    height: 54px;
+    width: 54px;
+    overflow: hidden;
+}
     
   }
   

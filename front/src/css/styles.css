@@ -50,14 +50,9 @@ h1 {
   display: flex;
   padding: 28px 41px 30px 41px;
 }
-.home-actuality .home-card-post .home-card-userProfil img {
-  border-radius: 50%;
-  width: 31%;
-  height: 100%;
-}
 .home-actuality .home-card-post .home-card-description {
   background-color: #FBFCFC;
-  padding: 28px 41px 30px 41px;
+  padding: 0px 41px 30px 41px;
 }
 
 .home-card-userStatus {
@@ -79,10 +74,46 @@ h1 {
 }
 
 .home-card-container {
+  width: 728px;
   box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
 }
 
+.image-profil-form-home {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
+
+.home-profil-names {
+  display: flex;
+  column-gap: 7px;
+  font-weight: 500;
+}
+
+.home-image-post {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  text-align: center;
+}
+
+.home-image-post-container {
+  height: 368px;
+  width: 642px;
+  overflow: hidden;
+}
+
 @media (max-width: 720px) {
+  .home-actuality {
+    width: 100%;
+    margin-left: 0px;
+  }
+  .home-card-container {
+    width: 276px;
+  }
   .home-card-description-status {
     margin: 0;
   }
@@ -96,10 +127,7 @@ h1 {
     padding: 0px 41px 20px 41px;
   }
   .home-actuality .home-card-post .home-card-userProfil {
-    padding: 21px 41px 10px 41px;
-  }
-  .home-actuality .home-card-post .home-card-userProfil img {
-    width: 20%;
+    padding: 20px 16px 10px 16px;
   }
   .home-card-userStatus {
     display: flex;
@@ -107,7 +135,7 @@ h1 {
     align-items: flex-start;
   }
   .home-card-userStatus .home-card-description-name {
-    font-size: 16px;
+    font-size: 13px;
   }
   .home-card-userStatus .home-card-description-status {
     font-size: 12px;
@@ -523,22 +551,30 @@ button {
     width: 157px;
   }
   .header-content .profil-icon {
-    padding-left: 44px;
+    padding-left: 0px;
+    padding-right: 33px;
     color: black;
   }
-  .home-actuality {
-    width: 88%;
+  .header-content .active .logo {
+    padding-left: 100px;
+    padding-right: 0px;
+    width: 52%;
   }
-  .navbar-container {
+  .header-content .navbar-container {
     column-gap: 28px;
   }
-  .navbar-element p {
+  .header-content .navbar-element p {
     flex-direction: column;
     align-items: center;
     width: 20vw;
   }
-  .navbar-element p svg {
+  .header-content .navbar-element p svg {
     font-size: 24px;
+  }
+  .image-profil-form-home {
+    height: 54px;
+    width: 54px;
+    overflow: hidden;
   }
 }
 
