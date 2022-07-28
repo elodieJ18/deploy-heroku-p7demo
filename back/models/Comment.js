@@ -2,8 +2,9 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
-    /*  static associate(models) {
-        }*/
+     static associate(models) {
+      this.hasMany(models.User, {foreignKey: "id", as: "user"})
+        }
     toJSON() {
       return {
         ...this.get(),
@@ -12,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Comment.init(
     { idObject: { type: DataTypes.UUID, primaryKey: true },
-      id: {  type: DataTypes.STRING, required: true }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
+      id: {  type: DataTypes.INTEGER, required: true }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
       message: { type: DataTypes.STRING, allowNull: false },
       date: { type: DataTypes.DATE },
       image: {  type: DataTypes.STRING, required: false, allowNull: true },

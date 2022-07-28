@@ -2,43 +2,42 @@ import React, { useState, useEffect } from "react";
 import { useSelector,} from "react-redux";
 import "../../css/styles.css";
 import logo from "../../assets/user-200.png";
+import isEmpty from "../Utils";
+
+
+useEffect(() => {
+  
+  !isEmpty(userData) && setIsLoading(false)
+
+})
+
+const returnimage = (userData, comment) => {
+  debugger;
+  if (userData.id === comment.id){
+    console.log("user");
+       return userData.image;
+  } else return logo;
+}
 
 
 export const Card = ({comment}) => {
+    
+  const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
-   
+   const userId = userData.id;
+   const commentId = comment.id;
 
   return (
     <div className="home-card-container" key={comment.id}>
     
       <div className="home-card-userProfil">
-        <img src={(usersData?.[0] && usersData.map((user) => {
-            if (comment.id === user.id){
-                console.log("test")
-                console.log(user.id)
-                 return user.image;
-            } else return logo;
-            })
-            .joint("")
-            )} alt="profil-pic" />
+        <img src={isLoading ?  
+          returnimage(userData, comment) : ""} alt="profil-pic" />
         <div className="home-card-userStatus">
         <div className="home-card-usersStatus-second-col">
-          <p className="home-card-description-name">{(usersData?.[0] && usersData.map((user) => {
-            if (user.id === comment.id){
-                 return user.nom;
-            } else return logo;
-            })
-            .joint("")
-            )}</p>
-          <p className="home-card-description-status">{(usersData?.[0] && usersData.map((user) => {
-            if (user.id === comment.id){
-                console.log("test")
-                 return user.status;
-            } else return logo;
-            })
-            .joint("")
-            )}</p> 
+          <p className="home-card-description-name"></p>
+          <p className="home-card-description-status"></p> 
         </div>
         <div className="home-card-usersStatus-second-col"> 
           <p className="home-card-description-date">{comment.date}</p>
