@@ -4,22 +4,6 @@ import "../../css/styles.css";
 import logo from "../../assets/user-200.png";
 import isEmpty from "../Utils";
 
-
-useEffect(() => {
-  
-  !isEmpty(userData) && setIsLoading(false)
-
-})
-
-const returnimage = (userData, comment) => {
-  debugger;
-  if (userData.id === comment.id){
-    console.log("user");
-       return userData.image;
-  } else return logo;
-}
-
-
 export const Card = ({comment}) => {
     
   const [isLoading, setIsLoading] = useState(true);
@@ -28,16 +12,40 @@ export const Card = ({comment}) => {
    const userId = userData.id;
    const commentId = comment.id;
 
+    useEffect(() => {
+      !isEmpty(usersData?.[0]) && setIsLoading(false);
+    }, [usersData])
+
+    const returnimage = (userData, comment) => {
+      if (userData.id === comment.id){
+           return userData.image;
+      } else return logo;
+    }
+
+    const returnNom = (userData, comment) => {
+      if (userData.id === comment.id){
+           return userData.nom;
+      } else return "nom";
+    }
+
+    const returnPrenom = (userData, comment) => {
+      if (userData.id === comment.id){
+           return userData.prenom;
+      } else return "prenom";
+    }
+
   return (
     <div className="home-card-container" key={comment.id}>
     
       <div className="home-card-userProfil">
-        <img src={isLoading ?  
+      <img src={isLoading ?  
           returnimage(userData, comment) : ""} alt="profil-pic" />
         <div className="home-card-userStatus">
         <div className="home-card-usersStatus-second-col">
-          <p className="home-card-description-name"></p>
-          <p className="home-card-description-status"></p> 
+          <p className="home-card-description-name">{isLoading ?  
+          returnNom(userData, comment) : ""}</p>
+          <p className="home-card-description-status">{isLoading ?  
+          returnPrenom(userData, comment) : ""}</p> 
         </div>
         <div className="home-card-usersStatus-second-col"> 
           <p className="home-card-description-date">{comment.date}</p>

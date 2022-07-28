@@ -40,3 +40,5 @@ export const dateParser = (num) => {
       (typeof value === "string" && value.trim().length === 0)
     );
   };
+
+  export default isEmpty;
