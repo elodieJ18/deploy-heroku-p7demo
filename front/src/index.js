@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from "redux";
+import { getUsers } from "./actions/users.action";
+import { getComment } from "./actions/comment.action";
 import thunk from "redux-thunk";
 import rootReducer from './reducers'
 
@@ -13,6 +15,9 @@ import logger from 'redux-logger';
 const store =  createStore(
   rootReducer, composeWithDevTools(applyMiddleware(thunk, logger))
 )
+
+store.dispatch(getUsers());
+store.dispatch(getComment());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

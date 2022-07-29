@@ -11,6 +11,8 @@ router.post("/login", userCtrl.login);
 
 router.get('/logout', userCtrl.logout);
 
+router.get("/", userCtrl.getAllUsers);
+
 router.post("/profil",  multer, userCtrl.createprofil);
 
 router.get('/:id', userCtrl.userInfo);

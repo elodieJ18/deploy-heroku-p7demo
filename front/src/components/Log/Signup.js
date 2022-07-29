@@ -16,7 +16,8 @@ export const Signup = () => {
         nom: Yup.string()
           .max(20, 'Must be 20 characters or less')
           .required('Required'),
-        status: Yup.string(),
+        status: Yup.string()
+        .required('Required'),
         email: Yup.string()
           .email('Email is invalid')
           .required('Email is required'),
@@ -75,6 +76,7 @@ export const Signup = () => {
                     <Form>
                         <TextField label="Prenom *" name="prenom" type="text"/>
                         <TextField label="Nom *" name="nom" type="text"/> 
+                        <TextField label="Status *" name="status" type="text"/> 
                         <TextField label="Email *" name="email" type="email"/> 
                         <TextField label="password *" name="password" type="password"/>  
                         <button className="btn-bleu btn-connexion" type="submit">Signup</button> 

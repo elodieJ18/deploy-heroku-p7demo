@@ -132,3 +132,17 @@ exports.deleteUser = (req, res, next) => {
 };
 
 
+
+module.exports.getAllUsers = async (req, res) => {
+  let user = await User.findAll()
+  .then((user) => {
+    res.status(200).send(user)
+  })
+  .catch(err => {
+    res.status(500)
+    .send({ message: err.message });
+  });
+}
+
+
+

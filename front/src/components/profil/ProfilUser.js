@@ -5,8 +5,8 @@ import Navbar from "../Navbar";
 import UploadImg from "./UploadImg";
 import Logout from "../Log/Logout";
 import logo from "../../assets/user-200.png";
-import { updateInfo } from "../../actions/user.actions";
-import { deleteProfil } from "../../actions/user.actions";
+import { updateInfo } from "../../actions/user.action";
+import { deleteProfil } from "../../actions/user.action";
 
 export const ProfilUser = () => {
   

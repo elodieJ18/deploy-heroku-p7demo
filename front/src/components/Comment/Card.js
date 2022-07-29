@@ -9,37 +9,12 @@ export const Card = ({comment}) => {
   const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
-   const userId = userData.id;
-   const commentId = comment.id;
-
+   
     useEffect(() => {
       !isEmpty(usersData?.[0]) && setIsLoading(false);
     }, [usersData])
 
-    const returnimage = (userData, comment) => {
-      if (userData.id === comment.id){
-           return userData.image;
-      } else return logo;
-    }
-
-    const returnNom = (userData, comment) => {
-      if (userData.id === comment.id){
-           return userData.nom;
-      } else return "nom";
-    }
-
-    const returnPrenom = (userData, comment) => {
-      if (userData.id === comment.id){
-           return userData.prenom;
-      } else return "prenom";
-    }
-
     
-    const returnStatus = (userData, comment) => {
-      if (userData.id === comment.id){
-           return userData.status;
-      } else return "status";
-    }
 
   return (
     <div className="home-card-container" key={comment.id}>
@@ -47,21 +22,51 @@ export const Card = ({comment}) => {
       <div className="home-card-userProfil">
         <div className="image-profil-container-home">
         <div className="image-profil-form-home">
-          <img className="user-name-image" src={isLoading ?  
-              returnimage(userData, comment) : ""} alt="profil-pic" />
+        <img className="user-name-image"
+              src={
+                !isEmpty(usersData[0]) &&
+                usersData
+                  .map((user) => {
+                    if (user.id === comment.id) return user.image === null || user.image === 'undefined' ? logo : user.image;
+                  })
+                  .join("")
+              }
+              alt="poster-pic"
+            />
         </div>
         </div>
         <div className="home-card-userStatus">
         <div className="home-card-usersStatus-second-col">
           <div className="home-profil-names">
-                <p className="home-card-description-name">{isLoading ?  
-                returnNom(userData, comment) : ""}</p>
-                <p className="home-card-description-name">{isLoading ?  
-                returnPrenom(userData, comment) : ""}</p>
+                <p className="home-card-description-name">{
+                !isEmpty(usersData[0]) &&
+                usersData
+                  .map((user) => {
+                    if (user.id === comment.id) return user.prenom;
+                    else return null;
+                  })
+                  .join("")
+              }</p>
+                <p className="home-card-description-name">{
+                !isEmpty(usersData[0]) &&
+                usersData
+                  .map((user) => {
+                    if (user.id === comment.id) return user.nom;
+                    else return null;
+                  })
+                  .join("")
+              }</p>
           </div>   
           <div className="home-card-usersStatus-second-col"> 
-                <p className="home-card-description-status">{isLoading ?  
-                returnStatus(userData, comment) : ""}</p>
+                <p className="home-card-description-status">{
+                !isEmpty(usersData[0]) &&
+                usersData
+                  .map((user) => {
+                    if (user.id === comment.id) return user.status;
+                    else return null; 
+                  })
+                  .join("")
+              }</p>
                 <p className="home-card-description-date">{dateParser(comment.date)}</p>
           </div> 
           
