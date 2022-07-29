@@ -22,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       dislikes: { type: DataTypes.STRING, required: false, default: 0 },
       usersLikes: { type: DataTypes.STRING, required: false },
       usersDislikes: { type: DataTypes.STRING, required: false },
-      status: { type: DataTypes.STRING },
 
     },
     { sequelize, tableName: "comment", modelName: "Comment" },
