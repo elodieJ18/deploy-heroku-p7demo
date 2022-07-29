@@ -48,11 +48,11 @@ h1 {
 .home-actuality .home-card-post .home-card-userProfil {
   column-gap: 20px;
   display: flex;
-  padding: 28px 41px 30px 41px;
+  padding: 28px 41px 15px 41px;
 }
 .home-actuality .home-card-post .home-card-description {
   background-color: #FBFCFC;
-  padding: 0px 41px 30px 41px;
+  padding: 15px 41px 30px 41px;
 }
 
 .home-card-userStatus {
@@ -104,6 +104,22 @@ h1 {
   height: 368px;
   width: 642px;
   overflow: hidden;
+}
+
+.home-card-reaction-container {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 54px;
+  padding: 14px 14px 14px 43px;
+}
+.home-card-reaction-container .home-icon-post {
+  font-size: 20px;
+}
+.home-card-reaction-container .home-icon-post svg {
+  font-size: 26px;
+  stroke-width: 24px;
+  stroke: black !important;
+  color: transparent;
 }
 
 @media (max-width: 720px) {

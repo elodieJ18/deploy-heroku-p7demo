@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import UploadImg from "./UploadImg";
 import Logout from "../Log/Logout";
 import logo from "../../assets/user-200.png";
+import * as Yup from 'yup';
 import { updateInfo } from "../../actions/user.action";
 import { deleteProfil } from "../../actions/user.action";
 
@@ -19,15 +20,18 @@ export const ProfilUser = () => {
  const dispatch = useDispatch();
 
  const handleUpdate = () => {
-  dispatch(updateInfo(userData.id, nom, prenom, status));
-  setUpdateForm(false)
+    dispatch(updateInfo(userData.id, nom, prenom, status));
+  setUpdateForm(false);
+ 
  }
 
+ 
+
  const handleDeleteProfil = () => {
-  dispatch(deleteProfil(userData.id));
-  
+    dispatch(deleteProfil(userData.id));
  }
-    
+
+
   return (
     <div className="bloc-connexion">
      <div className="profil-container"> 
@@ -60,13 +64,13 @@ export const ProfilUser = () => {
               {updateForm === false && ( 
                 <> 
                 <div className="profil-card-description-name">
-                  <p>{userData.nom === '' ? 'nom' : userData.nom}</p>
-                  <p>{userData.prenom === '' ? 'prenom' : userData.prenom}</p>
+                  <p>{userData.nom  === '' ? null : userData.nom}</p>
+                  <p>{userData.prenom  === '' ? null : userData.prenom}</p>
                 </div> 
-                <p className="profil-card-description-email">{userData.email}</p>
-                <p className="profil-card-description-status">{userData.status === '' ? 'status' : userData.status}</p> 
+                <p className="profil-card-description-email">{userData.email }</p>
+                <p className="profil-card-description-status">{userData.status === '' ? null : userData.status}</p> 
              
-                <button className="update-btn-profil" onClick={() => setUpdateForm(!updateForm)}>Update</button>
+                <button className="update-btn-profil"  onClick={() => setUpdateForm(!updateForm)}>Update</button>
                  <div className="btn-connexion-profil">
                     <Logout />
                     <button className="btn-profil-delete" onClick={handleDeleteProfil}>Delete Account</button>
@@ -75,28 +79,28 @@ export const ProfilUser = () => {
               )}
               {updateForm && (
                 <>
-                 <form>
+                 <form onSubmit={handleUpdate}>
                   <div className="form-profil-nom-prenom">
                     <div className="form-profil-flex-label">
-                    <label label="nom" name="nom" type="text" defaultValue={userData.nom}>Nom</label>
-                      <input type="text"  name="nom" defaultValue={userData.nom}
+                    <label  label="nom" name="nom" type="text" >Nom</label>
+                      <input required="required" type="text"  name="nom" 
                         onChange={(e) => setNom(e.target.value)}
                       />
                     </div>
                     <div className="form-profil-flex-label">
-                    <label label="prenom" name="prenom" type="text" defaultValue={userData.prenom}>Prenom</label>
-                      <input
-                         type="text" name="prenom" defaultValue={userData.prenom} 
+                    <label   label="prenom" name="prenom" type="text" >Prenom</label>
+                      <input required="required"
+                         type="text" name="prenom" 
                          onChange={(e) => setPrenom(e.target.value)}
                       />
                     </div>
                   </div>
-                    <label label="Status" name="status" type="text" defaultValue={userData.status}>Status</label>
-                      <input
-                        type="text"  name="status" defaultValue={userData.status} onChange={(e) => setStatus(e.target.value)}
+                    <label  label="Status" name="status" type="text" >Status</label>
+                      <input required="required"
+                        type="text"  name="status"  onChange={(e) => setStatus(e.target.value)}
                       />
                    <div className="duo-update-btn-profil">
-                    <button className="update-btn-profil" onClick={handleUpdate}>Send</button>
+                    <button className="update-btn-profil" type="submit">Send</button>
                     <button className="update-btn-profil btn-cancel-profil" onClick={() => setUpdateForm(updateForm)}>Cancel</button>
                     </div>
                   </form>

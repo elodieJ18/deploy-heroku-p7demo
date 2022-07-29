@@ -3,6 +3,14 @@ import { useSelector,} from "react-redux";
 import "../../css/styles.css";
 import logo from "../../assets/user-200.png";
 import {isEmpty, dateParser} from "../Utils";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas, faThumbsUp, faThumbsDown, faComment } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+
+
+import { Link } from "react-router-dom";
+library.add(fas, far, faThumbsUp, faThumbsDown, faComment);
 
 export const Card = ({comment}) => {
     
@@ -22,7 +30,7 @@ export const Card = ({comment}) => {
       <div className="home-card-userProfil">
         <div className="image-profil-container-home">
         <div className="image-profil-form-home">
-        <img className="user-name-image"
+        <img className="user-name-image" 
               src={
                 !isEmpty(usersData[0]) &&
                 usersData
@@ -75,18 +83,18 @@ export const Card = ({comment}) => {
         </div>
       </div>
       <div className="home-card-description">
-
           {comment.image && (<div className="home-image-post-container"><img className="home-image-post" src={comment.image}/> </div>)}
-  
-      
           <p>{comment.message}</p>
       </div>
       <div className="home-card-reaction">
-          icons
+          <div className="home-card-reaction-container">
+          <p className="home-icon-post"><FontAwesomeIcon icon={["fa","thumbs-up"]} />
+          <span></span></p>
+          <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "thumbs-down"]} /></p>
+          <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "comment"]} /></p>
+          </div>
       </div>
-    </div>
-  
-       
+    </div>  
   );
 }
 
