@@ -10,7 +10,7 @@ module.exports.createReply  = async (req, res) => {
         message: "Content can not be empty!"
       });
     }
-    let { id, message, date, image} = req.body;
+    let { id, idComment, message, date, image} = req.body;
     if (req.file) {
        image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
       }
@@ -18,7 +18,7 @@ module.exports.createReply  = async (req, res) => {
         image = null;
     }
     Reply.create({
-      id, message, date, image
+      id, idComment, message, date, image
     }).then((reply) => res.status(201).send(reply))
   } catch (error) {
     console.log(error);

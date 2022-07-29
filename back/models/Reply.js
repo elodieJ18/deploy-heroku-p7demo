@@ -13,8 +13,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Reply.init(
-    { idObject: { type: DataTypes.UUID, primaryKey: true },
-      id: {  type: DataTypes.INTEGER, required: true }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
+    { idObject: { type: DataTypes.UUID, primaryKey: true }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
+      id: {  type: DataTypes.INTEGER, required: true },
+      idComment: {  type: DataTypes.INTEGER, required: true },
       message: { type: DataTypes.STRING, allowNull: false },
       date: { type: DataTypes.DATE },
       image: {  type: DataTypes.STRING, required: false, allowNull: true }
