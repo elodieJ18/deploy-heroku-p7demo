@@ -14,6 +14,7 @@ console.log(process.env);
 //import des routes
 const authRoutes = require("./routes/user");
 const commentRoutes = require("./routes/comment");
+const replyRoutes = require("./routes/reply");
 
 //intercepter toute requête d'un contenttype.json
 app.use(express.json());
@@ -45,6 +46,7 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 //routes
 app.use("/api/auth", authRoutes);
 app.use("/api/comment", commentRoutes);
+app.use("/api/reply", replyRoutes);
 
 // pour exporter l'application/constante pour acceder aux fichiers depuis notre server node
 
