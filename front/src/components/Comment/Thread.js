@@ -23,8 +23,8 @@ export const Thread = () => {
       <div className="home-actuality">
       <div className="home-card-post">
             {(comment[0]) &&
-            comment.map((comment, id) => {
-                return <Card comment={comment} key={id}/>
+            comment.map((comment, idObject) => {
+                return <Card comment={comment} key={idObject}/>
             })
         }
         </div>

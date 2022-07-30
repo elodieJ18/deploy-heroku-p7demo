@@ -9,11 +9,11 @@ router.post("/upload", [authJwt.verifyToken], multer, replyCtrl.createReply);
 //afficher toutes les sauces
 router.get("/",[authJwt.verifyToken], replyCtrl.getallReply);
 //affichage du produit dans sa propre page
-router.get("/:id",[authJwt.verifyToken], replyCtrl.getOneReply);
+router.get("/:idObject",[authJwt.verifyToken], replyCtrl.getOneReply);
 //modification d'un produit
-router.put("/:id", [authJwt.verifyToken], multer, replyCtrl.modifyReply);
+router.put("/:idObject", [authJwt.verifyToken], multer, replyCtrl.modifyReply);
 //suppression d'un produit
-router.delete("/:id", [authJwt.verifyToken], replyCtrl.deleteReply);
+router.delete("/:idObject", [authJwt.verifyToken], replyCtrl.deleteReply);
 
 
 module.exports = router;

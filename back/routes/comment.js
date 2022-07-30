@@ -9,11 +9,11 @@ router.post("/upload", [authJwt.verifyToken], multer, commentCtrl.createComment)
 //afficher toutes les sauces
 router.get("/",[authJwt.verifyToken], commentCtrl.getallComment);
 //affichage du produit dans sa propre page
-router.get("/:id",[authJwt.verifyToken], commentCtrl.getOneComment);
+router.get("/:idObject",[authJwt.verifyToken], commentCtrl.getOneComment);
 //modification d'un produit
-router.put("/:id", [authJwt.verifyToken], multer, commentCtrl.modifyComment);
+router.put("/:idObject", [authJwt.verifyToken], multer, commentCtrl.modifyComment);
 //suppression d'un produit
-router.delete("/:id", [authJwt.verifyToken], commentCtrl.deleteComment);
+router.delete("/:idObject", [authJwt.verifyToken], commentCtrl.deleteComment);
 
 //like des sauces (pas encore créer)
 router.post("/:id/like", [authJwt.verifyToken], commentCtrl.likeComment);

@@ -10,7 +10,7 @@ module.exports.createComment  = async (req, res) => {
         message: "Content can not be empty!"
       });
     }
-    let { id, message, date, image} = req.body;
+    let { id, idObject, message, date, image} = req.body;
     if (req.file) {
        image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
       }
@@ -18,7 +18,7 @@ module.exports.createComment  = async (req, res) => {
         image = null;
     }
     Comment.create({
-      id, message, date, image
+      id, idObject, message, date, image
     }).then((comment) => res.status(201).send(comment))
   } catch (error) {
     console.log(error);
@@ -42,10 +42,10 @@ module.exports.getallComment = async (req, res) => {
 
 
 module.exports.getOneComment = async (req, res, next) => {
-  let id = req.params.id;
-  Comment.findByPk(id)  
+  let idObject = req.params.idObject;
+  Comment.findByPk(idObject)  
   .then(comment => {
-    console.log(id)
+    console.log(idObject)
      res.json(comment)
   })
 .catch((err) => console.log(err));
@@ -58,7 +58,7 @@ module.exports.getOneComment = async (req, res, next) => {
 module.exports.modifyComment = (req, res, next) => {
   try {
       let { prenom, nom, message, date, image, status} = req.body;
-  let id = req.params.id;
+  let idObject = req.params.idObject;
   if (req.file) {
      image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
     }
@@ -67,7 +67,7 @@ module.exports.modifyComment = (req, res, next) => {
   }
   Comment.update(
     { prenom, nom, message, date, image, status},
-    { where: { id: id } }
+    { where: { idObject: idObject } }
   ) 
     .then(() => 
     res.status(200).json({ message: "Objet modifié !" }),
@@ -83,9 +83,9 @@ module.exports.modifyComment = (req, res, next) => {
 
 //supprimer
 exports.deleteComment = (req, res, next) => {
-  let id = req.params.id;
+  let idObject = req.params.idObject;
   try {
-        Comment.destroy({ where: { id: id } })
+        Comment.destroy({ where: { idObject: idObject } })
           .then(() => res.status(200).json({ message: "Objet supprimé !" }))
       }
     catch {((error) => 
@@ -98,24 +98,24 @@ exports.deleteComment = (req, res, next) => {
 //Option de likes
 exports.likeComment = (req, res, next) => {
   let like = req.params.like;
-  let id = req.params.id;
+  let idObject = req.params.idObject;
   switch (like) {
     //Premier cas userlike and userdislike/
     case 0:
       // on appelle l'id du post
       //case 0 ---> like 1 = 1
       //case 0 ---> dislike -1 = 1
-      Comment.findOne({ where: { id: id } })
+      Comment.findOne({ where: { idObject: idObject } })
         .then((comment) => {
           //On compare les user_id
           if (comment.usersLikes.find((user) => user === req.body.id)) {
             Comment.updateOne(
-              { id: req.params.id },
+              { idObject: req.params.id },
               //met a jour la requete dans les data pour un like
               {
                 $inc: { likes: -1 },
                 $pull: { usersLiked: req.body.id },
-                id: req.params.id,
+                idObject: req.params.id,
               }
             )
               .then(() => {
@@ -130,11 +130,11 @@ exports.likeComment = (req, res, next) => {
           //même methode pour dislike
           if (comment.usersDisliked.find((user) => user === req.body.id)) {
             Comment.updateOne(
-              { id: req.params.id },
+              { idObject: req.params.id },
               {
                 $inc: { dislikes: -1 },
                 $pull: { usersDisliked: req.body.userId },
-                _id: req.params.id,
+                idObject: req.params.id,
               }
             )
               .then(() => {
@@ -157,11 +157,11 @@ exports.likeComment = (req, res, next) => {
     case 1:
       // on appelle l'id du post
       Comment.updateOne(
-        { id: req.params.id },
+        { idObject: req.params.id },
         {
           $inc: { likes: 1 },
           $push: { usersLiked: req.body.id },
-          id: req.params.id,
+          idObject: req.params.id,
         }
       )
         .then(() => {
@@ -175,11 +175,11 @@ exports.likeComment = (req, res, next) => {
     //case -1 ---> dislike 1 = 0
     case -1:
       Comment.updateOne(
-        { id: req.params.id },
+        { idObject: req.params.id },
         {
           $inc: { dislikes: 1 },
           $push: { usersDisliked: req.body.id },
-          id: req.params.id,
+          idObject: req.params.id,
         }
       )
         .then(() => {

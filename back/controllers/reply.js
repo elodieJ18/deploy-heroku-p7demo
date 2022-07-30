@@ -10,7 +10,7 @@ module.exports.createReply  = async (req, res) => {
         message: "Content can not be empty!"
       });
     }
-    let { id, idComment, message, date, image} = req.body;
+    let { id, idObject, idComment, message, date, image} = req.body;
     if (req.file) {
        image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
       }
@@ -18,7 +18,7 @@ module.exports.createReply  = async (req, res) => {
         image = null;
     }
     Reply.create({
-      id, idComment, message, date, image
+      id, idObject, idComment, message, date, image
     }).then((reply) => res.status(201).send(reply))
   } catch (error) {
     console.log(error);
@@ -42,10 +42,10 @@ module.exports.getallReply = async (req, res) => {
 
 
 module.exports.getOneReply = async (req, res, next) => {
-  let id = req.params.id;
-  Reply.findByPk(id)  
+  let idObject = req.params.idObject;
+  Reply.findByPk(idObject)  
   .then(reply => {
-    console.log(id)
+    console.log(idObject)
      res.json(reply)
   })
 .catch((err) => console.log(err));
@@ -58,7 +58,7 @@ module.exports.getOneReply = async (req, res, next) => {
 module.exports.modifyReply = (req, res, next) => {
   try {
       let { message, date, image} = req.body;
-  let id = req.params.id;
+  let idObject = req.params.idObject;
   if (req.file) {
      image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
     }
@@ -67,7 +67,7 @@ module.exports.modifyReply = (req, res, next) => {
   }
   Reply.update(
     {  message, date, image },
-    { where: { id: id } }
+    { where: { idObject: idObject } }
   ) 
     .then(() => 
     res.status(200).json({ message: "Objet modifié !" }),
@@ -83,9 +83,9 @@ module.exports.modifyReply = (req, res, next) => {
 
 //supprimer
 exports.deleteReply = (req, res, next) => {
-  let id = req.params.id;
+  let idObject = req.params.idObject;
   try {
-        Reply.destroy({ where: { id: id } })
+        Reply.destroy({ where: { idObject: idObject } })
           .then(() => res.status(200).json({ message: "Objet supprimé !" }))
       }
     catch {((error) => 

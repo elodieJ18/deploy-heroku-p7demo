@@ -25,7 +25,7 @@ export const Card = ({comment}) => {
     
 
   return (
-    <div className="home-card-container" key={comment.id}>
+    <div className="home-card-container" key={comment.idObject}>
     
       <div className="home-card-userProfil">
         <div className="image-profil-container-home">
