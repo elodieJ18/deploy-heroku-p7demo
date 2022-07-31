@@ -10,17 +10,21 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 
 
 import { Link } from "react-router-dom";
+import ThreadReply from "../reply/ThreadReply";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment);
 
 export const Card = ({comment}) => {
     
   const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.usersReducer);
+    const replyData = useSelector((state) => state.replyReducer);
     const userData = useSelector((state) => state.userReducer);
    
     useEffect(() => {
       !isEmpty(usersData?.[0]) && setIsLoading(false);
-    }, [usersData])
+      !isEmpty(replyData?.[0]) && setIsLoading(false);
+    }, [usersData, replyData])
+    
 
     
 
@@ -66,7 +70,7 @@ export const Card = ({comment}) => {
               }</p>
           </div>   
           <div className="home-card-usersStatus-second-col"> 
-                <p className="home-card-description-status">{
+                <p>{
                 !isEmpty(usersData[0]) &&
                 usersData
                   .map((user) => {
@@ -76,10 +80,8 @@ export const Card = ({comment}) => {
                   .join("")
               }</p>
                 <p className="home-card-description-date">{dateParser(comment.date)}</p>
-          </div> 
-          
+          </div>  
         </div>
-      
         </div>
       </div>
       <div className="home-card-description">
@@ -88,11 +90,22 @@ export const Card = ({comment}) => {
       </div>
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
-          <p className="home-icon-post"><FontAwesomeIcon icon={["fa","thumbs-up"]} />
-          <span></span></p>
-          <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "thumbs-down"]} /></p>
-          <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "comment"]} /></p>
-          </div>
+              <p className="home-icon-post"><FontAwesomeIcon icon={["fa","thumbs-up"]} />
+              <span></span></p>
+              <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "thumbs-down"]} /></p>
+              <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "comment"]} /></p>
+           </div>
+      </div>
+      <div className="home-card-reply">
+      <p>{
+                !isEmpty(replyData?.[0]) &&
+                replyData
+                  .map((reply) => {
+                    if (reply.idComment === comment.idObject ) return <ThreadReply/> ;
+                    else return null;
+                  })
+                  .join("")
+              }</p>
       </div>
     </div>  
   );
