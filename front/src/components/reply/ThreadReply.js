@@ -9,28 +9,28 @@ export const ThreadReply = () => {
     const [loadReply, setLoadReply] = useState(true);
     const dispatch = useDispatch();
     const reply = useSelector((state) => state.replyReducer);
-    
+
     useEffect(() => {
         if (loadReply) {
             dispatch(getAllReply());
             setLoadReply(false)
         }
     }, [loadReply, dispatch])
-    
+
   return (
    <div>
       <div className="home-actuality">
       <div className="home-card-post">
             {(reply?.[0]) &&
             reply.map((reply, idObject) => {
-                return <li>{reply.message}</li> 
+                return <p reply={reply} key={idObject}></p> 
             })
         }
         </div>
-        
+
         </div>
         </div>
-       
+
   );
 }
 

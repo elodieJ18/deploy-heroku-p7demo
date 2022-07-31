@@ -10,7 +10,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 
 
 import { Link } from "react-router-dom";
-import ThreadReply from "../reply/ThreadReply";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment);
 
 export const Card = ({comment}) => {
@@ -29,23 +28,23 @@ export const Card = ({comment}) => {
     
 
   return (
-    <div className="home-card-container" key={comment.idObject}>
+    <div className="home-card-container" key={comment.idObject} >
     
       <div className="home-card-userProfil">
         <div className="image-profil-container-home">
-        <div className="image-profil-form-home">
-        <img className="user-name-image" 
-              src={
-                !isEmpty(usersData[0]) &&
-                usersData
-                  .map((user) => {
-                    if (user.id === comment.id) return user.image === null || user.image === 'undefined' ? logo : user.image;
-                  })
-                  .join("")
-              }
-              alt="poster-pic"
-            />
-        </div>
+          <div className="image-profil-form-home">
+            <img className="user-name-image" 
+                  src={
+                    !isEmpty(usersData[0]) &&
+                    usersData
+                      .map((user) => {
+                        if (user.id === comment.id) return user.image === null || user.image === 'undefined' ? logo : user.image;
+                      })
+                      .join("")
+                  }
+                  alt="poster-pic"
+                />
+          </div>
         </div>
         <div className="home-card-userStatus">
         <div className="home-card-usersStatus-second-col">
@@ -68,7 +67,8 @@ export const Card = ({comment}) => {
                   })
                   .join("")
               }</p>
-          </div>   
+          </div> 
+        
           <div className="home-card-usersStatus-second-col"> 
                 <p>{
                 !isEmpty(usersData[0]) &&
@@ -88,20 +88,64 @@ export const Card = ({comment}) => {
           {comment.image && (<div className="home-image-post-container"><img className="home-image-post" src={comment.image}/> </div>)}
           <p>{comment.message}</p>
       </div>
+     
+
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa","thumbs-up"]} />
               <span></span></p>
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "thumbs-down"]} /></p>
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "comment"]} /></p>
+      
+
+              <span>{
+                !isEmpty(replyData?.[0]) &&
+                replyData
+                  .map((reply) => {
+                    if (reply.idComment === comment.idObject ) return reply.idComment.lenght;
+                    else return null;
+                  }) 
+                  .join("")
+              }</span>
            </div>
+      </div>
+
+
+     
+      <div className="home-card-userProfil">
+        <div className="image-profil-container-home">
+          <div className="image-profil-form-home">
+            <img className="user-name-image" alt="poster-pic"/>
+          </div>
+        </div>
+
+        <div className="home-card-userStatus">
+        <div className="home-card-usersStatus-second-col">
+          <div className="home-profil-names">
+                <p className="home-card-description-name"></p>
+                <p className="home-card-description-name"></p>
+          </div>   
+          <div className="home-card-usersStatus-second-col"> 
+                <p></p>
+                <p className="home-card-description-date">{
+                !isEmpty(replyData?.[0]) &&
+                replyData
+                  .map((reply) => {
+                    if (reply.idComment === comment.idObject ) return dateParser(reply.date);
+                    else return null;
+                  })
+                  .join("")
+              }</p>
+          </div>  
+        </div>
+        </div>
       </div>
       <div className="home-card-reply">
       <p>{
                 !isEmpty(replyData?.[0]) &&
                 replyData
                   .map((reply) => {
-                    if (reply.idComment === comment.idObject ) return <ThreadReply/> ;
+                    if (reply.idComment === comment.idObject ) return reply.message;
                     else return null;
                   })
                   .join("")
