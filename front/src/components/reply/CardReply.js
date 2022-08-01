@@ -10,21 +10,19 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment);
 
-export const CardReply = ({reply}) => {
+export const CardReply = () => {
     
   const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.usersReducer);
-    const userData = useSelector((state) => state.userReducer);
-   
+   const replyContent = useSelector((state) => state.userReducer);
+
     useEffect(() => {
       !isEmpty(usersData?.[0]) && setIsLoading(false);
     }, [usersData])
     
 
-    
-
   return (
-    <div className="home-cardreply-container" key={reply.idObject} >
+    <div className="home-cardreply-container" key={replyContent.idObject} >
     
       <div className="home-cardreply-userProfil">
         <div className="image-profil-container-home">
@@ -34,7 +32,7 @@ export const CardReply = ({reply}) => {
                     !isEmpty(usersData[0]) &&
                     usersData
                       .map((user) => {
-                        if (user.id === reply.id) return user.image === null || user.image === 'undefined' ? logo : user.image;
+                        if (user.id === replyContent.id) return user.image === null || user.image === 'undefined' ? logo : user.image;
                       })
                       .join("")
                   }
@@ -49,7 +47,7 @@ export const CardReply = ({reply}) => {
                 !isEmpty(usersData[0]) &&
                 usersData
                   .map((user) => {
-                    if (user.id === reply.id) return user.prenom;
+                    if (user.id === replyContent.id) return user.prenom;
                     else return null;
                   })
                   .join("")
@@ -58,7 +56,7 @@ export const CardReply = ({reply}) => {
                 !isEmpty(usersData[0]) &&
                 usersData
                   .map((user) => {
-                    if (user.id === reply.id) return user.nom;
+                    if (user.id === replyContent.id) return user.nom;
                     else return null;
                   })
                   .join("")
@@ -70,19 +68,19 @@ export const CardReply = ({reply}) => {
                 !isEmpty(usersData[0]) &&
                 usersData
                   .map((user) => {
-                    if (user.id === reply.id) return user.status;
+                    if (user.id === replyContent.id) return user.status;
                     else return null;
                   })
                   .join("")
               }</p>
-                <p className="home-card-description-date">{dateParser(reply.date)}</p>
+                <p className="home-card-description-date">{dateParser(replyContent.date)}</p>
           </div>  
         </div>
         </div>
       </div>
       <div className="home-cardreply-description">
-          {reply.image && (<div className="home-image-post-container"><img className="home-image-post" src={reply.image}/> </div>)}
-          <p>{reply.message}</p>
+          {replyContent.image && (<div className="home-image-post-container"><img className="home-image-post" src={replyContent.image}/> </div>)}
+          <p>{replyContent.message}</p>
       </div>
      
 

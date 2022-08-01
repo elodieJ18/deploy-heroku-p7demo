@@ -5,10 +5,11 @@ import logo from "../../assets/user-200.png";
 import {isEmpty, dateParser} from "../Utils";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {ThreadReply} from "../reply/ThreadReply";
+
 import { fas, faThumbsUp, faThumbsDown, faComment } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import LikeButton from "./LikeButton";
+import CardReply from "../reply/CardReply";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment);
 
 export const Card = ({comment}) => {
@@ -23,15 +24,6 @@ export const Card = ({comment}) => {
       !isEmpty(replyData?.[0]) && setIsLoading(false);
     }, [usersData, replyData])
 
-    {
-      !isEmpty(replyData[0]) &&
-      replyData
-        .map((reply) => {
-         console.log(reply.idComment);
-         console.log(comment.idObject);
-        })
-        .join("")
-    }
     
   return (
     <div className="home-card-container" key={comment.idObject} >
@@ -98,7 +90,7 @@ export const Card = ({comment}) => {
 
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
-              <p className="home-icon-post"><LikeButton comment={comment} /></p>
+           
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "thumbs-down"]} /></p>
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "comment"]} /></p>
               <span></span>
@@ -113,7 +105,8 @@ export const Card = ({comment}) => {
                 !isEmpty(replyData[0]) &&
                 replyData
                   .map((reply) => {
-                    if (comment.idObject === reply.idComment ) return <div key={reply.idObject}><ThreadReply/></div>;
+                    console.log(replyData);
+                    if (comment.idObject === reply.idComment ) return <div key={reply.idObject}><CardReply/></div>;
                     else return null;
                   })
               }

@@ -5,6 +5,11 @@ import { getAllReply } from "../../actions/reply.action";
 import { useDispatch, useSelector } from "react-redux";
 import CardReply from "./CardReply";
 
+const testreply = (replys) => {
+    console.log(replys);
+    return true;
+}
+
 export const ThreadReply = () => {
     const [loadReply, setLoadReply] = useState(true);
     const dispatch = useDispatch();
@@ -21,11 +26,7 @@ export const ThreadReply = () => {
    <div>
       <div className="home-card-actuality">
       <div className="home-card-post">
-            {(reply[0]) &&
-            reply.map((reply) => {
-                return <CardReply reply={reply} key={reply.idObject}/> 
-            })
-        }
+               <CardReply reply={reply} key={reply.idObject}/> 
         </div>
 
         </div>
