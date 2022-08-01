@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import "../css/styles.css";
 import {Navbar} from "../components/Navbar"
-import profil from "../assets/user-200.png";
 import {Thread} from "../components/Comment/Thread";
+import {ThreadReply} from "../components/reply/ThreadReply";
 import { UidContext } from "../components/AppContext";
 import {Connexion} from "../components/Log/Connexion";
 

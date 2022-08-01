@@ -3,7 +3,7 @@ import "../../css/styles.css";
 import profil from "../../assets/user-200.png";
 import { getAllReply } from "../../actions/reply.action";
 import { useDispatch, useSelector } from "react-redux";
-
+import CardReply from "./CardReply";
 
 export const ThreadReply = () => {
     const [loadReply, setLoadReply] = useState(true);
@@ -19,11 +19,11 @@ export const ThreadReply = () => {
 
   return (
    <div>
-      <div className="home-actuality">
+      <div className="home-card-actuality">
       <div className="home-card-post">
-            {(reply?.[0]) &&
-            reply.map((reply, idObject) => {
-                return <p reply={reply} key={idObject}></p> 
+            {(reply[0]) &&
+            reply.map((reply) => {
+                return <CardReply reply={reply} key={reply.idObject}/> 
             })
         }
         </div>

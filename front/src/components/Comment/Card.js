@@ -5,11 +5,10 @@ import logo from "../../assets/user-200.png";
 import {isEmpty, dateParser} from "../Utils";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import {ThreadReply} from "../reply/ThreadReply";
 import { fas, faThumbsUp, faThumbsDown, faComment } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-
-
-import { Link } from "react-router-dom";
+import LikeButton from "./LikeButton";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment);
 
 export const Card = ({comment}) => {
@@ -23,10 +22,17 @@ export const Card = ({comment}) => {
       !isEmpty(usersData?.[0]) && setIsLoading(false);
       !isEmpty(replyData?.[0]) && setIsLoading(false);
     }, [usersData, replyData])
-    
 
+    {
+      !isEmpty(replyData[0]) &&
+      replyData
+        .map((reply) => {
+         console.log(reply.idComment);
+         console.log(comment.idObject);
+        })
+        .join("")
+    }
     
-
   return (
     <div className="home-card-container" key={comment.idObject} >
     
@@ -92,64 +98,30 @@ export const Card = ({comment}) => {
 
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
-              <p className="home-icon-post"><FontAwesomeIcon icon={["fa","thumbs-up"]} />
-              <span></span></p>
+              <p className="home-icon-post"><LikeButton comment={comment} /></p>
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "thumbs-down"]} /></p>
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "comment"]} /></p>
-      
-
-              <span>{
-                !isEmpty(replyData?.[0]) &&
-                replyData
-                  .map((reply) => {
-                    if (reply.idComment === comment.idObject ) return reply.idComment.lenght;
-                    else return null;
-                  }) 
-                  .join("")
-              }</span>
+              <span></span>
            </div>
       </div>
 
 
      
       <div className="home-card-userProfil">
-        <div className="image-profil-container-home">
-          <div className="image-profil-form-home">
-            <img className="user-name-image" alt="poster-pic"/>
-          </div>
-        </div>
-
         <div className="home-card-userStatus">
-        <div className="home-card-usersStatus-second-col">
-          <div className="home-profil-names">
-                <p className="home-card-description-name"></p>
-                <p className="home-card-description-name"></p>
-          </div>   
-          <div className="home-card-usersStatus-second-col"> 
-                <p></p>
-                <p className="home-card-description-date">{
-                !isEmpty(replyData?.[0]) &&
+           <div className="home-card-usersStatus-second-col">{
+                !isEmpty(replyData[0]) &&
                 replyData
                   .map((reply) => {
-                    if (reply.idComment === comment.idObject ) return dateParser(reply.date);
+                    if (comment.idObject === reply.idComment ) return <div key={reply.idObject}><ThreadReply/></div>;
                     else return null;
                   })
-                  .join("")
-              }</p>
+              }
           </div>  
-        </div>
         </div>
       </div>
       <div className="home-card-reply">
-      <p>{
-                !isEmpty(replyData?.[0]) &&
-                replyData
-                  .map((reply) => {
-                    if (reply.idComment === comment.idObject ) return reply.message;
-                    else return null;
-                  })
-                  .join("")
-              }</p>
+      <p></p>
       </div>
     </div>  
   );
