@@ -135,6 +135,7 @@
   }
 }
 
+
 .home-cardreply-actuality {
     width: 100%; 
     margin-left: 0%; 
@@ -149,15 +150,16 @@
 
 .home-cardreply-container {
   width: 658px;
+  margin-left: 32px;
   border-top: 1.5px solid #d0d0d0;
  
   .home-cardreply-userProfil {
-    padding: 20px;
-    display: flex;
     column-gap: 20px;
+    display: flex;
+    padding: 28px 41px 15px 41px;
   }
   .home-cardreply-description {
-    padding: 0px 21px;
+    padding: 0px 0px 43px 0px;
   }
   
 }

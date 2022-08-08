@@ -5,7 +5,6 @@ import logo from "../../assets/user-200.png";
 import {isEmpty, dateParser} from "../Utils";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {ThreadReply} from "../reply/ThreadReply";
 import { fas, faThumbsUp, faThumbsDown, faComment } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import LikeButton from "./LikeButton";
@@ -89,7 +88,7 @@ export const Card = ({comment}) => {
 
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
-           
+              <p className="home-icon-post"><LikeButton comment={comment} /></p>
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "thumbs-down"]} /></p>
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "comment"]} /></p>
               <span></span>
@@ -98,22 +97,89 @@ export const Card = ({comment}) => {
 
 
      
-      <div className="home-card-userProfil">
+      <div className="home-cardReply-userProfil">
         <div className="home-card-userStatus">
            <div className="home-card-usersStatus-second-col">{
                 !isEmpty(replyData[0]) &&
                 replyData
                   .map((reply) => {
                     console.log(replyData);
-                    if (comment.idObject === reply.idComment ) return <div key={reply.idObject}><ThreadReply/></div>;
+                    if (comment.idObject === reply.idComment ) return <div key={reply.idObject}><div>
+                    <div className="home-card-actuality">
+                    <div className="home-card-post">
+                          {<div >
+                             <div className="home-cardreply-container">
+                                <div className="home-cardreply-userProfil">
+                                  <div className="image-profil-container-home">
+                                    <div className="image-profil-form-home">
+                                      <img className="user-name-image" 
+                                            src={
+                                              !isEmpty(usersData[0]) &&
+                                              usersData
+                                                .map((user) => {
+                                                  if (user.id === reply.id) return user.image === null || user.image === 'undefined' ? logo : user.image;
+                                                })
+                                                .join("")
+                                            }
+                                            alt="poster-pic"
+                                          />
+                                    </div>
+                                  </div>
+                                  <div className="home-card-userStatus">
+                                  <div className="home-card-usersStatus-second-col">
+                                    <div className="home-profil-names">
+                                    <p className="home-cardreply-description-name">{
+                                          !isEmpty(usersData[0]) &&
+                                          usersData
+                                            .map((user) => {
+                                              if (user.id === reply.id) return user.prenom;
+                                              else return null;
+                                            })
+                                            .join("")
+                                        }</p>
+                                          <p className="home-cardreply-description-name">{
+                                          !isEmpty(usersData[0]) &&
+                                          usersData
+                                            .map((user) => {
+                                              if (user.id === reply.id) return user.nom;
+                                              else return null;
+                                            })
+                                            .join("")
+                                        }</p>
+                                    </div> 
+                                  
+                                    <div className="home-card-usersStatus-second-col"> 
+                                          <p>{
+                                          !isEmpty(usersData[0]) &&
+                                          usersData
+                                            .map((user) => {
+                                              if (user.id === reply.id) return user.status;
+                                              else return null;
+                                            })
+                                            .join("")
+                                        }</p>
+                                          <p className="home-card-description-date">{dateParser(reply.date)}</p>
+                                    </div>  
+                                  </div>
+                                  </div>
+                                </div>
+                                <div className="home-cardreply-description">
+                                    {reply.image && (<div className="home-image-post-container"><img className="home-image-post" src={reply.image}/> </div>)}
+                                    <p>{reply.message}</p>
+                                </div>
+                </div>  
+            </div> 
+                          }
+                      
+                      </div>
+                      </div>
+                      </div>
+                      </div>;
                     else return null;
                   })
               }
           </div>  
         </div>
-      </div>
-      <div className="home-card-reply">
-      <p></p>
       </div>
     </div>  
   );

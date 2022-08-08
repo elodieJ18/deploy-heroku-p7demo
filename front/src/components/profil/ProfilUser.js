@@ -5,7 +5,6 @@ import Navbar from "../Navbar";
 import UploadImg from "./UploadImg";
 import Logout from "../Log/Logout";
 import logo from "../../assets/user-200.png";
-import * as Yup from 'yup';
 import { updateInfo } from "../../actions/user.action";
 import { deleteProfil } from "../../actions/user.action";
 
@@ -25,7 +24,7 @@ export const ProfilUser = () => {
  
  }
 
- 
+
 
  const handleDeleteProfil = () => {
     dispatch(deleteProfil(userData.id));
@@ -82,7 +81,7 @@ export const ProfilUser = () => {
                  <form onSubmit={handleUpdate}>
                   <div className="form-profil-nom-prenom">
                     <div className="form-profil-flex-label">
-                    <label  label="nom" name="nom" type="text" >Nom</label>
+                    <label  label="nom" name="nom" type="text">Nom</label>
                       <input required="required" type="text"  name="nom" 
                         onChange={(e) => setNom(e.target.value)}
                       />
@@ -100,10 +99,11 @@ export const ProfilUser = () => {
                         type="text"  name="status"  onChange={(e) => setStatus(e.target.value)}
                       />
                    <div className="duo-update-btn-profil">
-                    <button className="update-btn-profil" type="submit">Send</button>
-                    <button className="update-btn-profil btn-cancel-profil" onClick={() => setUpdateForm(updateForm)}>Cancel</button>
-                    </div>
+                    <button className="update-btn-profil" type="submit">Send</button> 
+                    <button className="update-btn-profil btn-cancel-profil" onClick={() => setUpdateForm(!updateForm)}>Cancel</button>
+                    </div> 
                   </form>
+                
                 </>
               )}
             </div>
