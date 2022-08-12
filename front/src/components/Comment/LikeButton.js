@@ -22,7 +22,7 @@ export const LikeButton = ({comment}) => {
     }
     const unlike = () => {}
     useEffect(() => {
-        if (comment.likes.includes(uid)) setLiked(true)
+        if (comment.likes?.includes(uid)) setLiked(true)
     }, [uid], comment.likes, liked)
 
   return (

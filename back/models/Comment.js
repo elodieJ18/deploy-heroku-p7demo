@@ -18,11 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       message: { type: DataTypes.STRING, allowNull: false },
       date: { type: DataTypes.DATE },
       image: {  type: DataTypes.STRING, required: false, allowNull: true },
-      likes: { type: DataTypes.STRING, required: false, default: 0 },
-      dislikes: { type: DataTypes.STRING, required: false, default: 0 },
-      usersLikes: { type: DataTypes.STRING, required: false },
-      usersDislikes: { type: DataTypes.STRING, required: false },
-
+      likes: { type: DataTypes.ARRAY(DataTypes.STRING), required: false, default: 0 },
+      usersLikes: { type: DataTypes.ARRAY(DataTypes.STRING), required: false },
     },
     { sequelize, tableName: "comment", modelName: "Comment" },
     {
