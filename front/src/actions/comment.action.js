@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_COMMENT = "GET_COMMENT";
 export const LIKE_COMMENT = "LIKE_POST";
 export const UNLIKE_COMMENT = "UNLIKE_POST";
+export const UPDATE_COMMENT = "UPDATE_COMMENT";
 
 export const getComment = (uid) => {
     return (dispatch) => {
@@ -23,6 +24,18 @@ export const likeComment = (idObject, uid) => {
             dispatch({ type: LIKE_COMMENT, payload: idObject, uid})
         })
         .catch((err) => console.log(err));
+    }
+}
+
+export const updateComment = (idObject, message) => {
+    return (dispatch) => {
+        return axios ({
+            method: "put",
+            url: `${process.env.REACT_APP_API_URL}api/comment/${idObject}`,
+            data: { message }
+        }).then((res) => {
+            dispatch({type: UPDATE_COMMENT, payload: {message}})
+        }).catch((err) => console.log(err)) 
     }
 }
 

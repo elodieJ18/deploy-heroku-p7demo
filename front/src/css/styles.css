@@ -48,6 +48,7 @@ h1 {
 .home-actuality .home-card-post .home-card-userProfil {
   column-gap: 20px;
   display: flex;
+  justify-content: space-between;
   padding: 28px 41px 15px 41px;
 }
 .home-actuality .home-card-post .home-card-description {
@@ -144,6 +145,16 @@ h1 {
 }
 .home-cardreply-container .home-cardreply-description {
   padding: 0px 0px 43px 0px;
+}
+
+.home-card-usersStatus-second-col p {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.home-card-left-part {
+  display: flex;
+  column-gap: 20px;
 }
 
 @media (max-width: 720px) {
