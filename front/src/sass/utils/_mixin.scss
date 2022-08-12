@@ -33,3 +33,15 @@
     color: #8c8b8d;
     margin-bottom: 36px;
   }
+
+  @mixin btn-update-comment{
+    font-size: 12px;
+  width: 200px;
+  padding: 10px 16px;
+  border-radius: 1.5em;
+  color: #fff;
+  text-align: center;
+  border-width: 0px;
+  box-shadow: 0px 5px 11px rgb(60 104 170 / 48%);
+  background-color: #3c68aa;
+  }  

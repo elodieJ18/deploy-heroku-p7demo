@@ -87,7 +87,7 @@ export const Card = ({comment}) => {
         </div>
         <div className="home-card-modify-comment">
           {comment.id === userData.id && (
-            <div onClick={() => setIsUpdated(!isUpdated)}>
+            <div className="icon-modifier" onClick={() => setIsUpdated(!isUpdated)}>
               <FontAwesomeIcon icon={["far", "pen-to-square"]} />
             </div>
           )}
@@ -102,7 +102,7 @@ export const Card = ({comment}) => {
               defaultValue={comment.message}
               onChange={(e) => setTextUpdate(e.target.value)}/>
               <div className="button-UpdateComment">
-                <button onClick={updateItemComment}> Valider modification</button>
+                <div className="btn-update-comment" onClick={updateItemComment}><p>Enregistrer la modification</p></div>
               </div>
           
             </div>
@@ -186,12 +186,12 @@ export const Card = ({comment}) => {
                                   </div>
                                   </div>
                                 </div>
-                                <div className="home-cardreply-description">
-                                    {reply.image && (<div className="home-image-post-container"><img className="home-image-post" src={reply.image}/> </div>)}
-                                    <p>{reply.message}</p>
-                                </div>
-                </div>  
-            </div> 
+                                    <div className="home-cardreply-description">
+                                        {reply.image && (<div className="home-image-post-container"><img className="home-image-post" src={reply.image}/> </div>)}
+                                        <p>{reply.message}</p>
+                                    </div>
+                              </div>  
+                          </div> 
                           }
                       
                       </div>
