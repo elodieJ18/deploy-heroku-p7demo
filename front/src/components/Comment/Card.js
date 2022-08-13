@@ -9,6 +9,7 @@ import { fas, faThumbsUp, faThumbsDown, faComment, faPenToSquare } from '@fortaw
 import { far } from '@fortawesome/free-regular-svg-icons';
 import LikeButton from "./LikeButton";
 import { getComment, updateComment } from "../../actions/comment.action";
+import { DeleteCard } from "./DeleteCard";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare);
 
 export const Card = ({comment}) => {
@@ -87,8 +88,11 @@ export const Card = ({comment}) => {
         </div>
         <div className="home-card-modify-comment">
           {comment.id === userData.id && (
-            <div className="icon-modifier" onClick={() => setIsUpdated(!isUpdated)}>
+            <div className="icon-modifier">
+            <div onClick={() => setIsUpdated(!isUpdated)}>
               <FontAwesomeIcon icon={["far", "pen-to-square"]} />
+            </div>
+            <DeleteCard idObject={comment.idObject}/> 
             </div>
           )}
         </div>
@@ -134,7 +138,7 @@ export const Card = ({comment}) => {
                              <div className="home-cardreply-container">
                                 <div className="home-cardreply-userProfil">
                                   <div className="image-profil-container-home">
-                                    <div className="image-profil-form-home">
+                                    <div className="image-profil-form-home-reply">
                                       <img className="user-name-image" 
                                             src={
                                               !isEmpty(usersData[0]) &&

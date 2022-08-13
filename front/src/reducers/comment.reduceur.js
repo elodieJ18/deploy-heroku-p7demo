@@ -1,4 +1,4 @@
-import { GET_COMMENT} from "../actions/comment.action";
+import { DELETE_COMMENT, GET_COMMENT} from "../actions/comment.action";
 import { UPDATE_COMMENT } from "../actions/comment.action";
 
 const initialState = {};
@@ -15,6 +15,8 @@ export default function commentReducer(state = initialState, action) {
               };
             } else return comment;
           }) 
+      case DELETE_COMMENT:
+        return state.map((comment) => comment.idObject === action.payload.idObject)
       default:
         return state;
            

@@ -85,6 +85,12 @@ h1 {
   overflow: hidden;
 }
 
+.image-profil-form-home-reply {
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+}
+
 .home-profil-names {
   display: flex;
   column-gap: 7px;
@@ -141,15 +147,15 @@ h1 {
 .home-cardreply-container .home-cardreply-userProfil {
   column-gap: 20px;
   display: flex;
-  padding: 28px 41px 15px 41px;
+  padding: 28px 16px 15px 16px;
 }
 .home-cardreply-container .home-cardreply-description {
-  padding: 0px 0px 43px 0px;
+  padding: 10px 16px 36px 16px;
 }
 
 .home-card-usersStatus-second-col p {
   margin-top: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
 }
 
 .home-card-left-part {
@@ -159,6 +165,8 @@ h1 {
 
 .icon-modifier {
   font-size: 22px;
+  display: flex;
+  column-gap: 23px;
 }
 
 .updateComment textarea {
@@ -177,6 +185,7 @@ h1 {
   border-width: 0px;
   box-shadow: 0px 5px 11px rgba(60, 104, 170, 0.48);
   background-color: #3c68aa;
+  float: right;
 }
 .btn-update-comment p {
   margin: 0;
