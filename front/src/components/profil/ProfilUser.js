@@ -32,9 +32,10 @@ export const ProfilUser = () => {
 
 
   return (
-    <div className="bloc-connexion">
+    <div className="bloc-profil">
      <div className="profil-container"> 
       <Navbar />
+      <div className="bloc-connexion">
       <div className="profil-actuality">
         <div className="profil-card-post">
           <div className="profil-card-userProfil">
@@ -111,6 +112,7 @@ export const ProfilUser = () => {
           </div>
         </div>
         <div></div>
+        </div>
         </div>
         </div>
     </div>

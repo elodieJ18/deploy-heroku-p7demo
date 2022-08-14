@@ -9,7 +9,7 @@ function Profil()  {
   const uid = useContext(UidContext);
   
   return (
-    <div className="bloc-connexion">
+    <div className="bloc-profil">
       {uid ? (<ProfilUser />) : (
      <Connexion />
      )}

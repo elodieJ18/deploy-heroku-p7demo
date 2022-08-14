@@ -100,9 +100,7 @@
   /*connexion*/
   
   .bloc-connexion {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
+    @include center-all-element;
     
         .bloc-connexion-content {
         box-shadow: $shadow-blue;
