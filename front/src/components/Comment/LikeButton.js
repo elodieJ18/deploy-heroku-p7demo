@@ -5,11 +5,11 @@ import logo from "../../assets/user-200.png";
 import {isEmpty, dateParser} from "../Utils";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas, faThumbsUp, faThumbsDown, faComment } from '@fortawesome/free-solid-svg-icons';
+import { fas, faThumbsUp, faThumbsDown, faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { UidContext } from "../AppContext";
 import { likeComment } from "../../actions/comment.action";
-library.add(fas, far, faThumbsUp, faThumbsDown, faComment);
+library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faHeart);
 
 export const LikeButton = ({comment}) => {
     const [liked, setLiked] = useState(false);
@@ -28,12 +28,12 @@ export const LikeButton = ({comment}) => {
   return (
    <div>
     {uid && liked === false && (
-         <FontAwesomeIcon className="thumbsEmpty" icon={["fa","thumbs-up"]} onClick={like} />
+         <FontAwesomeIcon className="heartEmpty" icon={["fa","heart"]} onClick={like} />
     )}
     {uid && liked && (
-         <FontAwesomeIcon className="thumbsFull" icon={["fa","thumbs-up"]} onClick={unlike} />
+         <FontAwesomeIcon className="heartFull" icon={["fa","heart"]} onClick={unlike} />
     )}
-   
+
    </div>
   );
 }

@@ -1,6 +1,8 @@
 const { Comment } = require("../models");
 const fs = require("fs");
 const path = require('path');
+const { parse } = require("path");
+const { debug } = require("console");
 
 //créer post comment
 module.exports.createComment  = async (req, res) => {
@@ -97,103 +99,38 @@ exports.deleteComment = (req, res, next) => {
 
 //Option de likes
 exports.likeComment = (req, res, next) => {
-  let like = req.params.like;
+  let likes = parseInt(req.body.likes);
   let idObject = req.params.idObject;
-  switch (like) {
+
+  console.log(likes);
+  console.log(req.body);
+  console.log(idObject);
     //Premier cas userlike and userdislike/
-    case 0:
-      // on appelle l'id du post
-      //case 0 ---> like 1 = 1
-      //case 0 ---> dislike -1 = 1
+      // trouver le commentaire 
       Comment.findOne({ where: { idObject: idObject } })
         .then((comment) => {
-          //On compare les user_id
-          if (comment.usersLikes.find((user) => user === req.body.id)) {
-            Comment.updateOne(
-              { idObject: req.params.id },
-              //met a jour la requete dans les data pour un like
-              {
-                $inc: { likes: -1 },
-                $pull: { usersLiked: req.body.id },
-                idObject: req.params.id,
-              }
-            )
-              .then(() => {
+          //voir si c'est l'useer est l'auteur du commentaire
+            Comment.update({likes: comment.likes + 1} //met a jour la requete dans les data pour un like 
+            ) 
+        }).then(() => {
                 res
                   .status(201)
                   .json({ message: "Ton avis a été pris en compte!" });
-              })
-              .catch((error) => {
-                res.status(400).json({ error: error });
-              });
+        })
+        .then((comment) => {
+          //voir si c'est l'useer est l'auteur du commentaire
+          if (comment.findOne((user) => user === req.params.id)) {
+            Comment.update({likes: comment.likes + 1} //met a jour la requete dans les data pour un like 
+            ) 
           }
-          //même methode pour dislike
-          if (comment.usersDisliked.find((user) => user === req.body.id)) {
-            Comment.updateOne(
-              { idObject: req.params.id },
-              {
-                $inc: { dislikes: -1 },
-                $pull: { usersDisliked: req.body.userId },
-                idObject: req.params.id,
-              }
-            )
-              .then(() => {
-                res.status(201).json({
-                  message: "Ton dislike interne a été pris en compte!",
-                });
-              })
-              .catch((error) => {
-                res.status(400).json({ error: error });
-              });
-          }
+        }).then(() => {
+                res
+                  .status(201)
+                  .json({ message: "Ton avis a été pris en compte!" });
         })
-        .catch((error) => {
-          res.status(404).json({ error: error });
+         .catch((error) => {
+        res.status(400).json({ error: error });
         });
-      break;
-
-    //deuxième cas like non user sur post et si c'est le même user
-    //case 1 ---> dislike 1 = 1
-    case 1:
-      // on appelle l'id du post
-      Comment.updateOne(
-        { idObject: req.params.id },
-        {
-          $inc: { likes: 1 },
-          $push: { usersLiked: req.body.id },
-          idObject: req.params.id,
-        }
-      )
-        .then(() => {
-          res.status(201).json({ message: "Ton like a été pris en compte!" });
-        })
-        .catch((error) => {
-          res.status(400).json({ error: error });
-        });
-      break;
-    //deuxième cas dislike non user sur post et si c'est le même user
-    //case -1 ---> dislike 1 = 0
-    case -1:
-      Comment.updateOne(
-        { idObject: req.params.id },
-        {
-          $inc: { dislikes: 1 },
-          $push: { usersDisliked: req.body.id },
-          idObject: req.params.id,
-        }
-      )
-        .then(() => {
-          res
-            .status(201)
-            .json({ message: "Ton dislike a été pris en compte!" });
-        })
-        .catch((error) => {
-          res.status(400).json({ error: error });
-        });
-      break;
-    default:
-      console.error("not today : mauvaise requête");
-  }
 };
 
 

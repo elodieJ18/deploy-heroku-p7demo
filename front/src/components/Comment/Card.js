@@ -28,9 +28,11 @@ export const Card = ({comment}) => {
     setIsUpdated(false)
    }
     
-  return (
-    <div className="home-card-container" key={comment.idObject} >
+  return ( 
+
     
+    <div className="home-card-container" key={comment.idObject} >
+   
       <div className="home-card-userProfil">
         <div className="home-card-left-part">
             <div className="image-profil-container-home">
@@ -118,7 +120,6 @@ export const Card = ({comment}) => {
           <div className="home-card-reaction-container">
               <p className="home-icon-post"><LikeButton comment={comment} /></p>
               <p className="home-icon-post"><FontAwesomeIcon icon={["fa", "comment"]} /></p>
-              <span></span>
            </div>
       </div>
 

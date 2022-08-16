@@ -4,6 +4,7 @@ import {Navbar} from "../components/Navbar"
 import {Thread} from "../components/Comment/Thread";
 import { UidContext } from "../components/AppContext";
 import {Connexion} from "../components/Log/Connexion";
+import NewComment from "../components/Comment/NewComment";
 
 
 function Home() {
@@ -13,9 +14,12 @@ function Home() {
    <div>
    
     
-    {uid ? (  <div className="home-container"> 
+    {uid ? (  <div className="home"> 
       <Navbar />
+      <div className="home-container">
+      <NewComment/>
       <Thread />
+      </div>
       </div>) : (
       <div>
           <Connexion/>

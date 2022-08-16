@@ -17,6 +17,7 @@ a {
   font-family: "Montserrat", sans-serif;
   text-decoration: none;
   white-space: normal;
+  font-size: 14px;
 }
 
 a {
@@ -32,9 +33,8 @@ h1 {
 
 /*home*/
 .home-actuality {
-  margin-top: 160px;
-  width: 50%;
-  margin-left: 24%;
+  width: max-content;
+  margin-top: 38px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,15 +46,21 @@ h1 {
   align-items: flex-start;
   row-gap: 38px;
 }
-.home-actuality .home-card-post .home-card-userProfil {
+
+.home-card-description {
+  background-color: #FBFCFC;
+  padding: 15px 41px 30px 41px;
+}
+
+.home-card-userProfil {
   column-gap: 20px;
   display: flex;
   justify-content: space-between;
   padding: 28px 41px 15px 41px;
 }
-.home-actuality .home-card-post .home-card-description {
-  background-color: #FBFCFC;
-  padding: 15px 41px 30px 41px;
+
+.home-actuality-new-comment {
+  margin-top: 160px;
 }
 
 .home-card-userStatus {
@@ -72,7 +78,7 @@ h1 {
 }
 .home-card-userStatus .home-card-description-date {
   font-size: 12px;
-  margin-top: 17px;
+  margin-top: 10px;
 }
 
 .home-card-container {
@@ -81,14 +87,14 @@ h1 {
 }
 
 .image-profil-form-home {
-  height: 100px;
-  width: 100px;
+  height: 64px;
+  width: 64px;
   overflow: hidden;
 }
 
 .image-profil-form-home-reply {
-  height: 70px;
-  width: 70px;
+  height: 64px;
+  width: 64px;
   overflow: hidden;
 }
 
@@ -129,6 +135,12 @@ h1 {
   stroke: black !important;
   color: transparent;
 }
+.home-card-reaction-container .home-icon-post .heartFull {
+  color: black;
+}
+.home-card-reaction-container .home-icon-post .heartEmpty {
+  color: transparent;
+}
 
 .home-cardreply-actuality {
   width: 100%;
@@ -155,7 +167,7 @@ h1 {
 }
 
 .home-card-usersStatus-second-col p {
-  margin-top: 4px;
+  margin-top: 0px;
   margin-bottom: 0px;
 }
 
@@ -170,10 +182,12 @@ h1 {
   column-gap: 23px;
 }
 
-.updateComment textarea {
-  width: 100%;
-  height: 100px;
+textarea {
+  width: 96%;
+  height: max-content;
   resize: none;
+  border: none;
+  padding: 12px;
 }
 
 .btn-update-comment {
@@ -194,6 +208,18 @@ h1 {
 
 .button-UpdateComment {
   margin-top: 24px;
+}
+
+.new-post-text-and-picture {
+  display: flex;
+  align-items: center;
+  border-radius: 1.5em;
+  border: 1px solid;
+  padding: 12px;
+  background: white;
+}
+.new-post-text-and-picture :hover {
+  border: unset;
 }
 
 @media (max-width: 720px) {

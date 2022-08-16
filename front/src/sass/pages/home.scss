@@ -22,6 +22,7 @@
     font-family: "Montserrat", sans-serif;
     text-decoration: none;
     white-space: normal ;
+    font-size: 14px;
   }
   
   a {
@@ -38,9 +39,9 @@
   
   /*home*/
    .home-actuality {
-    margin-top: 160px;
-    width: 50%;
-    margin-left: 24%;
+    
+    width: max-content;
+    margin-top: 38px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,20 +53,27 @@
         align-items: flex-start;
         row-gap: 38px;
 
-          .home-card-userProfil {
-            column-gap: 20px;
-            display: flex;
-            justify-content: space-between;
-            padding: 28px 41px 15px 41px;
-          }
+         
 
-          .home-card-description {
-            background-color: #FBFCFC;
-            padding: 15px 41px 30px 41px;
-        }
       
          
       }
+  }
+
+  .home-card-description {
+            background-color: #FBFCFC;
+            padding: 15px 41px 30px 41px;
+   }
+
+  .home-card-userProfil {
+    column-gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 28px 41px 15px 41px;
+  }
+
+  .home-actuality-new-comment {
+    margin-top: 160px;
   }
 
   .home-card-userStatus {
@@ -82,7 +90,7 @@
   }
   .home-card-description-date{
     font-size: 12px;
-    margin-top: 17px;
+    margin-top: 10px;
   }
 }
 
@@ -92,14 +100,14 @@
 }
 
 .image-profil-form-home {
-  height: 100px;
-  width: 100px;
+  height: 64px;
+  width: 64px;
     overflow: hidden;
 }
 
 .image-profil-form-home-reply {
-  height: 70px;
-  width: 70px;
+  height: 64px;
+  width: 64px;
     overflow: hidden;
 }
 
@@ -138,7 +146,13 @@
       font-size: 26px;
       stroke-width: 24px;
       stroke: black !important;
-      color: transparent;
+      color: transparent; 
+  } 
+  .heartFull {
+        color: black;
+      }
+  .heartEmpty {
+    color: transparent; 
   }
   }
 }
@@ -173,7 +187,7 @@
 }
 
 .home-card-usersStatus-second-col p{
-  margin-top: 4px;
+  margin-top: 0px;
   margin-bottom: 0px;
 }
 
@@ -189,10 +203,8 @@
     column-gap: 23px;
 }
 
-.updateComment textarea {
-  width: 100%;
-    height: 100px;
-    resize: none;
+textarea {
+ @include textarea-style;
 }
 
 .btn-update-comment {
@@ -207,6 +219,17 @@
   margin-top: 24px;
 }
 
+.new-post-text-and-picture {
+  display: flex;
+    align-items: center;
+    border-radius: 1.5em;
+    border: 1px solid;
+    padding: 12px;
+    background: white;
+    :hover {
+      border: unset;
+    }
+}
 
   @media (max-width: 720px) {
 
