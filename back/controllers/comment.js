@@ -1,8 +1,6 @@
 const { Comment } = require("../models");
 const fs = require("fs");
 const path = require('path');
-const { parse } = require("path");
-const { debug } = require("console");
 
 //créer post comment
 module.exports.createComment  = async (req, res) => {
@@ -98,39 +96,29 @@ exports.deleteComment = (req, res, next) => {
 
 
 //Option de likes
-exports.likeComment = (req, res, next) => {
+exports.likeComment = async  (req, res, next) => {
   let likes = parseInt(req.body.likes);
   let idObject = req.params.idObject;
+  let id = req.params.id;
 
   console.log(likes);
   console.log(req.body);
   console.log(idObject);
+  console.log(id);
     //Premier cas userlike and userdislike/
       // trouver le commentaire 
-      Comment.findOne({ where: { idObject: idObject } })
-        .then((comment) => {
-          //voir si c'est l'useer est l'auteur du commentaire
-            Comment.update({likes: comment.likes + 1} //met a jour la requete dans les data pour un like 
-            ) 
-        }).then(() => {
-                res
-                  .status(201)
-                  .json({ message: "Ton avis a été pris en compte!" });
-        })
-        .then((comment) => {
-          //voir si c'est l'useer est l'auteur du commentaire
-          if (comment.findOne((user) => user === req.params.id)) {
-            Comment.update({likes: comment.likes + 1} //met a jour la requete dans les data pour un like 
-            ) 
-          }
-        }).then(() => {
-                res
-                  .status(201)
-                  .json({ message: "Ton avis a été pris en compte!" });
-        })
-         .catch((error) => {
-        res.status(400).json({ error: error });
-        });
+    const foundLike = await Comment.findOne({
+      where: { idObject: idObject },
+    })
+    if (!foundLike) {
+      await Comment.update({ likes },{ idObject: idObject});
+      res.json({ likes: likes + 1 });
+    } else {
+      await Comment.update({ likes },{
+        where: { idObject: idObject},
+      });
+      res.json({ likes: likes - 1 })
+    }
 };
 
 
