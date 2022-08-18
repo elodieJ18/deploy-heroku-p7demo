@@ -13,11 +13,10 @@ library.add(fas, far, faCamera);
 
 export const NewComment = () => {
     const [message, setMessage] = useState('');
-    const [updateForm, setUpdateForm] = useState(false); 
     const userData = useSelector((state) => state.userReducer);
     
   return (
-  
+  <div id="create-comment">
     <div className="home-actuality-new-comment">
         <div className="home-card-container" > 
             <div className="home-card-description-comment">
@@ -25,11 +24,12 @@ export const NewComment = () => {
                         <div className="image-profil-form-home">
                             <img className="user-name-image" src={userData.image === null || userData.image === 'undefined' ? logo : userData.image}  alt="userimage"/>
                         </div>
-                    </div>
+                </div>
                 <form >
                     <div className="new-post-text-and-picture"> 
                         <textarea name="message" id="message" placeholder="Partage ta vie" onChange={(e) => setMessage(e.target.value)} value={message} />
-                        <div className="new-post-picture"><FontAwesomeIcon icon="camera" /></div>
+                        <div className="new-post-picture"><FontAwesomeIcon icon="camera" />
+                        </div>
                     </div>
                     <div className="duo-update-btn-profil">
                         <button className="btn-update-comment" type="submit">Publish</button> 
@@ -37,7 +37,8 @@ export const NewComment = () => {
                 </form>
             </div>
         </div>
-    </div>   
+    </div> 
+</div>  
   );
 }
 

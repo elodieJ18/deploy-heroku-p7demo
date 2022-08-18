@@ -83,8 +83,7 @@ export const ProfilUser = () => {
                   <div className="form-profil-nom-prenom">
                     <div className="form-profil-flex-label">
                     <label  label="nom" name="nom" type="text">Nom</label>
-                      <input required="required" type="text"  name="nom" 
-                      defaultValue={userData.nom}
+                      <input required="required" type="text"  name="nom"
                         onChange={(e) => setNom(e.target.value)}
                       />
                     </div>
@@ -92,7 +91,6 @@ export const ProfilUser = () => {
                     <label   label="prenom" name="prenom" type="text" >Prenom</label>
                       <input required="required"
                          type="text" name="prenom"
-                         defaultValue={userData.prenom}
                          onChange={(e) => setPrenom(e.target.value)}
                       />
                     </div>
@@ -100,7 +98,6 @@ export const ProfilUser = () => {
                     <label  label="Status" name="status" type="text" >Status</label>
                       <input required="required"
                         type="text"  name="status"
-                        defaultValue={userData.status}
                         onChange={(e) => setStatus(e.target.value)}
                       />
                    <div className="duo-update-btn-profil">

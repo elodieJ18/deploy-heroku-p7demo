@@ -104,24 +104,41 @@ exports.likeComment = async  (req, res, next) => {
 
     //Premier cas userlike and userdislike/
       // trouver le commentaire 
-    var foundLike = await Comment.findOne({
+    Comment.findOne({
       where: { idObject: idObject, id:id },
     }) .then(comment => {
-      if (!foundLike) {
-       Comment.update({ likes: +1 },{ where: { idObject: idObject}});
-       res
-       .status(201)
-       .json({ message: "Ton like +1 a été pris en compte!" });
-    } else {
-       Comment.update({ likes: -1 },{where: { idObject: idObject},
-      });
+      console.log(comment);
+      console.log(comment.likes);
+      comment.update( {likes: comment.likes === 1 ? 0 : 1} );
       res
        .status(201)
-       .json({ message: "Ton unlike -1 a été pris en compte!" });
-    }
+       .json({ message: "Ton like a été pris en compte!" });
     })  
     .catch((err) => console.log(err));
-  
+};
+
+
+exports.likeComment = async  (req, res, next) => {
+  let likes = parseInt(req.body.likes);
+  let idObject = req.params.idObject;
+  let usersLikes = parseInt(req.body.usersLikes);
+  let id = req.body.id;
+    //Premier cas userlike and userdislike/
+      // trouver le commentaire 
+    Comment.findOne({
+      where: { idObject: idObject, id:id },
+    }) .then(comment => {
+      console.log(comment);
+      console.log(comment.likes);
+      comment.update( {likes: comment.likes === 1 ? 0 : 1} );
+        res
+        .status(201)
+        .json({ message: "Ton like a été pris en compte!" });
+      comment.update( {usersLikes: comment.usersLikes === 1 ? 0 : 1} );
+        res.status(201)
+        .json({ message: "Ton like a été pris en compte!" });
+    })  
+    .catch((err) => console.log(err));
 };
 
 

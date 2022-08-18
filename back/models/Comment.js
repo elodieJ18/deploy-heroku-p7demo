@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       date: { type: DataTypes.DATE },
       image: {  type: DataTypes.STRING, required: false, allowNull: true },
       likes: { type: DataTypes.STRING, required: false, default: 0 },
-      usersLikes: { type: DataTypes.STRING, required: false },
+      usersLikes: { type: DataTypes.STRING, required: false, default: 0 },
     },
     { sequelize, tableName: "comment", modelName: "Comment" },
     {

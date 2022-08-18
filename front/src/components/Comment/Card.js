@@ -5,13 +5,12 @@ import logo from "../../assets/user-200.png";
 import {isEmpty, dateParser} from "../Utils";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas, faThumbsUp, faThumbsDown, faComment, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { fas, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import LikeButton from "./LikeButton";
 import { getComment, updateComment } from "../../actions/comment.action";
 import { DeleteCard } from "./DeleteCard";
 import NewReply from "./NewReply";
-library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare);
+library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart);
 
 export const Card = ({comment}) => {
     const [isUpdated, setIsUpdated] = useState(false);
@@ -21,6 +20,12 @@ export const Card = ({comment}) => {
     const replyData = useSelector((state) => state.replyReducer);
     const [openReply, setOpenReply] = useState(true);
     const dispatch = useDispatch();
+
+    console.log(replyData);
+    const returnReply = (commentId) => {
+      return replyData.filter(reply => reply.idComment === commentId).length;
+      
+    };
    
    const updateItemComment = async () => {
     if (textUpdate) {
@@ -137,8 +142,15 @@ export const Card = ({comment}) => {
       {/*Reaction au commentaire Like/Reply*/}
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
-              <div className="home-icon-post"><LikeButton comment={comment} />
+          <div className="comment-and-numbers">
+              <div className="home-icon-post">
+                      <FontAwesomeIcon className="heartEmpty" icon={["fa","heart"]} />
               </div>
+              <span>
+                <p>{returnReply(comment.idObject)}</p>
+              </span>
+          </div>
+              
               <div className="comment-and-numbers">
 
                   {/*Toggle pour le reply */}
@@ -147,17 +159,14 @@ export const Card = ({comment}) => {
                   </p>
 
                   {/*Lecture du nombres de reply */}
-                  <span>{
-                    !isEmpty(replyData[0]) 
-                    && replyData.map((reply) => {
-                        if (comment.idObject === reply.idComment ) return  <p key={reply.idObject}>test-number</p> 
-                      })}
+                  <span>
+                     <p>{returnReply(comment.idObject)}</p>
                   </span>
               </div>
            </div>
       </div>
 
-    {/*Toggle ouvert pour le reply */}
+    {/*Toggle ouvert pour le reply.map()*/}
     {openReply === false && (
       <>
       <NewReply/>       
@@ -169,8 +178,8 @@ export const Card = ({comment}) => {
                   .map((reply) => {
                     if (comment.idObject === reply.idComment ) return <div key={reply.idObject}>
             <div>
-            <div className="home-card-actuality">
-                <div className="home-card-post">
+              <div className="home-card-actuality">
+                  <div className="home-card-post">
                           {<div >
                              <div className="home-cardreply-container">
                                 <div className="home-cardreply-userProfil">
@@ -237,19 +246,17 @@ export const Card = ({comment}) => {
                                     </div>
                                   </div>
                                   </div>
-                                </div>
-                                   
+                                </div>  
                               </div>  
                           </div> 
                           }
-                      
                       </div>
-                      </div>
-                      </div>
-                      </div>;
-                    else return null;
-                  })
-              }
+                    </div>
+                  </div>
+                </div>
+              else return null
+              })
+            }
           </div>  
         </div>
       </div>

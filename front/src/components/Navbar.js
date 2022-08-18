@@ -29,7 +29,7 @@ export const Navbar = () => {
                   <p className="linkName">home</p>
                 </div>
               </NavLink>
-              <NavLink  to="/">
+              <NavLink  to="create-comment">
                 <div className="navbar-element">
                   <p className="linkicon"><FontAwesomeIcon icon="circle-plus" /></p>
                   <p className="linkName">Create post</p>
