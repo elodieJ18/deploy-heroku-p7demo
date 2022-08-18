@@ -100,8 +100,8 @@
 }
 
 .image-profil-form-home {
-  height: 64px;
-  width: 64px;
+  height: 80px;
+  width: 80px;
     overflow: hidden;
 }
 
@@ -142,12 +142,38 @@
   padding: 0px 14px 0px 43px;
   .home-icon-post{
     font-size: 20px;
+    margin: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 1.5em;
+    &:hover {
+      margin: 10px;
+      background: #F6F6F6;
+      padding: 10px;
+      border-radius: 1.5em;
+    }
     svg {
       font-size: 26px;
       stroke-width: 24px;
-      stroke: black !important;
+      stroke: #312E3E !important;
       color: transparent; 
   } 
+
+  
+   
+  } 
+  .active-comment {
+    margin: 10px;
+    color: transparent; 
+    background: #F6F6F6;
+      padding: 10px;
+      border-radius: 1.5em;
+    svg {
+      font-size: 26px;
+      stroke-width: 24px;
+      stroke: #312E3E !important;
+  }
+  
   .heartFull {
         color: black;
       }
@@ -155,6 +181,11 @@
     color: transparent; 
   }
   }
+}
+
+.comment-and-numbers {
+  display: flex;
+    align-items: center;
 }
 
 
@@ -181,9 +212,39 @@
     padding: 28px 16px 15px 16px;
   }
   .home-cardreply-description {
-    padding: 10px 16px 36px 16px;
+    padding: 10px 16px 36px 0px;
   }
   
+}
+
+.home-profil-names-reply {
+  display: flex;
+  column-gap: 7px;
+  font-weight: 500;
+  justify-content: space-between;
+  .home-card-usersStatus-second-col p{
+    font-weight: 400;
+  }
+  .home-card-description-date {
+    font-weight: 400;
+  }
+}
+
+.home-card-userStatus-reply {
+  background: #F6F6F6;
+    border-radius: 0em 1.5em 1.5em 1.5em;
+    padding: 15px 31px;
+    width: 100%;
+}
+
+.home-profil-names-container-reply {
+  display: flex;
+  column-gap: 3px;
+}
+
+.home-profil-names-and-status-reply {
+  display: flex;
+    flex-direction: column;
 }
 
 .home-card-usersStatus-second-col p{
@@ -225,10 +286,70 @@ textarea {
     border-radius: 1.5em;
     border: 1px solid;
     padding: 12px;
+    column-gap: 43px;
     background: white;
+    textarea {
+      border: none;
+      padding: 0;
+    }
     :hover {
       border: unset;
+      outline-offset: unset;
+    outline: unset;
+    color: unset;
     }
+    :focus{
+      border: unset;
+      outline-offset: unset;
+    outline: unset;
+    color: unset;
+    }
+    .new-post-picture{
+      font-size: 20px;
+      svg {
+        font-size: 26px;
+        stroke-width: 24px;
+        stroke: #312E3E !important;
+        color: transparent; 
+    }
+    :focus{
+      color: #312E3E; 
+    }
+  } 
+}
+
+.home-card-description-reply{
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 20px;
+  padding: 15px 41px 30px 48px;
+  form {
+    width: 82%;
+  }
+  .duo-update-btn-profil {
+    margin-top: 10px;
+}
+
+}
+
+.home-card-description-comment {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 20px;
+  padding: 30px 41px 30px 48px;
+  form {
+    width: 100%;
+  }
+
+  .duo-update-btn-profil {
+    margin-top: 10px;
+}
+}
+
+.home-actuality-new-reply {
+  .home-card-container {
+    box-shadow: unset;
+  }
 }
 
   @media (max-width: 720px) {

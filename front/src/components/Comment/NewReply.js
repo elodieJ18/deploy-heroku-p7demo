@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../../css/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/user-200.png";
-import {isEmpty, dateParser} from "../Utils";
 import { fas, faCamera } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,24 +10,24 @@ library.add(fas, far, faCamera);
 
 
 
-export const NewComment = () => {
+export const NewReply = () => {
     const [message, setMessage] = useState('');
     const [updateForm, setUpdateForm] = useState(false); 
     const userData = useSelector((state) => state.userReducer);
     
   return (
   
-    <div className="home-actuality-new-comment">
+    <div className="home-actuality-new-reply">
         <div className="home-card-container" > 
-            <div className="home-card-description-comment">
-                <div className="image-profil-container-home">
-                        <div className="image-profil-form-home">
+            <div className="home-card-description-reply">
+                    <div className="image-profil-container-home">
+                        <div className="image-profil-form-home-reply">
                             <img className="user-name-image" src={userData.image === null || userData.image === 'undefined' ? logo : userData.image}  alt="userimage"/>
                         </div>
                     </div>
                 <form >
                     <div className="new-post-text-and-picture"> 
-                        <textarea name="message" id="message" placeholder="Partage ta vie" onChange={(e) => setMessage(e.target.value)} value={message} />
+                        <textarea name="message" id="message" placeholder="Je répond au post" onChange={(e) => setMessage(e.target.value)} value={message} />
                         <div className="new-post-picture"><FontAwesomeIcon icon="camera" /></div>
                     </div>
                     <div className="duo-update-btn-profil">
@@ -41,4 +40,4 @@ export const NewComment = () => {
   );
 }
 
-export default NewComment;
+export default NewReply;

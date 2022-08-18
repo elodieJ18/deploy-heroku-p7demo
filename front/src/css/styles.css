@@ -87,8 +87,8 @@ h1 {
 }
 
 .image-profil-form-home {
-  height: 64px;
-  width: 64px;
+  height: 80px;
+  width: 80px;
   overflow: hidden;
 }
 
@@ -128,18 +128,45 @@ h1 {
 }
 .home-card-reaction-container .home-icon-post {
   font-size: 20px;
+  margin: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 1.5em;
+}
+.home-card-reaction-container .home-icon-post:hover {
+  margin: 10px;
+  background: #F6F6F6;
+  padding: 10px;
+  border-radius: 1.5em;
 }
 .home-card-reaction-container .home-icon-post svg {
   font-size: 26px;
   stroke-width: 24px;
-  stroke: black !important;
+  stroke: #312E3E !important;
   color: transparent;
 }
-.home-card-reaction-container .home-icon-post .heartFull {
+.home-card-reaction-container .active-comment {
+  margin: 10px;
+  color: transparent;
+  background: #F6F6F6;
+  padding: 10px;
+  border-radius: 1.5em;
+}
+.home-card-reaction-container .active-comment svg {
+  font-size: 26px;
+  stroke-width: 24px;
+  stroke: #312E3E !important;
+}
+.home-card-reaction-container .active-comment .heartFull {
   color: black;
 }
-.home-card-reaction-container .home-icon-post .heartEmpty {
+.home-card-reaction-container .active-comment .heartEmpty {
   color: transparent;
+}
+
+.comment-and-numbers {
+  display: flex;
+  align-items: center;
 }
 
 .home-cardreply-actuality {
@@ -163,7 +190,37 @@ h1 {
   padding: 28px 16px 15px 16px;
 }
 .home-cardreply-container .home-cardreply-description {
-  padding: 10px 16px 36px 16px;
+  padding: 10px 16px 36px 0px;
+}
+
+.home-profil-names-reply {
+  display: flex;
+  column-gap: 7px;
+  font-weight: 500;
+  justify-content: space-between;
+}
+.home-profil-names-reply .home-card-usersStatus-second-col p {
+  font-weight: 400;
+}
+.home-profil-names-reply .home-card-description-date {
+  font-weight: 400;
+}
+
+.home-card-userStatus-reply {
+  background: #F6F6F6;
+  border-radius: 0em 1.5em 1.5em 1.5em;
+  padding: 15px 31px;
+  width: 100%;
+}
+
+.home-profil-names-container-reply {
+  display: flex;
+  column-gap: 3px;
+}
+
+.home-profil-names-and-status-reply {
+  display: flex;
+  flex-direction: column;
 }
 
 .home-card-usersStatus-second-col p {
@@ -186,7 +243,6 @@ textarea {
   width: 96%;
   height: max-content;
   resize: none;
-  border: none;
   padding: 12px;
 }
 
@@ -216,10 +272,66 @@ textarea {
   border-radius: 1.5em;
   border: 1px solid;
   padding: 12px;
+  column-gap: 43px;
   background: white;
+}
+.new-post-text-and-picture textarea {
+  border: none;
+  padding: 0;
 }
 .new-post-text-and-picture :hover {
   border: unset;
+  outline-offset: unset;
+  outline: unset;
+  color: unset;
+}
+.new-post-text-and-picture :focus {
+  border: unset;
+  outline-offset: unset;
+  outline: unset;
+  color: unset;
+}
+.new-post-text-and-picture .new-post-picture {
+  font-size: 20px;
+}
+.new-post-text-and-picture .new-post-picture svg {
+  font-size: 26px;
+  stroke-width: 24px;
+  stroke: #312E3E !important;
+  color: transparent;
+}
+.new-post-text-and-picture .new-post-picture :focus {
+  color: #312E3E;
+}
+
+.home-card-description-reply {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 20px;
+  padding: 15px 41px 30px 48px;
+}
+.home-card-description-reply form {
+  width: 82%;
+}
+.home-card-description-reply .duo-update-btn-profil {
+  margin-top: 10px;
+}
+
+.home-card-description-comment {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 20px;
+  padding: 30px 41px 30px 48px;
+}
+.home-card-description-comment form {
+  width: 100%;
+}
+.home-card-description-comment .duo-update-btn-profil {
+  margin-top: 10px;
+}
+
+.home-actuality-new-reply .home-card-container {
+  box-shadow: unset;
 }
 
 @media (max-width: 720px) {
