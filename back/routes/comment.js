@@ -15,7 +15,4 @@ router.put("/:idObject", [authJwt.verifyToken], multer, commentCtrl.modifyCommen
 //suppression d'un produit
 router.delete("/:idObject", [authJwt.verifyToken], commentCtrl.deleteComment);
 
-//like des sauces (pas encore créer)
-router.post("/:idObject/like", [authJwt.verifyToken], commentCtrl.likeComment);
-
 module.exports = router;

@@ -1,7 +1,4 @@
 const { Comment } = require("../models");
-const fs = require("fs");
-const path = require('path');
-const { userInfo } = require("os");
 
 //créer post comment
 module.exports.createComment  = async (req, res) => {
@@ -96,50 +93,8 @@ exports.deleteComment = (req, res, next) => {
 };
 
 
-//Option de likes
-exports.likeComment = async  (req, res, next) => {
-  let likes = parseInt(req.body.likes);
-  let idObject = req.params.idObject;
-  let id = req.body.id;
-
-    //Premier cas userlike and userdislike/
-      // trouver le commentaire 
-    Comment.findOne({
-      where: { idObject: idObject, id:id },
-    }) .then(comment => {
-      console.log(comment);
-      console.log(comment.likes);
-      comment.update( {likes: comment.likes === 1 ? 0 : 1} );
-      res
-       .status(201)
-       .json({ message: "Ton like a été pris en compte!" });
-    })  
-    .catch((err) => console.log(err));
-};
 
 
-exports.likeComment = async  (req, res, next) => {
-  let likes = parseInt(req.body.likes);
-  let idObject = req.params.idObject;
-  let usersLikes = parseInt(req.body.usersLikes);
-  let id = req.body.id;
-    //Premier cas userlike and userdislike/
-      // trouver le commentaire 
-    Comment.findOne({
-      where: { idObject: idObject, id:id },
-    }) .then(comment => {
-      console.log(comment);
-      console.log(comment.likes);
-      comment.update( {likes: comment.likes === 1 ? 0 : 1} );
-        res
-        .status(201)
-        .json({ message: "Ton like a été pris en compte!" });
-      comment.update( {usersLikes: comment.usersLikes === 1 ? 0 : 1} );
-        res.status(201)
-        .json({ message: "Ton like a été pris en compte!" });
-    })  
-    .catch((err) => console.log(err));
-};
 
 
 
