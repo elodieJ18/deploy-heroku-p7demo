@@ -18,12 +18,18 @@ export const Card = ({comment}) => {
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
     const replyData = useSelector((state) => state.replyReducer);
+    const likesData = useSelector((state) => state.likesReducer);
     const [openReply, setOpenReply] = useState(true);
     const dispatch = useDispatch();
 
     console.log(replyData);
     const returnReply = (commentId) => {
       return replyData.filter(reply => reply.idComment === commentId).length;
+      
+    };
+
+    const returnLikes = (commentId) => {
+      return likesData.filter(likes => likes.idComment === commentId).length;
       
     };
    
@@ -147,7 +153,7 @@ export const Card = ({comment}) => {
                       <FontAwesomeIcon className="heartEmpty" icon={["fa","heart"]} />
               </div>
               <span>
-                <p>{returnReply(comment.idObject)}</p>
+                <p>{returnLikes(comment.idObject)}</p>
               </span>
           </div>
               

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from "redux";
 import { getUsers } from "./actions/users.action";
 import { getAllReply } from "./actions/reply.action";
+import { getAllLike } from "./actions/likes.action";
 import { getComment } from "./actions/comment.action";
 import thunk from "redux-thunk";
 import rootReducer from './reducers'
@@ -20,6 +21,7 @@ const store =  createStore(
 store.dispatch(getUsers());
 store.dispatch(getComment());
 store.dispatch(getAllReply());
+store.dispatch(getAllLike());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

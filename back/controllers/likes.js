@@ -20,3 +20,16 @@ module.exports.likeComment  = async (req, res) => {
      
   };
 
+  
+module.exports.getallLike = async (req, res) => {
+  let likes = await Likes.findAll()
+  .then((likes) => {
+    res.status(200).send(likes)
+  })
+  .catch(err => {
+    res.status(500)
+    .send({ message: err.message });
+  });
+}
+
+
