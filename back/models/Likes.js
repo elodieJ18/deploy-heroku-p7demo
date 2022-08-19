@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   }
     Likes.init(
     { idObject: { type: DataTypes.UUID, primaryKey: true },
-      idComment: {  type: DataTypes.INTEGER, allowNull: false },
+      idComment: {  type: DataTypes.INTEGER, allowNull: true},
       id: {  type: DataTypes.INTEGER, required: true },
       likes: { type: DataTypes.STRING, required: false, default: 0 }
     },
