@@ -5,10 +5,6 @@ import { getComment } from "../../actions/comment.action";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 
-const testdoble = (comments) => {
-console.log(comments);
-return true;
-} 
 
 export const Thread = () => {
     const [loadComment, setLoadComment] = useState(true);
@@ -27,7 +23,7 @@ export const Thread = () => {
    <div>
       <div className="home-actuality">
       <div className="home-card-post">
-            {(comments[0]) && testdoble(comments) && comments.map((comment, idObject) => {
+            {(comments[0])  && comments.map((comment, idObject) => {
                 return <Card comment={comment} key={idObject}/>
             })
         }

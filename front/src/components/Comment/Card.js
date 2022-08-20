@@ -27,7 +27,7 @@ export const Card = ({comment}) => {
       return replyData.filter(reply => reply.idComment === commentId).length;
       
     };
-
+    
     const returnLikes = (commentId) => {
       return likesData.filter(likes => likes.idComment === commentId).length;
       
@@ -138,7 +138,7 @@ export const Card = ({comment}) => {
                 onChange={(e) => setTextUpdate(e.target.value)}/>
                 <div className="button-UpdateComment">
                     <div className="btn-update-comment" onClick={updateItemComment}>
-                      <p>Enregistrer la modification</p>
+                      <p>Save modification</p>
                     </div>
                 </div>
             </div>

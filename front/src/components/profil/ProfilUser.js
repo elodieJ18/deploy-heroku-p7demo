@@ -51,13 +51,9 @@ export const ProfilUser = () => {
              )}
               {updateImg && (
                 <>
-                  <div className="image-form"> 
-              <img className="user-name-image" src={userData.image === null || userData.image === 'undefined' ? logo :  userData.image} alt="userimage"/>
-            </div>
-            
-           <UploadImg />
-           <button className="update-btn-profil btn-cancel-profil" onClick={() => setUpdateImg(!updateImg)}>Cancel</button>
-           </>
+                  <UploadImg />
+                  <button className="update-btn-profil btn-cancel-profil" onClick={() => setUpdateImg(!updateImg)}>Cancel</button>
+                </>
            )}
             <div className="profil-card-userStatus">
             <div className="profil-card-usersStatus-second-col">   

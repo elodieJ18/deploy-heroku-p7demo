@@ -352,6 +352,11 @@ textarea {
   }
 }
 
+.new-post-picture
+#file {
+  display: none;
+}
+
   @media (max-width: 720px) {
 
     .home-actuality {

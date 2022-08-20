@@ -6,6 +6,7 @@ import { fas, faCamera } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import UploadImg from "../profil/UploadImg";
 library.add(fas, far, faCamera);
 
 
@@ -13,6 +14,7 @@ library.add(fas, far, faCamera);
 export const NewReply = () => {
     const [message, setMessage] = useState('');
     const [updateForm, setUpdateForm] = useState(false); 
+    const [pushImg, setPushImg] = useState(false);
     const userData = useSelector((state) => state.userReducer);
     
   return (
@@ -28,7 +30,20 @@ export const NewReply = () => {
                 <form >
                     <div className="new-post-text-and-picture"> 
                         <textarea name="message" id="message" placeholder="Je répond au post" onChange={(e) => setMessage(e.target.value)} value={message} />
-                        <div className="new-post-picture"><FontAwesomeIcon icon="camera" /></div>
+                        {pushImg === false && (
+                            <>
+                                <div className="new-post-picture" onClick={() => setPushImg(!pushImg)}><FontAwesomeIcon icon="camera" />
+                                </div>
+                            </>
+                            )}
+                        {pushImg && (
+                            <>
+                            <UploadImg />
+                            <div className="new-post-picture" onClick={() => setPushImg(!pushImg)}><FontAwesomeIcon icon="camera" />
+                                </div>
+                            </>
+                            )}
+                        
                     </div>
                     <div className="duo-update-btn-profil">
                         <button className="btn-update-comment" type="submit">Publish</button> 

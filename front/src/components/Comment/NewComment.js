@@ -7,13 +7,27 @@ import { fas, faCamera } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+
+import UploadImg from "../profil/UploadImg";
 library.add(fas, far, faCamera);
 
 
 
 export const NewComment = () => {
     const [message, setMessage] = useState('');
+    const [uploadImg, setUploadImg] = useState();
+    const [file, setFile] = useState(null);
     const userData = useSelector((state) => state.userReducer);
+
+    const handleComment = () => {};
+
+    const handleImg = (e) => {
+        setUploadImg(URL.createObjectURL(e.target.files[0]))
+    };
+
+    const cancelImg = () => {
+        setUploadImg('');
+    };
     
   return (
   <div id="create-comment">
@@ -28,11 +42,24 @@ export const NewComment = () => {
                 <form >
                     <div className="new-post-text-and-picture"> 
                         <textarea name="message" id="message" placeholder="Partage ta vie" onChange={(e) => setMessage(e.target.value)} value={message} />
-                        <div className="new-post-picture"><FontAwesomeIcon icon="camera" />
+                         <div className="new-post-picture">
+                            <label htmlFor="file"> <FontAwesomeIcon icon="camera" /></label>
+                            <input  type="file" id="file" name="image" accept=".jpg, .jpeg, .png" 
+                             onChange={(e) => handleImg(e)}/>
                         </div>
+                    </div> 
+                    <div>
+                        {uploadImg ? (
+                            <div>
+                                <button onClick={cancelImg}>x</button>
+                                <img src={uploadImg}  alt="imageComment"/>
+                            </div>
+                        ) : null
+
+                        }
                     </div>
                     <div className="duo-update-btn-profil">
-                        <button className="btn-update-comment" type="submit">Publish</button> 
+                        <button className="btn-update-comment" onClick={handleComment}>Publish</button> 
                     </div> 
                 </form>
             </div>
