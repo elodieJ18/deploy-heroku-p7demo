@@ -16,13 +16,24 @@ library.add(fas, far, faCamera);
 export const NewComment = () => {
     const [message, setMessage] = useState('');
     const [uploadImg, setUploadImg] = useState();
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState();
     const userData = useSelector((state) => state.userReducer);
 
-    const handleComment = () => {};
+    const handleComment = async() => {
+        if (message || uploadImg) {
+            const data = new FormData();
+            data.append("id", userData.id)
+            data.append("image", file);
+        if (file) data.append("image", file);
+
+        } else {
+            alert("veuillez entrer un message")
+        }
+    };
 
     const handleImg = (e) => {
-        setUploadImg(URL.createObjectURL(e.target.files[0]))
+        setUploadImg(URL.createObjectURL(e.target.files[0]));
+        setFile(e.target.files[0]);
     };
 
     const cancelImg = () => {
