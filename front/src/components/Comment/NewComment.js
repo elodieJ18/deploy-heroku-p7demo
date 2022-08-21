@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import "../../css/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/user-200.png";
-import {isEmpty, dateParser} from "../Utils";
-import { fas, faCamera } from '@fortawesome/free-solid-svg-icons';
+import { fas, faCamera, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { createComment, getComment } from "../../actions/comment.action";
+library.add(fas, far, faCamera, faXmark);
 
-import UploadImg from "../profil/UploadImg";
-library.add(fas, far, faCamera);
 
 
 
@@ -17,14 +16,19 @@ export const NewComment = () => {
     const [message, setMessage] = useState('');
     const [uploadImg, setUploadImg] = useState();
     const [file, setFile] = useState();
+    const dispatch = useDispatch();
     const userData = useSelector((state) => state.userReducer);
 
     const handleComment = async() => {
         if (message || uploadImg) {
             const data = new FormData();
-            data.append("id", userData.id)
+            data.append("id", userData.id);
+            data.append("message", message);
             data.append("image", file);
         if (file) data.append("image", file);
+
+            await dispatch(createComment(data));
+            dispatch(getComment());
 
         } else {
             alert("veuillez entrer un message")
@@ -61,9 +65,11 @@ export const NewComment = () => {
                     </div> 
                     <div>
                         {uploadImg ? (
-                            <div>
-                                <button onClick={cancelImg}>x</button>
-                                <img src={uploadImg}  alt="imageComment"/>
+                            <div className="img-comment-content">
+                            <div className="img-comment-size img-comment-form">
+                                <img className="img-comment" src={uploadImg}  alt="imageComment"/>
+                            </div> 
+                            < FontAwesomeIcon icon="xmark" onClick={cancelImg}/>
                             </div>
                         ) : null
 

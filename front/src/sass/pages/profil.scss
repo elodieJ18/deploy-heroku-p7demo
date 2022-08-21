@@ -58,6 +58,9 @@
 
 .upload-pic {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .update-btn-profil {
         border: none;
     }

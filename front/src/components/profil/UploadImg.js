@@ -28,7 +28,7 @@ const UploadImg = () => {
        <form action="" onSubmit={handlePicture} className="upload-pic">
          <>
         <div className="image-form"> 
-        <img className="user-name-image" src={ userData.image || uploadImg ? uploadImg || userData.image : uploadImg }  alt="userimage"/>
+        <img className="user-name-image" src={ userData.image || uploadImg ||  undefined ? uploadImg || logo || userData.image : uploadImg }  alt="userimage"/>
       </div>
       </>
         <label htmlFor="file"></label>

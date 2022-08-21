@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const GET_COMMENT = "GET_COMMENT";
+export const CREATE_COMMENT = "CREATE_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 
@@ -45,6 +46,14 @@ export const deleteComment = (idObject) => {
     }
 }
 
+
+export const createComment = (data) => {
+    return axios ({
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}api/comment/upload`,
+        data: { data }
+    })
+}
 
 
 
