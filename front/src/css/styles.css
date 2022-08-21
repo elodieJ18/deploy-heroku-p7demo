@@ -364,6 +364,11 @@ textarea {
   margin-top: 10px;
 }
 
+.home-card-modify-reply {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .home-actuality-new-reply .home-card-container {
   box-shadow: unset;
 }

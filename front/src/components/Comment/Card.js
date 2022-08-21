@@ -8,14 +8,18 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { getComment, updateComment } from "../../actions/comment.action";
+import { getAllReply, updateReply } from "../../actions/reply.action";
 import { likesComment } from "../../actions/likes.action";
 import { DeleteCard } from "./DeleteCard";
+import { DeleteReply } from "./DeleteReply";
 import NewReply from "./NewReply";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart);
 
 export const Card = ({comment}) => {
     const [isUpdated, setIsUpdated] = useState(false);
+    const [isUpdatedReply, setIsUpdatedReply] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    const [replyUpdate, setReplyUpdate] = useState(null);
     const [likes, setLikes] = useState();
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
@@ -42,8 +46,6 @@ export const Card = ({comment}) => {
           data.append("id", comment.id);
           await dispatch(likesComment(data)) .then(() => 
             dispatch(getComment()));
-            
-
   };
    
    const updateItemComment = async () => {
@@ -53,7 +55,8 @@ export const Card = ({comment}) => {
     }
     setIsUpdated(false)
    }
-    
+ 
+
   return ( 
  
     /*Appelle de notre commentaire avec pour chaque son "key" => idObject */
@@ -136,12 +139,10 @@ export const Card = ({comment}) => {
       </div>
       <div className="home-card-description">
 
-         {/*image du commentaire*/}
-          {comment.image && (
-            <div className="home-image-post-container">
-              <img className="home-image-post" src={comment.image}/> 
-            </div>)}
-          {isUpdated === false && <p>{comment.message}</p>}
+         {/*image du commentaire*/} 
+         {isUpdated === false && <p>{comment.message}</p>}
+          
+         
 
           {/*Le formulaire de modification du commentaire*/}
           {isUpdated && (
@@ -156,6 +157,11 @@ export const Card = ({comment}) => {
                 </div>
             </div>
           )}
+          
+          {comment.image && (
+            <div className="home-image-post-container">
+              <img className="home-image-post" src={comment.image}/> 
+            </div>)}
       </div>
      
       {/*Reaction au commentaire Like/Reply*/}
@@ -258,10 +264,31 @@ export const Card = ({comment}) => {
                                     </div>
                                      <p className="home-card-description-date">{dateParser(reply.date)}</p>
                                     </div> 
-                                      <div className="home-cardreply-description">
-                                        {reply.image && (<div className="home-image-post-container"><img className="home-image-post" src={reply.image}/> 
-                                      </div>)}
-                                      <p>{reply.message}</p>
+                                              {/*Affichage des informations des reply*/}
+                                                    <div className="home-card-modify-reply">
+
+                                            {/*Affichage des modifications du commentaire si l'user en ai propriété: Avec la condition "isUpdate"
+                                            si l'on clique sur la crayon ça propose de modifier le text; 
+                                              sinon supprimer le commentaire*/}
+                                              {( reply.id === userData.id ) &&  (
+                                                    <div className="icon-modifier">
+                                                      < DeleteReply idObject={reply.idObject}/> 
+                                                    </div>
+                                                  )}
+
+                                                  </div>
+                                                  </div>
+                                                  <div >
+
+                                                  {/*image du commentaire*/}
+                                              <p>{reply.message}</p>
+
+                                                  {/*Le formulaire de modification du commentaire*/}
+                                              
+
+                                            <div className="home-cardreply-description">
+                                              {reply.image && (<div className="home-image-post-container"><img className="home-image-post" src={reply.image}/> 
+                                            </div>)}
                                     </div>
                                   </div>
                                   </div>
