@@ -8,6 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { getComment, updateComment } from "../../actions/comment.action";
+import { likesComment } from "../../actions/likes.action";
 import { DeleteCard } from "./DeleteCard";
 import NewReply from "./NewReply";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart);
@@ -15,6 +16,7 @@ library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHear
 export const Card = ({comment}) => {
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    const [likes, setLikes] = useState();
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
     const replyData = useSelector((state) => state.replyReducer);
@@ -22,16 +24,27 @@ export const Card = ({comment}) => {
     const [openReply, setOpenReply] = useState(true);
     const dispatch = useDispatch();
 
-    console.log(replyData);
+   {/*lecture des tableaux message et likes */}
     const returnReply = (commentId) => {
       return replyData.filter(reply => reply.idComment === commentId).length;
-      
     };
     
     const returnLikes = (commentId) => {
       return likesData.filter(likes => likes.idComment === commentId).length;
-      
     };
+
+    console.log(comment.id);
+    console.log(comment.idObject);
+    const handleLikes = async() => {
+      //e.preventDefault();
+      const data = new FormData();
+          data.append("idComment", comment.idObject);
+          data.append("id", comment.id);
+          await dispatch(likesComment(data)) .then(() => 
+            dispatch(getComment()));
+            
+
+  };
    
    const updateItemComment = async () => {
     if (textUpdate) {
@@ -150,7 +163,7 @@ export const Card = ({comment}) => {
           <div className="home-card-reaction-container">
           <div className="comment-and-numbers">
               <div className="home-icon-post">
-                      <FontAwesomeIcon className="heartEmpty" icon={["fa","heart"]} />
+                      <FontAwesomeIcon className="heartEmpty" icon={["fa","heart"]} onClick={handleLikes}/>
               </div>
               <span>
                 <p>{returnLikes(comment.idObject)}</p>

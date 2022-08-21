@@ -17,9 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       id: {  type: DataTypes.INTEGER, required: true }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
       message: { type: DataTypes.STRING, allowNull: false },
       date: { type: DataTypes.DATE },
-      image: {  type: DataTypes.STRING, required: false, allowNull: true },
-      likes: { type: DataTypes.STRING, required: false, default: 0 },
-      usersLikes: { type: DataTypes.STRING, required: false, default: 0 },
+      image: {  type: DataTypes.STRING, required: false, allowNull: true }
     },
     { sequelize, tableName: "comment", modelName: "Comment" },
     {

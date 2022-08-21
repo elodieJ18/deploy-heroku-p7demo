@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const GET_ALL_LIKE= "GET_ALL_LIKE";
+export const LIKES_COMMENT = "LIKES_COMMENT";
 
 export const getAllLike = () => {
     return (dispatch) => {
@@ -13,13 +14,14 @@ export const getAllLike = () => {
     }
 }
 
-/*export const likeComment = (idObject, uid) => {
-    return (dispatch) => {
-        return axios
-        .post(`${process.env.REACT_APP_API_URL}api/comment/` + uid + `/like`)
-        .then((res) => {
-            dispatch({ type: LIKE_COMMENT, payload: idObject, uid})
-        })
-        .catch((err) => console.log(err));
-    }
-}*/
+
+export const likesComment = (data, dispatch) => {
+    return axios
+       .post(`${process.env.REACT_APP_API_URL}api/likes/`, data)  
+       .then((res) => {
+        dispatch({ type: LIKES_COMMENT, payload: res.data})
+    })
+    .catch((err) => console.log(err)); 
+}
+
+
