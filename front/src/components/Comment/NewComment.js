@@ -19,20 +19,21 @@ export const NewComment = () => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.userReducer);
 
-    const handleComment = async() => {
-        if (message || uploadImg) {
+    const handleComment = async(e) => {
+        //e.preventDefault();
+        if (message || uploadImg || message && uploadImg ) {
             const data = new FormData();
             data.append("id", userData.id);
             data.append("message", message);
             data.append("image", file);
-        if (file) data.append("image", file);
 
-            await dispatch(createComment(data));
-            dispatch(getComment());
+        dispatch(createComment(data));
+        dispatch(getComment());
 
         } else {
             alert("veuillez entrer un message")
         }
+     
     };
 
     const handleImg = (e) => {
@@ -60,7 +61,7 @@ export const NewComment = () => {
                          <div className="new-post-picture">
                             <label htmlFor="file"> <FontAwesomeIcon icon="camera" /></label>
                             <input  type="file" id="file" name="image" accept=".jpg, .jpeg, .png" 
-                             onChange={(e) => handleImg(e)}/>
+                             onChange={(e) => handleImg(e) }/>
                         </div>
                     </div> 
                     <div>

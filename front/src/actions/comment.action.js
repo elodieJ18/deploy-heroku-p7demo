@@ -48,11 +48,8 @@ export const deleteComment = (idObject) => {
 
 
 export const createComment = (data) => {
-    return axios ({
-        method: "post",
-        url: `${process.env.REACT_APP_API_URL}api/comment/upload`,
-        data: { data }
-    })
+     return axios
+        .post(`${process.env.REACT_APP_API_URL}api/comment/upload`, data)
 }
 
 
