@@ -32,8 +32,16 @@ export const Card = ({comment}) => {
     };
     
     const returnLikes = (commentId) => {
-      return likesData.filter(likes => likes.idComment === commentId).length;
+      return Array.from(likesData).filter(likes => likes.idComment === commentId).length;
     };
+
+    const userLiked = () => {
+      return Array.from(likesData).filter(likes => likes.id === userData.id && likes.idComment === comment.idObject).length;
+     
+    };
+
+
+    
 
 
     const handleLikes = async() => {
@@ -51,6 +59,7 @@ export const Card = ({comment}) => {
     }
     setIsUpdated(false)
    }
+
 
    console.log(likesData.id);
    console.log(userData.id);
@@ -161,9 +170,11 @@ export const Card = ({comment}) => {
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
-                  <div className={ likesData.id === userData.id  ? "heartFull" : "home-icon-post" }   onClick={handleLikes}>
-                    <FontAwesomeIcon className= "heartEmpty" icon={["fa","heart"]} />
-                  </div>
+                <div className="home-icon"  onClick={handleLikes}>
+                    <div>
+                     {userLiked(comment.idObject)} 
+                      </div>
+                   </div>
                   <span>
                     <p>{returnLikes(comment.idObject)}</p>
                   </span>
