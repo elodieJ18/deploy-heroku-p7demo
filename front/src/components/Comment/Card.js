@@ -35,9 +35,8 @@ export const Card = ({comment}) => {
       return Array.from(likesData).filter(likes => likes.idComment === commentId).length;
     };
 
-    const userLiked = () => {
-      return Array.from(likesData).filter(likes => likes.id === userData.id && likes.idComment === comment.idObject).length;
-     
+    const userLiked = (userDataId) => {
+      return Array.from(likesData).filter(likes => likes.id === userDataId).length;
     };
 
 
@@ -171,9 +170,25 @@ export const Card = ({comment}) => {
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
                 <div className="home-icon"  onClick={handleLikes}>
+              {
+                !isEmpty(likesData[0]) &&
+                likesData
+                  .map((likes) => {
+                    if (likes.id === userData.id && likes.idComment === comment.idObject) return <div key={likes.idObject}> 
                     <div>
-                     {userLiked(comment.idObject)} 
+                     {
+                        <FontAwesomeIcon className="heartFull" icon={["fa","heart"]} />
+                      } 
                       </div>
+                    </div>
+                    else if(likes.id !== userData.id && likes.idComment === comment.idObject) <div>
+                    {
+                       <FontAwesomeIcon className="heartEmpty" icon={["fa","heart"]} />
+                     } 
+                     </div>
+                  })
+                }
+                
                    </div>
                   <span>
                     <p>{returnLikes(comment.idObject)}</p>
