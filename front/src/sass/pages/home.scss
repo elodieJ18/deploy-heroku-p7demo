@@ -182,19 +182,29 @@
       padding: 10px;
       border-radius: 1.5em;
     }
-    .heartFull {
-      color: red;
-    }
-    svg {
-      font-size: 26px;
-      stroke-width: 24px;
-      stroke: #312E3E !important;
-      color: transparent; 
+    
   } 
 
-  
-   
+    
+  .iconEmpty {
+    font-size: 26px;
+    stroke-width: 24px;
+    stroke: #312E3E !important;
+    color: transparent; 
+     
   } 
+
+.iconEmpty  .active-none-empty{
+  display: none;
+} 
+
+.heartFull {
+  font-size: 26px;
+  stroke-width: 24px;
+    color: red;
+   
+  }
+
   .active-comment {
     margin: 10px;
     color: transparent; 

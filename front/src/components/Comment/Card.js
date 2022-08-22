@@ -35,16 +35,9 @@ export const Card = ({comment}) => {
       return Array.from(likesData).filter(likes => likes.idComment === commentId).length;
     };
 
-    const userLiked = (userDataId) => {
-      return Array.from(likesData).filter(likes => likes.id === userDataId).length;
-    };
-
-
-    
-
-
+   
     const handleLikes = async() => {
-      let id = comment.id;
+      let id = userData.id;
       let idComment = comment.idObject;
       //e.preventDefault();
           await dispatch(likesComment(id, idComment)) .then(() => 
@@ -169,7 +162,8 @@ export const Card = ({comment}) => {
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
-                <div className="home-icon"  onClick={handleLikes}>
+                <div className="home-icon-post"   onClick={handleLikes}>
+                  
               {
                 !isEmpty(likesData[0]) &&
                 likesData
@@ -177,16 +171,15 @@ export const Card = ({comment}) => {
                     if (likes.id === userData.id && likes.idComment === comment.idObject) return <div key={likes.idObject}> 
                     <div>
                      {
-                        <FontAwesomeIcon className="heartFull" icon={["fa","heart"]} />
+                        <FontAwesomeIcon className={"heartFull" } icon={["fa","heart"]} />
                       } 
                       </div>
                     </div>
-                    else if(likes.id !== userData.id && likes.idComment === comment.idObject) <div>
-                    {
-                       <FontAwesomeIcon className="heartEmpty" icon={["fa","heart"]} />
-                     } 
-                     </div>
-                  })
+                     else if (likes.id && likes.idComment === comment.idObject) {
+                       return  <FontAwesomeIcon className={"iconEmpty"} icon={["fa","heart"]} />
+                     }
+                    
+                  }) 
                 }
                 
                    </div>
@@ -197,7 +190,7 @@ export const Card = ({comment}) => {
               <div className="comment-and-numbers">
                   {/*Toggle pour le reply */}
                   <p className={!openReply ? "active-comment" : "home-icon-post"} onClick={() => setOpenReply(!openReply) }>
-                    <FontAwesomeIcon icon={["fa", "comment"]} />
+                    <FontAwesomeIcon className="iconEmpty" icon={["fa", "comment"]} />
                   </p>
                   {/*Lecture du nombres de reply */}
                   <span>
