@@ -13,7 +13,7 @@ module.exports.likeComment  = async (req, res) => {
         res.json({ likes: true });
       } else {
         await Likes.destroy({
-            where: { id: id},
+            where: { id: id, idComment: idComment},
         });
         res.json({ likes: false});
       }
