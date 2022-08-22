@@ -32,7 +32,7 @@ export const Card = ({comment}) => {
     };
     
     const returnLikes = (commentId) => {
-      return Array.from(likesData).filter(likes => likes.idComment === commentId).length;
+      return Array.from(likesData).filter(likes => likes.idComment === commentId).length
     };
 
    
@@ -52,12 +52,6 @@ export const Card = ({comment}) => {
     setIsUpdated(false)
    }
 
-
-   console.log(likesData.id);
-   console.log(userData.id);
-   
-
- 
 
   return ( 
  
@@ -163,24 +157,28 @@ export const Card = ({comment}) => {
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
                 <div className="home-icon-post"   onClick={handleLikes}>
-                  
               {
                 !isEmpty(likesData[0]) &&
                 likesData
                   .map((likes) => {
-                    if (likes.id === userData.id && likes.idComment === comment.idObject) return <div key={likes.idObject}> 
+                    if (likes.id === userData.id && likes.idComment === comment.idObject ) return <div key={likes.idObject}> 
                     <div>
-                     {
-                        <FontAwesomeIcon className={"heartFull" } icon={["fa","heart"]} />
+                      
+                     {  
+                        <div>
+                        <FontAwesomeIcon className={"heartFull"} icon={["fa","heart"]} />
+                        
+                        </div>
                       } 
                       </div>
                     </div>
-                     else if (likes.id && likes.idComment === comment.idObject) {
-                       return  <FontAwesomeIcon className={"iconEmpty"} icon={["fa","heart"]} />
-                     }
-                    
+              else if (likes.id !== userData.id && likes.idComment === comment.idObject ) {
+               return <FontAwesomeIcon  className={"iconEmpty" } icon={["fa","heart"]} /> 
+              } 
+              else return null
                   }) 
                 }
+
                 
                    </div>
                   <span>
