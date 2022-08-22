@@ -14,14 +14,19 @@ export const getAllLike = () => {
     }
 }
 
-
-export const likesComment = (data, dispatch) => {
-    return axios
-       .post(`${process.env.REACT_APP_API_URL}api/likes/`, data)  
+export const likesComment = (id, idComment) => {
+    return (dispatch) => {
+        return axios ({
+            method: "post",
+            url: `${process.env.REACT_APP_API_URL}api/likes/`,
+            data: { id, idComment}
+        })  
        .then((res) => {
         dispatch({ type: LIKES_COMMENT, payload: res.data})
+        window.location = "/";
     })
     .catch((err) => console.log(err)); 
+    }   
 }
 
 

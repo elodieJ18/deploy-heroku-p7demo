@@ -40,11 +40,10 @@ export const Card = ({comment}) => {
     console.log(comment.id);
     console.log(comment.idObject);
     const handleLikes = async() => {
+      let id = comment.id;
+      let idComment = comment.idObject;
       //e.preventDefault();
-      const data = new FormData();
-          data.append("idComment", comment.idObject);
-          data.append("id", comment.id);
-          await dispatch(likesComment(data)) .then(() => 
+          await dispatch(likesComment(id, idComment)) .then(() => 
             dispatch(getComment()));
   };
    
