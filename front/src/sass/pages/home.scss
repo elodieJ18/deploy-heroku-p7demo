@@ -403,9 +403,10 @@ textarea {
 }
 
 .new-post-picture
-#file {
+#file, #fileReply {
   display: none;
 }
+
 
   @media (max-width: 720px) {
 

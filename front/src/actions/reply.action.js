@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_ALL_REPLY = "GET_ALL_REPLY";
 export const UPDATE_REPLY = "UPDATE_REPLY";
 export const DELETE_REPLY = "DELETE_REPLY";
+export const CREATE_REPLY = "CREATE_REPLY";
 
 export const getAllReply = () => {
     return (dispatch) => {
@@ -43,3 +44,21 @@ export const updateReply = (idObject, message) => {
         }).catch((err) => console.log(err)) 
     }
 }
+
+export const createReply = (data) => {
+    return (dispatch) => {
+        return axios ({
+            method: "post",
+            url: `${process.env.REACT_APP_API_URL}api/reply/upload`,
+            data: { data }
+        })  
+       .then((res) => {
+        dispatch({ type: CREATE_REPLY, payload: res.data})
+        window.location = "/";
+    })
+    .catch((err) => console.log(err)); 
+    } 
+    
+}
+
+  

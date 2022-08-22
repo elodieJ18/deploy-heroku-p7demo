@@ -1,6 +1,7 @@
 import { GET_ALL_REPLY } from "../actions/reply.action";
 import { UPDATE_REPLY } from "../actions/reply.action";
 import { DELETE_REPLY } from "../actions/reply.action";
+import { CREATE_REPLY } from "../actions/reply.action";
 
 
 const initialState = {};
@@ -19,7 +20,9 @@ export default function getAllReply(state = initialState, action) {
           } else return reply;
         })
       case DELETE_REPLY:
-      return state.map((reply) => reply.idObject === action.payload.idObject) 
+        return state.map((reply) => reply.idObject === action.payload.idObject); 
+      case CREATE_REPLY:
+        return action.payload;
     default:
       return state;
   }

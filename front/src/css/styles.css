@@ -179,7 +179,7 @@ h1 {
   stroke: #312E3E !important;
   color: transparent;
 }
-.home-card-reaction-container .iconEmpty .active-none-empty {
+.home-card-reaction-container .active-none-empty {
   display: none;
 }
 .home-card-reaction-container .heartFull {
@@ -381,7 +381,8 @@ textarea {
   box-shadow: unset;
 }
 
-.new-post-picture #file {
+.new-post-picture #file,
+#fileReply {
   display: none;
 }
 

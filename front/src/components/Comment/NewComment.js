@@ -11,7 +11,6 @@ library.add(fas, far, faCamera, faXmark);
 
 
 
-
 export const NewComment = () => {
     const [message, setMessage] = useState('');
     const [uploadImg, setUploadImg] = useState();

@@ -157,6 +157,7 @@ export const Card = ({comment}) => {
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
                 <div className="home-icon-post"   onClick={handleLikes}>
+               
               {
                 !isEmpty(likesData[0]) &&
                 likesData
@@ -172,14 +173,12 @@ export const Card = ({comment}) => {
                       } 
                       </div>
                     </div>
-              else if (likes.id !== userData.id && likes.idComment === comment.idObject ) {
+              else if (likes.id !== userData.id && likes.idComment === comment.idObject  ) {
                return <FontAwesomeIcon  className={"iconEmpty" } icon={["fa","heart"]} /> 
               } 
               else return null
                   }) 
                 }
-
-                
                    </div>
                   <span>
                     <p>{returnLikes(comment.idObject)}</p>
