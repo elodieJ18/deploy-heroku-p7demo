@@ -207,9 +207,12 @@ export const Card = ({comment}) => {
                       } 
                       </div>
                     </div>
-              else if (likes.id !== userData.id && likes.idComment === comment.idObject  ) {
+              else if (likes.id !== userData.id && likes.idComment === comment.idObject || likes.id === comment.id && likes.id !== comment.id  ) {
                return <FontAwesomeIcon  className={"iconEmpty" } icon={["fa","heart"]} /> 
               } 
+             /*else if (likes.id === comment.id  ) {
+               return <FontAwesomeIcon  className={"iconEmpty" } icon={["fa","heart"]} /> 
+               } */
               else return null
                   }) 
                 }
