@@ -33,32 +33,21 @@ export const deleteReply = (idObject) => {
 }
 
 
-export const updateReply = (idObject, message) => {
-    return (dispatch) => {
-        return axios ({
-            method: "put",
-            url: `${process.env.REACT_APP_API_URL}api/reply/${idObject}`,
-            data: { message }
-        }).then((res) => {
-            dispatch({type: UPDATE_REPLY, payload: res.data})
-        }).catch((err) => console.log(err)) 
-    }
-}
-
-export const createReply = (data) => {
+export const createReply = (id, idComment, message, data) => {
     return (dispatch) => {
         return axios ({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/reply/upload`,
-            data: { data }
+            data: { id, idComment, message, data}
         })  
        .then((res) => {
-        dispatch({ type: CREATE_REPLY, payload: res.data})
-        window.location = "/";
+        dispatch({ type: CREATE_REPLY, payload: {id, idComment, message,  data}})
     })
     .catch((err) => console.log(err)); 
     } 
     
 }
+
+
 
   

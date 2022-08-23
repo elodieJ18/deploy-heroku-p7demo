@@ -120,6 +120,12 @@ h1 {
   overflow: hidden;
 }
 
+.home-image-reply-container {
+  height: 100%;
+  width: 264px;
+  overflow: hidden;
+}
+
 .img-comment-content {
   background: #F6F6F6;
   border-radius: 0em 1.5em 1.5em 1.5em;
@@ -232,7 +238,11 @@ h1 {
   padding: 28px 16px 15px 16px;
 }
 .home-cardreply-container .home-cardreply-description {
-  padding: 10px 16px 36px 0px;
+  padding: 10px 16px 10px 0px;
+}
+
+.home-cardreply-description-text {
+  padding: 10px 0px 10px 0px;
 }
 
 .home-profil-names-reply {

@@ -8,7 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { getComment, updateComment } from "../../actions/comment.action";
-import { getAllReply, updateReply } from "../../actions/reply.action";
+import { getAllReply, createReply } from "../../actions/reply.action";
 import { likesComment } from "../../actions/likes.action";
 import { DeleteCard } from "./DeleteCard";
 import { DeleteReply } from "./DeleteReply";
@@ -25,6 +25,40 @@ export const Card = ({comment}) => {
     const likesData = useSelector((state) => state.likesReducer);
     const [openReply, setOpenReply] = useState(true);
     const dispatch = useDispatch();
+
+ {/*function for NewReply */}
+    const [message, setMessage] = useState('');
+    const [uploadImgReply, setUploadImgReply] = useState();
+    const [fileReply, setFileReply] = useState();
+
+    const handleReply = async(e) => {
+      e.preventDefault();
+      
+      let id = userData.id;
+      let idComment = comment.idObject;
+      
+        if (message || uploadImgReply || message && uploadImgReply ) {
+            const data = new FormData();
+            data.append("image", fileReply);
+
+        dispatch(createReply(id, idComment, message, data));
+        dispatch(getAllReply());
+
+        } else {
+            alert("veuillez entrer un message")
+        }
+    };
+  
+    const handleImgReply = (e) => {
+        setUploadImgReply(URL.createObjectURL(e.target.files[0]));
+        setFileReply(e.target.files[0]);
+    };
+
+    const cancelImgReply = () => {
+        setUploadImgReply('');
+    };
+      
+
 
    {/*lecture des tableaux message et likes */}
     const returnReply = (commentId) => {
@@ -156,7 +190,7 @@ export const Card = ({comment}) => {
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
-                <div className="home-icon-post"   onClick={handleLikes}>
+                <div className="home-icon-post"   onClick={() => handleLikes()}>
                
               {
                 !isEmpty(likesData[0]) &&
@@ -200,7 +234,49 @@ export const Card = ({comment}) => {
     {/*Toggle ouvert pour le reply.map()*/}
         {openReply === false && (
         <>
-        <NewReply/>       
+        
+      {/*NewReply test into map*/}   
+          <div className="home-actuality-new-reply">
+            <div className="home-card-container" > 
+                <div className="home-card-description-reply">
+                        <div className="image-profil-container-home">
+                            <div className="image-profil-form-home-reply">
+                                <img className="user-name-image" src={userData.image === null || userData.image === 'undefined' ? logo : userData.image}  alt="userimage"/>
+                            </div>
+                        </div>
+                    <form >
+                        <div className="new-post-text-and-picture"> 
+                            <textarea name="message" id="message" placeholder="Je répond au post" onChange={(e) => setMessage(e.target.value)} value={message} />
+                              <div className="new-post-picture">
+                              <label htmlFor="fileReply"> <FontAwesomeIcon icon="camera" /></label>
+                                <input  type="file" id="fileReply" name="image" accept=".jpg, .jpeg, .png" 
+                                onChange={(e) => handleImgReply(e) }/>
+                            </div>
+                        </div>    
+                                
+                        <div>
+                            {uploadImgReply ? (
+                                <div className="img-comment-content">
+                                <div className="img-comment-size img-comment-form">
+                                    <img className="img-comment" src={uploadImgReply}  alt="imageComment"/>
+                                </div> 
+                                < FontAwesomeIcon icon="xmark" onClick={cancelImgReply}/>
+                                </div>
+                            ) : null
+
+                            }
+                        </div>
+                            
+                      
+                        <div className="duo-update-btn-profil">
+                            <button className="btn-update-comment" type="submit" onClick={handleReply}>Publish</button> 
+                        </div> 
+                    </form>
+                </div>
+            </div>
+          </div>  
+
+
       <div className="home-cardReply-userProfil">
         <div className="home-card-userStatus">
            <div className="home-card-usersStatus-second-col">{
@@ -232,73 +308,61 @@ export const Card = ({comment}) => {
                                   <div className="home-card-userStatus-reply">
                                   <div className="home-card-usersStatus-second-col">
                                     <div className="home-profil-names-reply">
-                                      <div className="home-profil-names-and-status-reply"> 
-                                        <div className="home-profil-names-container-reply">
-                                            <p className="home-cardreply-description-name">{
-                                                  !isEmpty(usersData[0]) &&
-                                                  usersData
-                                                    .map((user) => {
-                                                      if (user.id === reply.id) return user.prenom;
-                                                      else return null;
-                                                    })
-                                                    .join("")
-                                                }
-                                            </p>
-                                            <p className="home-cardreply-description-name">{
-                                                  !isEmpty(usersData[0]) &&
-                                                  usersData
-                                                    .map((user) => {
-                                                      if (user.id === reply.id) return user.nom;
-                                                      else return null;
-                                                    })
-                                                    .join("")
-                                                }
-                                            </p> 
-                                        </div>
-                                        <div className="home-card-usersStatus-second-col"> 
-                                            <p>{
-                                              !isEmpty(usersData[0]) &&
-                                              usersData
-                                                .map((user) => {
-                                                  if (user.id === reply.id) return user.status;
-                                                  else return null;
-                                                })
-                                                .join("")
-                                                }
-                                            </p>  
-                                        </div> 
-                                    </div>
-                                     <p className="home-card-description-date">{dateParser(reply.date)}</p>
+                                            <div className="home-profil-names-and-status-reply"> 
+                                              <div className="home-profil-names-container-reply">
+                                                  <p className="home-cardreply-description-name">{
+                                                        !isEmpty(usersData[0]) &&
+                                                        usersData
+                                                          .map((user) => {
+                                                            if (user.id === reply.id) return user.prenom;
+                                                            else return null;
+                                                          })
+                                                          .join("")
+                                                      }
+                                                  </p>
+                                                  <p className="home-cardreply-description-name">{
+                                                        !isEmpty(usersData[0]) &&
+                                                        usersData
+                                                          .map((user) => {
+                                                            if (user.id === reply.id) return user.nom;
+                                                            else return null;
+                                                          })
+                                                          .join("")
+                                                      }
+                                                  </p> 
+                                              </div>
+                                              <div className="home-card-usersStatus-second-col"> 
+                                                  <p>{
+                                                    !isEmpty(usersData[0]) &&
+                                                    usersData
+                                                      .map((user) => {
+                                                        if (user.id === reply.id) return user.status;
+                                                        else return null;
+                                                      })
+                                                      .join("")
+                                                      }
+                                                  </p>  
+                                              </div> 
+                                            </div>
+                                          <p className="home-card-description-date">{dateParser(reply.date)}</p>
                                     </div> 
-                                              {/*Affichage des informations des reply*/}
-                                                    <div className="home-card-modify-reply">
-
-                                            {/*Affichage des modifications du commentaire si l'user en ai propriété: Avec la condition "isUpdate"
-                                            si l'on clique sur la crayon ça propose de modifier le text; 
-                                              sinon supprimer le commentaire*/}
-                                              {( reply.id === userData.id ) &&  (
-                                                    <div className="icon-modifier">
-                                                      < DeleteReply idObject={reply.idObject}/> 
-                                                    </div>
-                                                  )}
-
-                                                  </div>
-                                                  </div>
-                                                  <div >
-
-                                                  {/*image du commentaire*/}
-                                              <p>{reply.message}</p>
-
-                                                  {/*Le formulaire de modification du commentaire*/}
-                                              
-
-                                            <div className="home-cardreply-description">
-                                              {reply.image && (<div className="home-image-post-container"><img className="home-image-post" src={reply.image}/> 
-                                            </div>)}
-                                    </div>
+                                          {/*Affichage des informations des reply*/}
+                                        <div className="home-card-modify-reply">
+                                            {( reply.id === userData.id ) &&  (
+                                              <div className="icon-modifier">
+                                                < DeleteReply idObject={reply.idObject}/> 
+                                              </div>)}
+                                        </div>
                                   </div>
-                                  </div>
-                                </div>  
+                                        <div className="home-cardreply-description">
+                                                    <div className="home-cardreply-description-text">
+                                                        <p>{reply.message}</p>
+                                                    </div> 
+                                                    {reply.image && (<div className="home-image-reply-container"><img className="home-image-post" src={reply.image}/> 
+                                                      </div>)}
+                                        </div>
+                                      </div>
+                                  </div>  
                               </div>  
                           </div> 
                           }
