@@ -41,7 +41,9 @@ export const createReply = (id, idComment, message, data) => {
             data: { id, idComment, message, data}
         })  
        .then((res) => {
-        dispatch({ type: CREATE_REPLY, payload: {id, idComment, message,  data}})
+        dispatch({ type: CREATE_REPLY, payload: res.data})
+        window.location = "/";
+        
     })
     .catch((err) => console.log(err)); 
     } 

@@ -130,15 +130,34 @@
     font-size: 24px;
     }
   } 
-
- 
   }
 
-  .image-profil-form-home {
-    height: 54px;
-    width: 54px;
+  .img-comment-size {
+    height: 100%;
+    width: 100%;
     overflow: hidden;
-}
+  }
+
+  .home-card-description-comment {
+    padding: 17px 14px 17px 14px;
+    column-gap: 11px;
+  }
+
+  .btn-update-comment {
+    width: 117px;
+    padding: 6px 16px;
+  }
+
+  .new-post-text-and-picture {
+    padding: 4px 14px;
+    column-gap: 15px;
+    /* background: white; */
+  }
+
+  .new-post-text-and-picture .new-post-picture svg {
+    font-size: 18px;
+  }
+
     
   }
   

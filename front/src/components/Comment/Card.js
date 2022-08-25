@@ -12,13 +12,13 @@ import { getAllReply, createReply } from "../../actions/reply.action";
 import { likesComment } from "../../actions/likes.action";
 import { DeleteCard } from "./DeleteCard";
 import { DeleteReply } from "./DeleteReply";
-import NewReply from "./NewReply";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart);
 
 export const Card = ({comment}) => {
     const [isUpdated, setIsUpdated] = useState(false);
     const [isUpdatedReply, setIsUpdatedReply] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    const [liked, setLiked] = useState(false);
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
     const replyData = useSelector((state) => state.replyReducer);
@@ -33,17 +33,15 @@ export const Card = ({comment}) => {
 
     const handleReply = async(e) => {
       e.preventDefault();
-      
-      let id = userData.id;
-      let idComment = comment.idObject;
-      
+     
         if (message || uploadImgReply || message && uploadImgReply ) {
-            const data = new FormData();
+            let id = userData.id;
+            let idComment = comment.idObject;
+          const data = new FormData();
             data.append("image", fileReply);
-
+ 
         dispatch(createReply(id, idComment, message, data));
         dispatch(getAllReply());
-
         } else {
             alert("veuillez entrer un message")
         }
@@ -58,24 +56,27 @@ export const Card = ({comment}) => {
         setUploadImgReply('');
     };
       
-
-
-   {/*lecture des tableaux message et likes */}
     const returnReply = (commentId) => {
       return replyData.filter(reply => reply.idComment === commentId).length;
     };
     
+
+   {/*LIKES - lecture des tableaux message et likes */}
+
     const returnLikes = (commentId) => {
       return Array.from(likesData).filter(likes => likes.idComment === commentId).length
     };
 
+    
+
    
+
     const handleLikes = async() => {
       let id = userData.id;
       let idComment = comment.idObject;
       //e.preventDefault();
-          await dispatch(likesComment(id, idComment)) .then(() => 
-            dispatch(getComment()));
+      dispatch(likesComment(id, idComment))
+      
   };
    
    const updateItemComment = async () => {
@@ -85,6 +86,7 @@ export const Card = ({comment}) => {
     }
     setIsUpdated(false)
    }
+   
 
 
   return ( 
@@ -190,32 +192,30 @@ export const Card = ({comment}) => {
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
-                <div className="home-icon-post"   onClick={() => handleLikes()}>
+                <div className="home-icon-post" onClick={() => handleLikes()} > 
                
-              {
+                {
                 !isEmpty(likesData[0]) &&
                 likesData
                   .map((likes) => {
+                   
                     if (likes.id === userData.id && likes.idComment === comment.idObject ) return <div key={likes.idObject}> 
-                    <div>
-                      
+                    
                      {  
                         <div>
-                        <FontAwesomeIcon className={"heartFull"} icon={["fa","heart"]} />
-                        
+                        <FontAwesomeIcon className="heartFull" icon={["fa","heart"]} />
                         </div>
                       } 
-                      </div>
                     </div>
-              else if (likes.id !== userData.id && likes.idComment === comment.idObject || likes.id === comment.id && likes.id !== comment.id  ) {
+              
+             else if (likes.idComment === comment.idObject && likes.idComment === comment.idObject   ) {
                return <FontAwesomeIcon  className={"iconEmpty" } icon={["fa","heart"]} /> 
-              } 
-             /*else if (likes.id === comment.id  ) {
-               return <FontAwesomeIcon  className={"iconEmpty" } icon={["fa","heart"]} /> 
-               } */
+               } 
               else return null
                   }) 
                 }
+
+                
                    </div>
                   <span>
                     <p>{returnLikes(comment.idObject)}</p>

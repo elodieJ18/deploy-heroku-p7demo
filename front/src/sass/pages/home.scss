@@ -196,8 +196,7 @@
     font-size: 26px;
     stroke-width: 24px;
     stroke: #312E3E !important;
-    color: transparent; 
-     
+    color: transparent;
   } 
 
 .active-none-empty{
@@ -420,14 +419,17 @@ textarea {
 
   @media (max-width: 720px) {
 
+    #create-comment {
+      width: 95%;
+    }
+
     .home-actuality {
-      width: 100%;
-      margin-left: 0px;
+      width: 95%;
+      margin-left: 9px;
     }
 
     .home-card-container {
-      width: 276px;
-     
+      width: 100%;
     }
 
   .home-card-description-status {
@@ -446,7 +448,7 @@ textarea {
   
     .home-actuality .home-card-post
     .home-card-description {
-       padding: 0px 41px 20px 41px;
+      padding: 4px 18px 5px 18px;
     }
   
     .home-actuality .home-card-post .home-card-userProfil {
@@ -473,6 +475,55 @@ textarea {
 
     .home-cardreply-container {
       width: 100%;
+      margin-left: 10px;
   }
+
+  .home-image-post-container {
+    height: auto;
+    width: auto;
+    overflow: hidden;
+  }
+
+  
+  .image-profil-form-home {
+    height: 32px;
+    width: 32px;
+  }
+
+  .home-card-reaction-container .iconEmpty {
+    font-size: 20px;
+  }
+
+  .icon-modifier {
+    font-size: 18px;
+  }
+
+  .home-card-reaction-container .heartFull {
+    font-size: 18px;
+  }
+
+  .image-profil-form-home-reply {
+    height: 34px;
+    width: 34px;
+    overflow: hidden;
+  }
+
+  .home-profil-names-reply {
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .home-card-userStatus-reply {
+    padding: 13px 14px;
+    .home-card-usersStatus-second-col {
+    display: flex;
+    justify-content: space-between;
+  }
+  }
+
+  .home-cardreply-container .home-cardreply-userProfil {
+    column-gap: 10px; 
+  }
+  
     
   } 
