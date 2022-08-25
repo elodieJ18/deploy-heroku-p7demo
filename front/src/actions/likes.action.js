@@ -23,7 +23,6 @@ export const likesComment = (id, idComment) => {
         })  
        .then((res) => {
         dispatch({ type: LIKES_COMMENT, payload: res.data})
-        window.location = "/";
     })
     .catch((err) => console.log(err)); 
     }   

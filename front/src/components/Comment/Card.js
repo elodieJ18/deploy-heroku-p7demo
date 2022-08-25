@@ -66,12 +66,17 @@ export const Card = ({comment}) => {
     const returnLikes = (commentId) => {
       return Array.from(likesData).filter(likes => likes.idComment === commentId).length
     };
+ 
+  /* const userLikes = likesData.find(likes => {
+      return likes.id === userData.id;
+   })*/
 
-    
-
-   
-
+   const isLiked = (userData, likes, comment) => {
+    return likes.id === userData.id && likes.idComment === comment.idObject;
+   }
+ 
     const handleLikes = async() => {
+      console.log(likesData[0]);
       let id = userData.id;
       let idComment = comment.idObject;
       //e.preventDefault();
@@ -193,30 +198,18 @@ export const Card = ({comment}) => {
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
                 <div className="home-icon-post" onClick={() => handleLikes()} > 
-               
-                {
-                !isEmpty(likesData[0]) &&
+
+                { 
                 likesData
                   .map((likes) => {
-                   
-                    if (likes.id === userData.id && likes.idComment === comment.idObject ) return <div key={likes.idObject}> 
-                    
-                     {  
-                        <div>
-                        <FontAwesomeIcon className="heartFull" icon={["fa","heart"]} />
-                        </div>
-                      } 
-                    </div>
-              
-             else if (likes.idComment === comment.idObject && likes.idComment === comment.idObject   ) {
-               return <FontAwesomeIcon  className={"iconEmpty" } icon={["fa","heart"]} /> 
-               } 
-              else return null
+                    console.log(likes);
+                    console.log(userData);
+                    return <FontAwesomeIcon className={`${isLiked(userData, likes, comment) ? "heartFull" : "heartEmpty"}`}  icon={["fa","heart"]} />
                   }) 
                 }
 
-                
-                   </div>
+
+                </div>
                   <span>
                     <p>{returnLikes(comment.idObject)}</p>
                   </span>
