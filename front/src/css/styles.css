@@ -179,6 +179,12 @@ h1 {
   padding: 10px;
   border-radius: 1.5em;
 }
+.home-card-reaction-container .heartEmpty {
+  font-size: 26px;
+  stroke-width: 24px;
+  stroke: #312E3E !important;
+  color: transparent;
+}
 .home-card-reaction-container .iconEmpty {
   font-size: 26px;
   stroke-width: 24px;
@@ -192,6 +198,9 @@ h1 {
   font-size: 26px;
   stroke-width: 24px;
   color: red;
+}
+.home-card-reaction-container .notFull {
+  display: none;
 }
 .home-card-reaction-container .active-comment {
   margin: 10px;

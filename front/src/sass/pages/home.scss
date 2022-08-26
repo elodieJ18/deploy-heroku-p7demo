@@ -191,12 +191,11 @@
     
   } 
 
-    
+  .heartEmpty {
+    @include icon-vide;
+  }
   .iconEmpty {
-    font-size: 26px;
-    stroke-width: 24px;
-    stroke: #312E3E !important;
-    color: transparent;
+    @include icon-vide;
   } 
 
 .active-none-empty{
@@ -207,8 +206,12 @@
   font-size: 26px;
   stroke-width: 24px;
     color: red;
-   
+  
   }
+
+  .notFull {
+    display: none;
+   }
 
   .active-comment {
     margin: 10px;

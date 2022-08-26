@@ -58,3 +58,10 @@
     resize: none;
     padding: 12px;
   }
+
+  @mixin icon-vide {
+    font-size: 26px;
+    stroke-width: 24px;
+    stroke: #312E3E !important;
+    color: transparent;
+  }
