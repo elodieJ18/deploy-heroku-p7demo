@@ -1,10 +1,10 @@
 import React from "react";
-import "../../css/styles.css";
+import "../../../css/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { useDispatch } from "react-redux";
-import { deleteReply } from "../../actions/reply.action";
+import { deleteReply } from "../../../actions/reply.action";
 library.add(far, faTrashCan );
 
 export const DeleteReply = (reply) => {

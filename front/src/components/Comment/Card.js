@@ -11,14 +11,12 @@ import { getComment, updateComment } from "../../actions/comment.action";
 import { getAllReply, createReply } from "../../actions/reply.action";
 import { likesComment } from "../../actions/likes.action";
 import { DeleteCard } from "./DeleteCard";
-import { DeleteReply } from "./DeleteReply";
+import { DeleteReply } from "../Comment/Reply/DeleteReply";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart);
 
 export const Card = ({comment}) => {
     const [isUpdated, setIsUpdated] = useState(false);
-    const [isUpdatedReply, setIsUpdatedReply] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
-    const [liked, setLiked] = useState(false);
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
     const replyData = useSelector((state) => state.replyReducer);
@@ -31,21 +29,24 @@ export const Card = ({comment}) => {
     const [uploadImgReply, setUploadImgReply] = useState();
     const [fileReply, setFileReply] = useState();
 
-    const handleReply = async(e) => {
+    const handleReply =  async(e) => {
       e.preventDefault();
-     
         if (message || uploadImgReply || message && uploadImgReply ) {
             let id = userData.id;
             let idComment = comment.idObject;
-          const data = new FormData();
-            data.append("image", fileReply);
+          let formData = new FormData();
+          formData.append("image", fileReply);
  
-        dispatch(createReply(id, idComment, message, data));
+        dispatch(createReply(id, idComment, message, formData));
         dispatch(getAllReply());
+        
         } else {
             alert("veuillez entrer un message")
-        }
+        }  
     };
+    
+    
+   
   
     const handleImgReply = (e) => {
         setUploadImgReply(URL.createObjectURL(e.target.files[0]));
@@ -57,36 +58,27 @@ export const Card = ({comment}) => {
     };
       
     const returnReply = (commentId) => {
-      return replyData.filter(reply => reply.idComment === commentId).length;
+      return Array.from(replyData).filter(reply => reply.idComment === commentId).length;
     };
     
 
    {/*LIKES - lecture des tableaux message et likes */}
-
     const returnLikes = (commentId) => {
       return Array.from(likesData).filter(likes => likes.idComment === commentId).length 
     };
 
-
-    let likesMap = Array.from(likesData);
-    
     const isLiked = () => {
-      return Array.from(likesData).filter(likes => likes.id === userData.id && likes.idComment === comment.idObject).length > 0 
+      return Array.from(likesData).filter(likes => likes.id === userData.id && likes.idComment === comment.idObject).length > 0;
      }
-    
    console.log(userData);
    console.log(likesData);
 
-    const handleLikes = async () => {
+   const handleLikes = async () => {
       let id = userData.id;
       let idComment = comment.idObject;
-      //e.preventDefault();
-     
-       dispatch(likesComment(id, idComment)).then(() =>  
-      dispatch(getComment()))
-    
-      
-  };
+        dispatch(likesComment(id, idComment)).then(() =>  
+          dispatch(getComment()))  
+   };
    
    const updateItemComment = async () => {
     if (textUpdate) {
@@ -201,6 +193,7 @@ export const Card = ({comment}) => {
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
+                
                 <div className="home-icon-post" onClick={() => handleLikes()} > 
                 {
                  <FontAwesomeIcon className={`${isLiked(comment.idObject) ? "heartFull" : "heartEmpty"}`}  icon={["fa","heart"]} />
@@ -227,8 +220,7 @@ export const Card = ({comment}) => {
     {/*Toggle ouvert pour le reply.map()*/}
         {openReply === false && (
         <>
-        
-      {/*NewReply test into map*/}   
+        {/*NewReply test into map*/}   
           <div className="home-actuality-new-reply">
             <div className="home-card-container" > 
                 <div className="home-card-description-reply">
@@ -259,8 +251,6 @@ export const Card = ({comment}) => {
 
                             }
                         </div>
-                            
-                      
                         <div className="duo-update-btn-profil">
                             <button className="btn-update-comment" type="submit" onClick={handleReply}>Publish</button> 
                         </div> 

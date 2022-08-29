@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     { idObject: { type: DataTypes.UUID, primaryKey: true }, //A universally unique identifier (UUID) , UUIDV4 Random Generation
       id: {  type: DataTypes.INTEGER, allowNull: false },
       idComment: {  type: DataTypes.INTEGER, allowNull: false },
-      message: { type: DataTypes.STRING, allowNull: false },
+      message: { type: DataTypes.STRING, allowNull: true },
       date: { type: DataTypes.DATE },
       image: {  type: DataTypes.STRING, required: false, allowNull: true }
     },

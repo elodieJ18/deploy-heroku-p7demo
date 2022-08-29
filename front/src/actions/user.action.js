@@ -23,7 +23,7 @@ export const uploadPicture = (data, uid) => {
             method: "put",
             url: `${process.env.REACT_APP_API_URL}api/auth/` + uid,
             data: data,
-              body: JSON.stringify(data),
+            body: JSON.stringify(data),
         })
         .then((res) => {
             dispatch({type: UPDATE_INFO, payload: data})

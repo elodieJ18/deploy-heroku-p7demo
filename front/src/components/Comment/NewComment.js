@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../css/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/user-200.png";
@@ -19,8 +19,8 @@ export const NewComment = () => {
     const userData = useSelector((state) => state.userReducer);
 
     const handleComment = async(e) => {
-        //e.preventDefault();
-        if (message || uploadImg || message && uploadImg ) {
+        e.preventDefault();
+        if (message || message && uploadImg ) {
             const data = new FormData();
             data.append("id", userData.id);
             data.append("message", message);

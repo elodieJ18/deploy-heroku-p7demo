@@ -4,7 +4,7 @@ const { Comment } = require("../models");
 module.exports.createComment  = async (req, res) => {
   try {
     if (!req.body.message) {
-      res.status(400).send({
+      return res.status(400).send({
         message: "Content can not be empty!"
       });
     }

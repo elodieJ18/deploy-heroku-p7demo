@@ -6,7 +6,7 @@ const path = require('path');
 module.exports.createReply  = async (req, res) => {
   try {
     if (!req.body.message) {
-      res.status(400).send({
+      return res.status(400).send({
         message: "Content can not be empty!"
       });
     }
@@ -25,7 +25,6 @@ module.exports.createReply  = async (req, res) => {
     return res.send(`Error: ${error}`);
   }
 };
-
 
 // 2. get all products
 

@@ -25,7 +25,7 @@ export const deleteReply = (idObject) => {
         })
         .then((res) => {
             dispatch({ type: DELETE_REPLY, payload: {idObject}})
-            window.location = "/";
+           
         })
         .catch((err) => console.log(err));
 
@@ -33,22 +33,22 @@ export const deleteReply = (idObject) => {
 }
 
 
-export const createReply = (id, idComment, message, data) => {
+export const createReply = (id, idComment, message, image, formData) => {
     return (dispatch) => {
         return axios ({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/reply/upload`,
-            data: { id, idComment, message, data}
+            data: { id, idComment, message, image, formData}
         })  
        .then((res) => {
-        dispatch({ type: CREATE_REPLY, payload: res.data})
-        window.location = "/";
+        dispatch({ type: CREATE_REPLY, payload: {id, idComment, message, image, formData}})
         
     })
     .catch((err) => console.log(err)); 
-    } 
-    
+    }  
 }
+ 
+
 
 
 

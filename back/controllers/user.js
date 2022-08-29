@@ -81,9 +81,6 @@ module.exports.userInfo = async (req, res, next) => {
 };
 
 
-
-
-
 module.exports.createprofil  = async (req, res) => {
   try {
     let { status, image} = req.body;

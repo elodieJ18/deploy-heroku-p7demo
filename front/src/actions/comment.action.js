@@ -39,7 +39,6 @@ export const deleteComment = (idObject) => {
         })
         .then((res) => {
             dispatch({ type: DELETE_COMMENT, payload: {idObject}})
-            window.location = "/";
         })
         .catch((err) => console.log(err));
 
@@ -51,6 +50,7 @@ export const createComment = (data) => {
      return axios
         .post(`${process.env.REACT_APP_API_URL}api/comment/upload`, data)
 }
+
 
 
 
