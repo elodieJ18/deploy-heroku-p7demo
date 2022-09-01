@@ -47,8 +47,18 @@ export const deleteComment = (idObject) => {
 
 
 export const createComment = (data) => {
-     return axios
-        .post(`${process.env.REACT_APP_API_URL}api/comment/upload`, data)
+    return (dispatch) => {
+        return axios ({
+            method: "post",
+            url: `${process.env.REACT_APP_API_URL}api/comment/upload`,
+            data: data
+        })  
+       .then((res) => {
+        dispatch({ type: CREATE_COMMENT, payload: data})
+        
+    })
+    .catch((err) => console.log(err)); 
+    }  
 }
 
 

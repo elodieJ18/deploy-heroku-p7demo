@@ -4,13 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { useDispatch } from "react-redux";
-import { deleteComment } from "../../actions/comment.action";
+import { deleteComment, getComment } from "../../actions/comment.action";
 library.add(far, faTrashCan );
 
 export const DeleteCard = (comment) => {
 
     const dispatch = useDispatch();
-    const deleteQuote = () => dispatch(deleteComment(comment.idObject))
+
+    const deleteQuote = () => {
+        dispatch(deleteComment(comment.idObject)).then(() =>
+        dispatch(getComment())
+        )
+        
+    }
+
 
     return(
         <div onClick={() =>{

@@ -19,7 +19,6 @@ export const NewComment = () => {
     const userData = useSelector((state) => state.userReducer);
 
     const handleComment = async(e) => {
-        e.preventDefault();
         if (message || message && uploadImg ) {
             const data = new FormData();
             data.append("id", userData.id);
