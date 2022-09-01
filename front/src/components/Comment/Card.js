@@ -9,10 +9,13 @@ import { fas, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart } from
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { getComment, updateComment } from "../../actions/comment.action";
 import { getAllReply, createReply } from "../../actions/reply.action";
-import { likesComment } from "../../actions/likes.action";
+import { likesComment, getAllLike } from "../../actions/likes.action";
 import { DeleteCard } from "./DeleteCard";
 import { DeleteReply } from "../Comment/Reply/DeleteReply";
 library.add(fas, far, faThumbsUp, faThumbsDown, faComment, faPenToSquare, faHeart);
+
+
+
 
 export const Card = ({comment}) => {
     const [isUpdated, setIsUpdated] = useState(false);
@@ -20,34 +23,40 @@ export const Card = ({comment}) => {
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
     const replyData = useSelector((state) => state.replyReducer);
-    const likesData = useSelector((state) => state.likesReducer);
     const [openReply, setOpenReply] = useState(true);
     const dispatch = useDispatch();
+
+
 
  {/*function for NewReply */}
     const [message, setMessage] = useState('');
     const [uploadImgReply, setUploadImgReply] = useState();
     const [fileReply, setFileReply] = useState();
-
+    
+ 
     const handleReply =  async(e) => {
       e.preventDefault();
         if (message || uploadImgReply || message && uploadImgReply ) {
-            let id = userData.id;
-            let idComment = comment.idObject;
-          let formData = new FormData();
-          formData.append("image", fileReply);
- 
-        dispatch(createReply(id, idComment, message, formData));
+            //let id = userData.id;
+            //let idComment = comment.idObject;
+          let formData = {};
+         
+          formData.id = userData.id;
+          formData.idComment = comment.idObject;
+          formData.message = message;
+          formData.image =  fileReply;
+          console.log(formData);
+          console.log(fileReply);
+        dispatch(createReply(formData));
         dispatch(getAllReply());
         
         } else {
             alert("veuillez entrer un message")
         }  
     };
-    
-    
+
    
-  
+    
     const handleImgReply = (e) => {
         setUploadImgReply(URL.createObjectURL(e.target.files[0]));
         setFileReply(e.target.files[0]);
@@ -62,23 +71,33 @@ export const Card = ({comment}) => {
     };
     
 
+
+
+
+
    {/*LIKES - lecture des tableaux message et likes */}
-    const returnLikes = (commentId) => {
-      return Array.from(likesData).filter(likes => likes.idComment === commentId).length 
+   const likesData = useSelector((state) => state.likesReducer);
+
+    const handleLikes = async () => {
+        let id = userData.id;
+        let idComment = comment.idObject;
+          dispatch(likesComment(id, idComment)).then(() =>  
+          dispatch(getAllLike()))
     };
 
     const isLiked = () => {
       return Array.from(likesData).filter(likes => likes.id === userData.id && likes.idComment === comment.idObject).length > 0;
-     }
-   console.log(userData);
-   console.log(likesData);
+     };
+     
+     const returnLikes = (commentId) => {
+      return Array.from(likesData).filter(likes => likes.idComment === commentId).length;
+    };
 
-   const handleLikes = async () => {
-      let id = userData.id;
-      let idComment = comment.idObject;
-        dispatch(likesComment(id, idComment)).then(() =>  
-          dispatch(getComment()))  
-   };
+   
+   
+
+  
+  {/*Commentaire update*/}
    
    const updateItemComment = async () => {
     if (textUpdate) {
@@ -88,6 +107,8 @@ export const Card = ({comment}) => {
     setIsUpdated(false)
    }
    
+
+
 
 
   return ( 
@@ -189,20 +210,24 @@ export const Card = ({comment}) => {
               </div>)}
         </div>
      
-      {/*Reaction au commentaire Like/Reply*/}
+
+
+
+      {/*Like & Reply*/}
       <div className="home-card-reaction">
           <div className="home-card-reaction-container">
               <div className="comment-and-numbers">
-                
                 <div className="home-icon-post" onClick={() => handleLikes()} > 
-                {
-                 <FontAwesomeIcon className={`${isLiked(comment.idObject) ? "heartFull" : "heartEmpty"}`}  icon={["fa","heart"]} />
-                }
-                
-                   </div>
-                  <span>
-                    <p>{returnLikes(comment.idObject)}</p>
-                  </span>
+                 
+                      {
+                      <FontAwesomeIcon className={`${isLiked(comment.idObject, likesData) ? "heartFull" : "heartEmpty"}`}  icon={["fa","heart"]} />
+                      }
+                 </div>
+                      <span>
+                        <p>{returnLikes(comment.idObject, likesData)}</p>
+                      </span>
+                 
+               
               </div> 
               <div className="comment-and-numbers">
                   {/*Toggle pour le reply */}

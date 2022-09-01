@@ -11,6 +11,8 @@ module.exports.createReply  = async (req, res) => {
       });
     }
     let { id, idObject, idComment, message, date, image} = req.body;
+    console.log(req.body);
+    console.log(req.file);
     if (req.file) {
        image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
       }

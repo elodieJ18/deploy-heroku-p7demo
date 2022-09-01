@@ -22,7 +22,8 @@ export const likesComment = (id, idComment) => {
             data: { id, idComment}
         })  
        .then((res) => {
-        dispatch({ type: LIKES_COMMENT, payload: res.data})
+        dispatch({ type: LIKES_COMMENT, payload: {id, idComment}})
+        console.log({id, idComment})
     })
     .catch((err) => console.log(err)); 
     }   

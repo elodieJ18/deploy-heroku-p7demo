@@ -8,14 +8,12 @@ export default function likesReducer(state = initialState, action) {
     case GET_ALL_LIKE:
       return action.payload;
       case LIKES_COMMENT:
-        return state.map((likes) => {
-          if (likes.id === action.payload.id){
             return {
-              ...likes,
-              likes: action.payload
+              ...state,
+              data: action.payload.data,
+              id: action.payload.id,
+              idComment: action.payload.idComment,
             };
-          } else return likes;
-        }) 
     default:
       return state;
   }
