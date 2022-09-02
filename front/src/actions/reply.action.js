@@ -33,15 +33,15 @@ export const deleteReply = (idObject) => {
 }
 
 
-export const createReply = (formData) => {
+export const createReply = (data) => {
     return (dispatch) => {
         return axios ({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/reply/upload`,
-            data: formData
+            data: data
         })  
        .then((res) => {
-        dispatch({ type: CREATE_REPLY, payload: formData})
+        dispatch({ type: CREATE_REPLY, payload: data})
         
     })
     .catch((err) => console.log(err)); 

@@ -39,16 +39,18 @@ export const Card = ({comment}) => {
         if (message || uploadImgReply || message && uploadImgReply ) {
             //let id = userData.id;
             //let idComment = comment.idObject;
-          let formData = {};
-         
-          formData.id = userData.id;
-          formData.idComment = comment.idObject;
-          formData.message = message;
-          formData.image =  fileReply;
-          console.log(formData);
+
+          const data = new FormData();
+          
+          data.append("id", userData.id);
+          data.append("idComment", comment.idObject);
+          data.append("message", message);
+          data.append("image", fileReply);
+          console.log(data);
           console.log(fileReply);
-        dispatch(createReply(formData));
-        dispatch(getAllReply());
+        dispatch(createReply(data)).then(() =>
+        dispatch(getAllReply()))
+       ;
         
         } else {
             alert("veuillez entrer un message")
