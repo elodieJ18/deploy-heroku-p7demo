@@ -36,10 +36,8 @@ export const Card = ({comment}) => {
  
     const handleReply =  async(e) => {
       e.preventDefault();
-        if (message || uploadImgReply || message && uploadImgReply ) {
-            //let id = userData.id;
-            //let idComment = comment.idObject;
-
+        if (message || uploadImgReply ) {
+          
           const data = new FormData();
           
           data.append("id", userData.id);
@@ -50,6 +48,8 @@ export const Card = ({comment}) => {
           console.log(fileReply);
         dispatch(createReply(data)).then(() =>
         dispatch(getAllReply()))
+        setMessage('');
+        setUploadImgReply('');
        ;
         
         } else {
@@ -289,15 +289,14 @@ export const Card = ({comment}) => {
 
       <div className="home-cardReply-userProfil">
         <div className="home-card-userStatus">
-           <div className="home-card-usersStatus-second-col">{
+           <div className="home-card-usersStatus-second-col home-card-post">{
                 !isEmpty(replyData[0]) &&
                 replyData
                   .map((reply) => {
-                    if (comment.idObject === reply.idComment ) return <div key={reply.idObject}>
-             <div>
-               <div className="home-card-actuality">
-                  <div className="home-card-post">
-                          {<div >
+                    if (comment.idObject === reply.idComment ) return <div key={reply.idObject} className="home-card-actuality" >
+               <div >
+                  <div >
+                          {
                              <div className="home-cardreply-container">
                                 <div className="home-cardreply-userProfil">
                                   <div className="image-profil-container-home">
@@ -374,11 +373,11 @@ export const Card = ({comment}) => {
                                       </div>
                                   </div>  
                               </div>  
-                          </div> 
+                         
                           }
                       </div>
                     </div>
-                  </div>
+                 
                 </div>
               else return null
               })

@@ -18,13 +18,25 @@ export const ProfilUser = () => {
  const userData = useSelector((state) => state.userReducer);
  const dispatch = useDispatch();
 
+
+
  const handleUpdate = () => {
-    dispatch(updateInfo(userData.id, nom, prenom, status));
-  setUpdateForm(false);
- 
- }
+    dispatch(updateInfo(userData.id, nom, prenom, status))
+    setUpdateForm(false);
+ } 
 
+ console.log(userData.id);
+   console.log(nom);
+   console.log(prenom);
+   console.log(status);
 
+   const handleValueProfil = () => {
+    setUpdateForm(true)
+    setNom(userData.nom)
+    setPrenom(userData.prenom)
+    setStatus(userData.status)
+    dispatch(updateInfo(userData.id, userData.nom, userData.prenom, userData.status))
+ }  
 
  const handleDeleteProfil = () => {
     dispatch(deleteProfil(userData.id));
@@ -66,7 +78,7 @@ export const ProfilUser = () => {
                 <p className="profil-card-description-email">{userData.email }</p>
                 <p className="profil-card-description-status">{userData.status === '' ? null : userData.status}</p> 
              
-                <button className="update-btn-profil"  onClick={() => setUpdateForm(!updateForm)}>Update</button>
+                <button className="update-btn-profil"  onClick={() => handleValueProfil(!updateForm)}>Update</button>
                  <div className="btn-connexion-profil">
                     <Logout />
                     <button className="btn-profil-delete" onClick={handleDeleteProfil}>Delete Account</button>
@@ -78,23 +90,21 @@ export const ProfilUser = () => {
                  <form onSubmit={handleUpdate}>
                   <div className="form-profil-nom-prenom">
                     <div className="form-profil-flex-label">
-                    <label  label="nom" name="nom" type="text">Nom</label>
-                      <input required="required" type="text"  name="nom"
+                    <label  label="nom" name="nom" type="text" >Nom</label>
+                      <input required="required" type="text"  name="nom" defaultValue={userData.nom} placeholder="nom" 
                         onChange={(e) => setNom(e.target.value)}
                       />
                     </div>
                     <div className="form-profil-flex-label">
                     <label   label="prenom" name="prenom" type="text" >Prenom</label>
-                      <input required="required"
-                         type="text" name="prenom"
-                         onChange={(e) => setPrenom(e.target.value)}
+                      <input required="required" placeholder="prenom"  
+                         type="text" name="prenom" defaultValue={userData.prenom} onChange={(e) => setPrenom(e.target.value)}
                       />
                     </div>
                   </div>
                     <label  label="Status" name="status" type="text" >Status</label>
-                      <input required="required"
-                        type="text"  name="status"
-                        onChange={(e) => setStatus(e.target.value)}
+                      <input required="required" placeholder="status" defaultValue={userData.status}  onChange={(e) => setStatus(e.target.value)}
+                        type="text"  name="status" 
                       />
                    <div className="duo-update-btn-profil">
                     <button className="update-btn-profil" type="submit">Send</button> 
