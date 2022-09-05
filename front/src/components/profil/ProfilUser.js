@@ -10,27 +10,25 @@ import { deleteProfil } from "../../actions/user.action";
 
 export const ProfilUser = () => {
   
-  const [prenom, setPrenom] = useState('');
-  const [nom, setNom] = useState('');
-  const [status, setStatus] = useState('');
+ const [prenom, setPrenom] = useState('');
+ const [nom, setNom] = useState('');
+ const [status, setStatus] = useState('');
  const [updateForm, setUpdateForm] = useState(false);
  const [updateImg, setUpdateImg] = useState(false);
  const userData = useSelector((state) => state.userReducer);
  const dispatch = useDispatch();
-
-
 
  const handleUpdate = () => {
     dispatch(updateInfo(userData.id, nom, prenom, status))
     setUpdateForm(false);
  } 
 
- console.log(userData.id);
+   console.log(userData.id);
    console.log(nom);
    console.log(prenom);
    console.log(status);
 
-   const handleValueProfil = () => {
+ const handleValueProfil = () => {
     setUpdateForm(true)
     setNom(userData.nom)
     setPrenom(userData.prenom)

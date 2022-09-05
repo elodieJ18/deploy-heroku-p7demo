@@ -16,6 +16,8 @@ export const Login = () => {
       })
       
     return (
+      <div className="form-signup-content">
+      <div className="form-signup-element">
         <Formik initialValues={{
             email: "",
             password: "",
@@ -59,6 +61,8 @@ export const Login = () => {
       </div>
         )}
     </Formik>
+    </div>
+    </div>
     )
 }
 

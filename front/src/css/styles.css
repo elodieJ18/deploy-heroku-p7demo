@@ -40,7 +40,8 @@ h1 {
   align-items: center;
   margin-bottom: 100px;
 }
-.home-actuality .home-card-post {
+
+.home-card-post {
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;
@@ -84,6 +85,7 @@ h1 {
 .home-card-container {
   width: 728px;
   box-shadow: 0px 0px 20px rgba(60, 104, 170, 0.35);
+  border-radius: 1.5em;
 }
 
 .image-profil-form-home {
@@ -105,18 +107,16 @@ h1 {
 }
 
 .home-image-post {
-  object-fit: cover;
+  object-fit: scale-down;
   object-position: center;
-  width: 100%;
-  height: 100%;
   max-width: 100%;
   max-height: 100%;
   text-align: center;
 }
 
 .home-image-post-container {
-  height: 368px;
-  width: 642px;
+  height: 218px;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -163,7 +163,7 @@ h1 {
 .home-card-reaction-container {
   display: flex;
   justify-content: flex-start;
-  column-gap: 42px;
+  column-gap: 14px;
   padding: 0px 14px 0px 43px;
 }
 .home-card-reaction-container .home-icon-post {
@@ -318,6 +318,7 @@ textarea {
   box-shadow: 0px 5px 11px rgba(60, 104, 170, 0.48);
   background-color: #3c68aa;
   float: right;
+  margin-bottom: 40px;
 }
 .btn-update-comment p {
   margin: 0;
@@ -403,6 +404,15 @@ textarea {
 .new-post-picture #file,
 #fileReply {
   display: none;
+}
+
+.my-comment {
+  width: max-content;
+  margin-top: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
 @media (max-width: 720px) {
@@ -573,7 +583,7 @@ form {
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;
-  width: 280px;
+  width: 100%;
 }
 .form-signup-content .form-signup-element .sucess {
   font-size: 14px;
@@ -670,6 +680,17 @@ button {
   text-align: center;
 }
 
+@media (max-width: 1024px) {
+  .bloc-connexion .bloc-connexion-content {
+    padding: 0px;
+  }
+  .bloc-connexion .bloc-connexion-content .bloc-connexion-element {
+    width: 100%;
+  }
+  .form-signup-content {
+    padding: 20px 40px;
+  }
+}
 @media (max-width: 720px) {
   .form-signup-content .form-signup-element {
     width: auto;
@@ -699,6 +720,12 @@ button {
   .choice-signup-login .RegisterorSignup {
     font-size: 12px;
     text-align: center;
+  }
+  .size-column-form {
+    width: auto;
+    padding-top: 32px;
+    padding-left: 24px;
+    padding-right: 23px;
   }
 }
 .profil-container {

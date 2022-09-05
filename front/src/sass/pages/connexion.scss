@@ -75,7 +75,7 @@
         display: flex;
         flex-direction: column-reverse;
         align-items: flex-start;
-        width: 280px;
+        width: 100%;
 
         .sucess {
           font-size: 14px;
@@ -170,6 +170,23 @@
  
 
   
+  @media (max-width: 1024px) {
+
+    .bloc-connexion .bloc-connexion-content
+    {
+      padding: 0px; 
+      
+      .bloc-connexion-element {
+        width: 100%;
+    }
+
+    }  
+
+    .form-signup-content {
+      padding: 20px 40px;
+  }
+  }
+
 
   
 
@@ -212,6 +229,17 @@
         text-align: center;
     }
     }
+
+
+    .size-column-form {
+      width: auto;
+      padding-top: 32px;
+      padding-left: 24px;
+      padding-right: 23px;
+    }
    
   
   }
+
+
+

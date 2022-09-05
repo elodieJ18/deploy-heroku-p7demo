@@ -24,6 +24,7 @@ export const Card = ({comment}) => {
     const userData = useSelector((state) => state.userReducer);
     const replyData = useSelector((state) => state.replyReducer);
     const [openReply, setOpenReply] = useState(true);
+    const [uploadImg, setUploadImg] = useState();
     const dispatch = useDispatch();
 
 
@@ -109,7 +110,9 @@ export const Card = ({comment}) => {
     setIsUpdated(false)
    }
    
-
+   const cancelImg = () => {
+    setUploadImg('');
+  };
 
 
 
@@ -198,7 +201,7 @@ export const Card = ({comment}) => {
               <div className="updateComment">
                   <textarea
                   defaultValue={comment.message}
-                  onChange={(e) => setTextUpdate(e.target.value)}/>
+                  onChange={(e) => setTextUpdate(e.target.value)}/>     
                   <div className="button-UpdateComment">
                       <div className="btn-update-comment" onClick={updateItemComment}>
                         <p>Save modification</p>
@@ -208,7 +211,7 @@ export const Card = ({comment}) => {
             )}
             {comment.image && (
               <div className="home-image-post-container">
-                <img className="home-image-post" src={comment.image}/> 
+                <img className="home-image-post" src={comment.image}/>
               </div>)}
         </div>
      
