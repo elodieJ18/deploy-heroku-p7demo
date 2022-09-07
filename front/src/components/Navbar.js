@@ -38,7 +38,7 @@ export const Navbar = () => {
               <NavLink  to="/mycomment">
                 <div className="navbar-element">
                 <p className="linkicon"><FontAwesomeIcon icon="comment-dots" /></p>
-                <p  className="linkName">Comments</p>
+                <p  className="linkName">My Posts</p>
                 </div>
               </NavLink>
               

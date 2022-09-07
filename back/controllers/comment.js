@@ -57,16 +57,11 @@ module.exports.getOneComment = async (req, res, next) => {
 //Récupère une comment unique par l'id
 module.exports.modifyComment = (req, res, next) => {
   try {
-      let { prenom, nom, message, date, image, status} = req.body;
+      let { message } = req.body;
   let idObject = req.params.idObject;
-  if (req.file) {
-     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
-    }
-    else {
-      image = null;
-  }
+ 
   Comment.update(
-    { prenom, nom, message, date, image, status},
+    { message  },
     { where: { idObject: idObject } }
   ) 
     .then(() => 

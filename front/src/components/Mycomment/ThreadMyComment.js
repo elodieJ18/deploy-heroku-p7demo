@@ -22,7 +22,7 @@ export const ThreadMyComment = () => {
     
   return (
    <div>
-      <div className="my-comment">
+      <div className="home-actuality">
       <div className="home-card-post">
             {(comments[0])  && comments.map((comment, idObject) => {
                 if (comment.id === userData.id ) return <Card comment={comment} key={idObject}/>

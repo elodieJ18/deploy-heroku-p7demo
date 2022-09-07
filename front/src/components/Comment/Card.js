@@ -110,11 +110,16 @@ export const Card = ({comment}) => {
     setIsUpdated(false)
    }
    
-   const cancelImg = () => {
-    setUploadImg('');
-  };
-
-
+  
+  {/*const [imageUpdate, setImageUpdate] = useState([]);
+  const handleModifyComment = () => {
+    setIsUpdated(true)
+    setTextUpdate(comment.message)
+    setImageUpdate(comment.image[0])
+    dispatch(updateComment(comment.image, textUpdate))
+  }
+  console.log(imageUpdate);
+console.log(comment.image);*/}
 
   return ( 
  
@@ -201,7 +206,7 @@ export const Card = ({comment}) => {
               <div className="updateComment">
                   <textarea
                   defaultValue={comment.message}
-                  onChange={(e) => setTextUpdate(e.target.value)}/>     
+                  onChange={(e) => setTextUpdate(e.target.value)}/> 
                   <div className="button-UpdateComment">
                       <div className="btn-update-comment" onClick={updateItemComment}>
                         <p>Save modification</p>

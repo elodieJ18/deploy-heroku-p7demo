@@ -17,12 +17,13 @@ export const getComment = (uid) => {
 }
 
 
-export const updateComment = (idObject, message) => {
+export const updateComment = (idObject, message, image) => {
     return (dispatch) => {
         return axios ({
             method: "put",
             url: `${process.env.REACT_APP_API_URL}api/comment/${idObject}`,
-            data: { message }
+            data: { message, image },
+            body: JSON.stringify(image),
         }).then((res) => {
             dispatch({type: UPDATE_COMMENT, payload: res.data})
         }).catch((err) => console.log(err)) 

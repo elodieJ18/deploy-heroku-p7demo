@@ -18,6 +18,7 @@ function Mycomment() {
     {uid ? (  <div className="home"> 
       <Navbar />
       <div className="home-container">
+      <NewComment/>
       <ThreadMyComment />
       </div>
       </div>) : (

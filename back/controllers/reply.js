@@ -58,16 +58,11 @@ module.exports.getOneReply = async (req, res, next) => {
 //Récupère un reply unique par l'id
 module.exports.modifyReply = (req, res, next) => {
   try {
-      let { message, date, image} = req.body;
+      let { message, date } = req.body;
   let idObject = req.params.idObject;
-  if (req.file) {
-     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
-    }
-    else {
-      image = null;
-  }
+  
   Reply.update(
-    {  message, date, image },
+    {  message, date },
     { where: { idObject: idObject } }
   ) 
     .then(() => 
