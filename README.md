@@ -54,29 +54,47 @@ Dans la partie "fichier à importer" choisisser le fichier sql qui vous a été 
 ### Signup All required: 
 
 -Prénom (max 15 caractères)
+
 -Elodie (max 20 caractères)
+
 -Status
+
 -Email
+
 -Password (min 6 caractères)
+
 
 ### Login:
 
 -Email
+
 -Password
+
 
 ### Profil connecté:
 
+
 Dans la home possibilité de:
+
 -poster text et image
+
 -modifierle text du post (pas l'image question de securité)
+
 -supprimer le post
+
 -commenter un post avec image
+
 -supprimer le commentaire
 
+
 Dans Status possibilité de:
+
 -changer sa photo de profil 
+
 -changer nom/ prénom/ status
+
 -Se déconnecter "Logout"
+
 -Supprimer le compte "Delete Account"
 
 
