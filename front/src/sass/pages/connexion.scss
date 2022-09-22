@@ -138,6 +138,9 @@
   @include btn-bleu;
   box-shadow: $shadow-blue-btn;
   background-color: $btn-background-color-blue;
+  &:hover {
+    background-color: #1e4278;
+  }
   }
   
   button {
