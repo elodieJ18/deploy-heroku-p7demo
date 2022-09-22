@@ -5,7 +5,7 @@ Créez un réseau social d’entreprise
 
 -Frontend: React.js
 
--Backend: Node.JS / Express.JS, Sequelize
+-Backend: Node.JS 14.19.3 / Express.JS, Sequelize
 
 -DataBase: MySql 
 
@@ -41,6 +41,8 @@ http://localhost:3001
 
 
 ## Base de données
+
+Changer .env par le password de votre mysql pour que la connexion à la base de données se fasse.
 
 Ouvrir phpMyAdmin aller dans "nouvelle base de données" entrer la nouvelle base de donnée "groupomania" dans l'input "Nom de base de données" puis cliquer sur créer.
 

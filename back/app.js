@@ -5,6 +5,9 @@ const Sequelize = require("sequelize");
 const cookieParser = require('cookie-parser')
 const app = express();
 
+require('dotenv').config();
+console.log(process.env);
+
 const {verifyToken, authJwt} = require('./middleware/authJwt');
 //variable d'environnement
 
