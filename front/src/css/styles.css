@@ -867,6 +867,7 @@ button {
   padding: 10px 0px;
   background: unset;
   border: 2px solid;
+  cursor: pointer;
 }
 .btn-connexion-profil .btn-profil-delete {
   border-radius: 1.5em;
@@ -874,6 +875,7 @@ button {
   background: unset;
   border: 2px solid #b8b6bf;
   color: #8c8b8d;
+  cursor: pointer;
 }
 
 @media (max-width: 720px) {
