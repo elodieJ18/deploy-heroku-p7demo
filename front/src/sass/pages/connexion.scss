@@ -138,6 +138,7 @@
   @include btn-bleu;
   box-shadow: $shadow-blue-btn;
   background-color: $btn-background-color-blue;
+  cursor: pointer;
   &:hover {
     background-color: #1e4278;
   }
@@ -152,6 +153,7 @@
     @include btn-blanc;
     box-shadow: $shadow-blue-btn;
     background-color: $btn-background-color-white;
+    cursor: pointer;
   }
   
   
@@ -165,10 +167,19 @@
     justify-content: flex-start;
     padding: 10px 38px;
     font-size: 12px;
+   
     .RegisterorSignup {
       font-size: 12px;
       text-align: center;
   }
+  }
+
+  #loginRegister, #register {
+    &:hover {
+      color: #1e4278;
+      cursor: pointer;
+      
+    }
   }
  
 

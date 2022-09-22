@@ -181,6 +181,7 @@
     background: white;
     padding: 10px;
     border-radius: 1.5em;
+    cursor: pointer;
     &:hover {
       margin: 10px;
       background: #F6F6F6;
@@ -326,6 +327,7 @@ textarea {
   @include btn-update-comment;
   float: right;
   margin-bottom: 40px;
+  cursor: pointer;
   p {
     margin: 0;
   }
