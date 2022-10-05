@@ -36,6 +36,7 @@
     .logo {
       padding-left: 24px;
       padding-right: 0px;
+      
       width: 79%;
   }
     
@@ -108,8 +109,10 @@
 
         .active {
           .logo {
-           padding-left: 100px;
+           padding-left: 88px;
          padding-right: 0px;
+         padding-top: 14px;
+        padding-bottom: 10px;
          width: 52%;
       
          }  
@@ -118,7 +121,10 @@
     .logo {
       padding-left: 0px;
       padding-right: 0px;
-      width: 143px;
+      
+      padding-top: 14px;
+      padding-bottom: 10px;
+      width: 140px;
       height: 100%;
          }
     

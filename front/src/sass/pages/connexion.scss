@@ -208,10 +208,29 @@
     .form-signup-content 
     .form-signup-element {
       width: auto;
-      padding-top: 32px;
+      padding-top: 0px;
       padding-left: 24px;
       padding-right: 23px;
     } 
+
+    .size-column-form h1 {
+      margin-top: 5px;
+      font-size: 20px;
+  }
+
+
+    .bloc-connexion .logo {
+      padding-left: 94px;
+      padding-right: 0px;
+      padding-top: 18px;
+      padding-bottom: 14px;
+      width: 40%;
+      border-radius: unset;
+    }
+
+    .form-signup-content {
+      padding: 0px 0px;
+  }
    
     
     input[type=text i], input[type=password i]:focus-visible {
@@ -220,6 +239,7 @@
 
     .input-form input{
       width: auto;
+      padding: 10px 2px;
     }
 
     .bloc-connexion .bloc-connexion-content

@@ -27,7 +27,7 @@ module.exports.createComment  = async (req, res) => {
 };
 
 
-// 2. get all products
+
 
 module.exports.getallComment = async (req, res) => {
   let comment = await Comment.findAll()
