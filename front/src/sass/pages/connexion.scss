@@ -117,9 +117,11 @@
           
       }
       .logo {
-        border-radius: 50%;
-        width: 100%;
-        height: 100%;
+        padding-left: 40%;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-right: 0px;
+      width: 18%;
         }
     
   }
@@ -143,6 +145,8 @@
     background-color: #1e4278;
   }
   }
+
+  
   
   button {
     border: none;
@@ -199,6 +203,10 @@
     .form-signup-content {
       padding: 20px 40px;
   }
+
+  .other-way-login {
+    width: auto;
+  }
   }
 
 
@@ -220,11 +228,11 @@
 
 
     .bloc-connexion .logo {
-      padding-left: 94px;
+      padding-left: 0px;
       padding-right: 0px;
       padding-top: 18px;
       padding-bottom: 14px;
-      width: 40%;
+      width: 146px;
       border-radius: unset;
     }
 
@@ -270,6 +278,10 @@
       padding-top: 32px;
       padding-left: 24px;
       padding-right: 23px;
+    }
+
+    .other-way-login {
+      width: 74vw;
     }
    
   

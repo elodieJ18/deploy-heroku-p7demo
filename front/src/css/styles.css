@@ -61,7 +61,7 @@ h1 {
 }
 
 .home-actuality-new-comment {
-  margin-top: 160px;
+  margin-top: 122px;
 }
 
 .home-card-userStatus {
@@ -319,7 +319,7 @@ textarea {
   box-shadow: 0px 5px 11px rgba(60, 104, 170, 0.48);
   background-color: #3c68aa;
   float: right;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   cursor: pointer;
 }
 .btn-update-comment p {
@@ -427,6 +427,13 @@ textarea {
   .home-actuality {
     width: 95%;
     margin-left: 9px;
+    margin-top: 16px;
+  }
+  .my-comments .home-actuality {
+    width: 95%;
+    margin-left: 2px;
+    margin-top: 16px;
+    display: block;
   }
   .home-card-container {
     width: 100%;
@@ -445,6 +452,12 @@ textarea {
   }
   .home-actuality .home-card-post .home-card-userProfil {
     padding: 20px 16px 10px 16px;
+  }
+  .home-card-post {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    row-gap: 10px;
   }
   .home-card-userStatus {
     display: flex;
@@ -509,7 +522,7 @@ textarea {
     width: 158px;
   }
   .home-actuality-new-comment {
-    margin-top: 100px;
+    margin-top: 73px;
   }
 }
 /*sign-up*/
@@ -627,9 +640,11 @@ form {
   width: 18vw;
 }
 .bloc-connexion .logo {
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
+  padding-left: 40%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 0px;
+  width: 18%;
 }
 
 .active-btn-connexion {
@@ -705,6 +720,9 @@ button {
   .form-signup-content {
     padding: 20px 40px;
   }
+  .other-way-login {
+    width: auto;
+  }
 }
 @media (max-width: 720px) {
   .form-signup-content .form-signup-element {
@@ -718,11 +736,11 @@ button {
     font-size: 20px;
   }
   .bloc-connexion .logo {
-    padding-left: 94px;
+    padding-left: 0px;
     padding-right: 0px;
     padding-top: 18px;
     padding-bottom: 14px;
-    width: 40%;
+    width: 146px;
     border-radius: unset;
   }
   .form-signup-content {
@@ -757,6 +775,9 @@ button {
     padding-top: 32px;
     padding-left: 24px;
     padding-right: 23px;
+  }
+  .other-way-login {
+    width: 74vw;
   }
 }
 .profil-container {
@@ -937,8 +958,16 @@ button {
   top: 0;
 }
 
+.my-comments .header-content .logo {
+  padding-left: 36vw;
+  padding-right: 76px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 131px;
+}
+
 .header-content {
-  width: 100%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -951,14 +980,18 @@ button {
   padding-left: 135px;
 }
 .header-content .logo {
-  padding-left: 24px;
-  padding-right: 0px;
-  width: 79%;
+  padding-left: 24vw;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 131px;
 }
 .header-content .active .logo {
-  padding-left: 177px;
-  padding-right: 0px;
-  width: 52%;
+  padding-left: 36vw;
+  padding-right: 76px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 131px;
 }
 
 .active .profil-icon {
@@ -998,6 +1031,16 @@ button {
 }
 
 @media (max-width: 720px) {
+  .my-comments .header-content .logo {
+    padding-left: 88px;
+    padding-right: 40px;
+    padding-top: 14px;
+    padding-bottom: 10px;
+    width: 131px;
+  }
+  .header-content {
+    width: 95%;
+  }
   .header-content img {
     padding-left: 50px;
     width: 157px;
@@ -1009,18 +1052,17 @@ button {
   }
   .header-content .active .logo {
     padding-left: 88px;
-    padding-right: 0px;
+    padding-right: 40px;
     padding-top: 14px;
     padding-bottom: 10px;
-    width: 52%;
+    width: 131px;
   }
   .header-content .logo {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 88px;
+    padding-right: 40px;
     padding-top: 14px;
     padding-bottom: 10px;
-    width: 140px;
-    height: 100%;
+    width: 131px;
   }
   .header-content .navbar-container {
     column-gap: 28px;

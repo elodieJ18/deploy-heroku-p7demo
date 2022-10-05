@@ -15,7 +15,7 @@ function Mycomment() {
    <div>
    
     
-    {uid ? (  <div className="home"> 
+    {uid ? (  <div className="my-comments"> 
       <Navbar />
       <div className="home-container">
       <NewComment/>

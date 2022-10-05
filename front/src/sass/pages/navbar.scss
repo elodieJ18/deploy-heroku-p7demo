@@ -17,9 +17,18 @@
     box-shadow: 0px 0px 20px rgb(60 104 170 / 22%);
     top: 0;
   }
+
+  .my-comments .header-content .logo {
+    padding-left: 36vw;
+    padding-right: 76px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 131px;
+  }
+
   
   .header-content {
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,18 +43,20 @@
     }
 
     .logo {
-      padding-left: 24px;
-      padding-right: 0px;
-      
-      width: 79%;
+      padding-left: 24vw;
+      padding-right: 40px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      width: 131px;
   }
     
     .active {
      .logo {
-      padding-left: 177px;
-    padding-right: 0px;
-    width: 52%;
-
+      padding-left: 36vw;
+      padding-right: 76px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 131px;
     }
    }
   }
@@ -95,7 +106,19 @@
 
   
   @media (max-width: 720px) {
+
+    .my-comments .header-content .logo {
+      padding-left: 88px;
+    padding-right: 40px;
+    padding-top: 14px;
+    padding-bottom: 10px;
+    width: 131px;
+    }
+
     .header-content {
+      
+        width: 95%;
+    
           img {
           padding-left: 50px;
           width: 157px;
@@ -109,24 +132,24 @@
 
         .active {
           .logo {
-           padding-left: 88px;
-         padding-right: 0px;
-         padding-top: 14px;
-        padding-bottom: 10px;
-         width: 52%;
+            padding-left: 88px;
+            padding-right: 40px;
+            padding-top: 14px;
+            padding-bottom: 10px;
+            width: 131px;
       
          }  
     }
     
     .logo {
-      padding-left: 0px;
-      padding-right: 0px;
-      
-      padding-top: 14px;
-      padding-bottom: 10px;
-      width: 140px;
-      height: 100%;
+      padding-left: 88px;
+    padding-right: 40px;
+    padding-top: 14px;
+    padding-bottom: 10px;
+    width: 131px;
          }
+
+  
     
 
   .navbar-container {

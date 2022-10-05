@@ -32,8 +32,11 @@ export const Signup = () => {
         <>
         {formSubmit ? (
         <>
+        <div className="other-way-login">
+          <p className="sucess">Enregistrement réussi vous pouvez maintenant vous connecter !</p>
         <Login />
-        <p className="sucess">Enregistrement réussi vous pouvez maintenant vous connecter !</p>
+        
+        </div>
         </>
         ) : (
        

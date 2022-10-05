@@ -22,15 +22,14 @@ export const Thread = () => {
   return (
    <div>
       <div className="home-actuality">
-      <div className="home-card-post">
-            {(comments[0])  && comments.map((comment, idObject) => {
-                return <Card comment={comment} key={idObject}/>
-            })
-        }
+        <div className="home-card-post">
+                {(comments[0])  && comments.map((comment, idObject) => {
+                    return <Card comment={comment} key={idObject}/>
+                })
+            }
+            </div>
         </div>
-        
-        </div>
-        </div>
+    </div>
        
   );
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../../css/styles.css";
-import profil from "../../assets/user-200.png";
 import { getComment } from "../../actions/comment.action";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Comment/Card";
@@ -21,17 +20,15 @@ export const ThreadMyComment = () => {
     
     
   return (
-   <div>
+ 
       <div className="home-actuality">
-      <div className="home-card-post">
+        <div className="home-card-post">
             {(comments[0])  && comments.map((comment, idObject) => {
                 if (comment.id === userData.id ) return <Card comment={comment} key={idObject}/>
             })
         }
         </div>
-        
-        </div>
-        </div>
+     </div>
        
   );
 }

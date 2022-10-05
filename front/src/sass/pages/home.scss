@@ -39,7 +39,6 @@
   
   /*home*/
    .home-actuality {
-    
     width: max-content;
     margin-top: 38px;
     display: flex;
@@ -68,7 +67,7 @@
   }
 
   .home-actuality-new-comment {
-    margin-top: 160px;
+    margin-top: 122px;
   }
 
   .home-card-userStatus {
@@ -326,7 +325,7 @@ textarea {
 .btn-update-comment {
   @include btn-update-comment;
   float: right;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   cursor: pointer;
   p {
     margin: 0;
@@ -443,6 +442,14 @@ textarea {
     .home-actuality {
       width: 95%;
       margin-left: 9px;
+      margin-top: 16px;
+    }
+
+    .my-comments .home-actuality {
+      width: 95%;
+    margin-left: 2px;
+    margin-top: 16px;
+    display: block;
     }
 
     .home-card-container {
@@ -470,8 +477,13 @@ textarea {
   
     .home-actuality .home-card-post .home-card-userProfil {
     padding: 20px 16px 10px 16px;
+    }
 
-     
+    .home-card-post {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      row-gap: 10px;
     }
   
     .home-card-userStatus {
@@ -552,7 +564,7 @@ textarea {
   }
 
   .home-actuality-new-comment {
-    margin-top: 100px;
+    margin-top: 73px;
   }
   
     
