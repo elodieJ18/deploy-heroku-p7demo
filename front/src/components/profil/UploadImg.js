@@ -28,9 +28,9 @@ const UploadImg = () => {
        <form action="" onSubmit={handlePicture} className="upload-pic">
          <>
         <div className="image-form"> 
-        <img className="user-name-image" src={ userData.image || uploadImg ||  undefined ? uploadImg || logo || userData.image : uploadImg }  alt="userimage"/>
-      </div>
-      </>
+          <img className="user-name-image" src={ userData.image || uploadImg ||  'undefined'   ? uploadImg || logo || userData.image : uploadImg }  alt="userimage"/>
+        </div>
+        </>
         <label htmlFor="file"></label>
         <input type="file" id="file" name="image" accept=".jpg, .jpeg, .png" 
         onChange={(e) => handleImg(e)}/>

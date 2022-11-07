@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar";
 import UploadImg from "./UploadImg";
 import Logout from "../Log/Logout";
+import DeleteProfil from "../Log/DeleteProfil"
 import logo from "../../assets/user-200.png";
 import { updateInfo } from "../../actions/user.action";
-import { deleteProfil } from "../../actions/user.action";
 
 export const ProfilUser = () => {
   
@@ -36,9 +36,7 @@ export const ProfilUser = () => {
     dispatch(updateInfo(userData.id, userData.nom, userData.prenom, userData.status))
  }  
 
- const handleDeleteProfil = () => {
-    dispatch(deleteProfil(userData.id));
- }
+
 
 
   return (
@@ -79,7 +77,8 @@ export const ProfilUser = () => {
                 <button className="update-btn-profil"  onClick={() => handleValueProfil(!updateForm)}>Update</button>
                  <div className="btn-connexion-profil">
                     <Logout />
-                    <button className="btn-profil-delete" onClick={handleDeleteProfil}>Delete Account</button>
+                    <DeleteProfil />
+                  
                 </div>
                 </>
               )}
