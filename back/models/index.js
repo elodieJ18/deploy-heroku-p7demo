@@ -6,7 +6,7 @@ const db = {};
 const basename = path.basename(__filename);
 
 let sequelize = new Sequelize("groupomania", process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-  host: "localhost",
+  host: "eu-cdbr-west-03.cleardb.net",
   dialect: "mysql",
   define:{
       timestamps: false

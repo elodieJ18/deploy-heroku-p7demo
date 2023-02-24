@@ -1001,7 +1001,7 @@ button {
 .navbar-container {
   display: flex;
   align-items: flex-start;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   column-gap: 70px;
   row-gap: 22px;
