@@ -44,7 +44,7 @@ module.exports.login = async (req, res) => {
           message: "Invalid Password!"
         });
       }
-      var token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
+      var token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: 86400 // 24 hours
         
       });

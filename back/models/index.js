@@ -5,7 +5,7 @@ const Sequelize = require("sequelize");
 const db = {};
 const basename = path.basename(__filename);
 
-let sequelize = new Sequelize("groupomania", process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+let sequelize = new Sequelize("heroku_409e8cb9b52a614", process.env.DB_USERNAME, process.env.DB_PASSWORD, {
   host: "eu-cdbr-west-03.cleardb.net",
   dialect: "mysql",
   define:{

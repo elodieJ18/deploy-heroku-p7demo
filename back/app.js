@@ -24,18 +24,16 @@ const likesRoutes = require("./routes/likes");
 app.use(express.json());
 
 const cors = require('cors');
-const corsOptions ={
-    origin:'http://localhost:3000/', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors({credentials: true,
-             origin: 'http://localhost:3000', 
-             allowedHeaders: ["sessionId", "Content-Type"],
-             exposedHeaders: ["sessionId"],
-             methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
-             preflightContinue: true,
-            }));
+
+
+  app.use(
+              cors({
+                origin: ["https://golden-sherbet-3a4f20.netlify.app/"],
+                methods: ["GET", "POST", "DELETE", "PUT"],
+                credentials: true,
+                origin: true,
+              })
+            );
 
 app.use(cookieParser());
 
