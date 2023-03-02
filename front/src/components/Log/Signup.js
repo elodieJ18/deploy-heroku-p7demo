@@ -52,7 +52,7 @@ export const Signup = () => {
         onSubmit={values => {
              axios({
                 method: "post",
-                url: `http://localhost:3001/api/auth/signup`, 
+                url: `${process.env.REACT_APP_API_URL}api/auth/signup`, 
                 data: values,
                 headers: {
                   'Content-Type': 'application/json'

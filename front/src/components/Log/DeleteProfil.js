@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteComment } from "../../actions/comment.action";
 import { deleteProfil } from "../../actions/user.action";
-import {isEmpty, dateParser} from "../Utils";
+import {isEmpty} from "../Utils";
 
 export const DeleteProfil = () => {
 
@@ -14,23 +14,16 @@ export const DeleteProfil = () => {
     console.log(commentData.id);
     console.log(commentData);
     
-    
-
-    const handleDeleteProfil = () => {   
-           {
-            !isEmpty(commentData[0]) &&
-            commentData
-              .map((comment) => {
-                console.log(comment.id);
-                if (userData.id === comment.id) return dispatch(deleteComment(comment.idObject));
-                dispatch(deleteProfil(userData.id));
+    const handleDeleteProfil = () =>{   
+           {!isEmpty(commentData[0]) && commentData.map((comment) =>{
+                console.log(comment.id)
+                if (userData.id === comment.id) return dispatch(deleteComment(comment.idObject))
+                dispatch(deleteProfil(userData.id))
               })   
-            }
-        }
+            }}
    
 
 return (
-        
             <button className="btn-profil-delete"  onClick={() => handleDeleteProfil()}>Delete Account</button>
         
 );

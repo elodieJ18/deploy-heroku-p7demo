@@ -32,9 +32,9 @@ export const Login = () => {
               'Content-Type': 'application/json'
                },
               body: JSON.stringify(values),
-          }) .then((response) => {
+          }).then((response) => {
             return response.data;
-          }) .then((res) => {
+          }).then((res) => {
             if (res.error) { 
               console.log(res.error);
               alert("The response data is invalid")
