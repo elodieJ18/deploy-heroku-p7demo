@@ -9,9 +9,10 @@
   "main": "index.js",
   "scripts": {
     "start": "npm install && node server.js",
-    "heroku-postbuild": "cd /front && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "heroku-postbuild": "cd front/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "proxy": "http://localhost:3001",
   "author": "",
   "license": "ISC",
   "dependencies": {
