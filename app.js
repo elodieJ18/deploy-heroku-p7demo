@@ -49,7 +49,7 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 app.use(express.static(path.join(__dirname, 'front/')))
 // Anything that doesn't match the above, send back index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/front/index.html'))
+  res.sendFile(path.join(__dirname + 'front/src/App.js'))
 })
 
 //routes
