@@ -28,7 +28,7 @@ const cors = require('cors');
 
   app.use(
               cors({
-                origin: ["https://golden-sherbet-3a4f20.netlify.app/"],
+                origin: ["https://groupomaniademo.herokuapp.com/"],
                 methods: ["GET", "POST", "DELETE", "PUT"],
                 credentials: true,
                 origin: true,
