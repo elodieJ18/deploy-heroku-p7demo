@@ -46,10 +46,10 @@ app.get('/jwtid', verifyToken, (req, res) => {
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '/front/')))
+app.use(express.static(path.join(__dirname, '/front')))
 // Anything that doesn't match the above, send back index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/front/src/App.js'))
+  res.sendFile(path.join(__dirname + '/front'))
 })
 
 //routes
