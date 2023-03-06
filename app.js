@@ -43,7 +43,7 @@ app.get('/jwtid', verifyToken, (req, res) => {
 });
 
 //Gestion de la ressource images de façon statique
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, '/front/build')))
