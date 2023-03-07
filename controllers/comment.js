@@ -12,7 +12,7 @@ module.exports.createComment  = async (req, res) => {
     console.log(req.file);
     let { id, idObject, message, date, image} = req.body;
     if (req.file) {
-       image = `${req.protocol}://${req.get('X-Forwarded-Protocol')}/images/${req.file.filename}`
+       image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
       }
       else {
         image = null;
