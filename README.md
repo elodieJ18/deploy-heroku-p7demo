@@ -1,4 +1,4 @@
-# Projet 7 - Groupomania
+# Projet 7 - Groupomania Deploy
 Créez un réseau social d’entreprise
 
 ## Les technologies utilisées:
