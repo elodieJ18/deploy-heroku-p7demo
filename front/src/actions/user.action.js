@@ -19,12 +19,25 @@ export const getUser = (uid) => {
 
 export const uploadPicture = (data, uid) => {
     return (dispatch) => {
-        return axios ({
-            method: "put",
-            url: `${process.env.REACT_APP_API_URL}api/auth/${uid}`,
-            data: data,
+        return fetch(`${process.env.REACT_APP_API_URL}api/auth/${id}`, {
+            method: "post",
             body: JSON.stringify(data),
-        })
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then(data => {
+              return data;
+            })
+            .catch(error => {
+              console.error("There was a problem with the fetch operation:", error);
+            })
         .then((res) => {
             dispatch({type: UPDATE_INFO, payload: data})
           }).catch((err) => console.log(err))
