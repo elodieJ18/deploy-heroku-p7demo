@@ -17,11 +17,11 @@ export const getUser = (uid) => {
     }
 }
 
-export const uploadPicture = (data, uid) => {
+export const uploadPicture = (data, id) => {
     return (dispatch) => {
         return axios ({
-            method: "put",
-            url: `${process.env.REACT_APP_API_URL}api/auth/${uid}`,
+            method: "post",
+            url: `${process.env.REACT_APP_API_URL}api/auth/`+ id,
             data: data,
             body: JSON.stringify(data),
         })

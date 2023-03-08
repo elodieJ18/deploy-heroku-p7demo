@@ -25,7 +25,7 @@ app.use(express.json());
 
 const cors = require('cors');
 
-const whitelist = ['https://groupomaniademo.herokuapp.com/']
+const whitelist = ['http://localhost:3000', 'https://groupomaniademo.herokuapp.com/']
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
@@ -40,7 +40,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
- 
 
 app.use(cookieParser());
 
