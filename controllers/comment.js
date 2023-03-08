@@ -1,4 +1,6 @@
 const { Comment } = require("../models");
+const cloudinary = require("../middleware/cloudinary");
+
 
 //créer post comment
 module.exports.createComment  = async (req, res) => {
@@ -12,7 +14,7 @@ module.exports.createComment  = async (req, res) => {
     console.log(req.file);
     let { id, idObject, message, date, image} = req.body;
     if (req.file) {
-       image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+       image = await cloudinary.uploader.upload(req.file.path);
       }
       else {
         image = null;

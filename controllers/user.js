@@ -83,8 +83,8 @@ module.exports.userInfo = async (req, res, next) => {
 
 module.exports.createprofil  = async (req, res) => {
   try {
-    let { status, image} = req.body;
-    image = `https://groupomaniademo.herokuapp.com/images/${req.file.filename}`,
+    let { status } = req.body;
+    image = await cloudinary.uploader.upload(req.file.path);
     User.create({
       status, image
     }).then((user) => res.status(201).send(user))
