@@ -25,6 +25,7 @@ module.exports.createComment  = async (req, res) => {
   
     if (req.file) {
        image = await cloudinary.uploader.upload(req.file.path);
+       return image.public_id;
       }
       else {
         image = null;
