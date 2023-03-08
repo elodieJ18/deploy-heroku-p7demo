@@ -84,7 +84,7 @@ module.exports.userInfo = async (req, res, next) => {
 module.exports.createprofil  = async (req, res) => {
   try {
     let { status, image} = req.body;
-    image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
+    image = `https://groupomaniademo.herokuapp.com/images/${req.file.filename}`,
     User.create({
       status, image
     }).then((user) => res.status(201).send(user))
@@ -100,7 +100,7 @@ module.exports.modifyProfil = (req, res, next) => {
       let { prenom, nom, message, date, image, status} = req.body;
   let id = req.params.id;
   if (req.file) {
-     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+     image = `https://groupomaniademo.herokuapp.com/images/${req.file.filename}`
   }
   User.update(
     { prenom, nom, message, date, image, status},
