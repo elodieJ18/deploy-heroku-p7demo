@@ -19,7 +19,7 @@ export const getUser = (uid) => {
 
 export const uploadPicture = (data, uid) => {
     return (dispatch) => {
-        return fetch(`${process.env.REACT_APP_API_URL}api/auth/${id}`, {
+        return fetch(`${process.env.REACT_APP_API_URL}api/auth/${uid}`, {
             method: "post",
             body: JSON.stringify(data),
             headers: {
