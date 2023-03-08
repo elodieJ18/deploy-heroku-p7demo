@@ -1,5 +1,6 @@
 const { Comment } = require("../models");
 const cloudinary = require("../middleware/cloudinary");
+const { image } = require("../middleware/cloudinary");
 
 
 //créer post comment
@@ -11,8 +12,17 @@ module.exports.createComment  = async (req, res) => {
       });
     }
     console.log(req.body);
-    console.log(req.file);
-    let { id, idObject, message, date, image} = req.body;
+    console.log(req.file);  
+   
+    let { comment } = ({
+      id: req.body,
+      idObject: req.body, 
+      message: req.body,
+      date: req.body,
+      image: image.secure_url,
+      cloudinary_id: image.public_id,
+      });
+  
     if (req.file) {
        image = await cloudinary.uploader.upload(req.file.path);
       }
@@ -20,7 +30,7 @@ module.exports.createComment  = async (req, res) => {
         image = null;
     }
     Comment.create({
-      id, idObject, message, date, image
+      comment
     }).then((comment) => res.status(201).send(comment))
   } catch (error) {
     console.log(error);
