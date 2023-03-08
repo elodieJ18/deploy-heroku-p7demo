@@ -38,7 +38,7 @@ const corsOptions = {
     }
   }
 }
-app.use(cors(corsOptions))
+app.use((corsOptions))
 
 
   app.use(
