@@ -1,11 +1,12 @@
 const { Comment } = require("../models"); 
-var cloudinary = require('cloudinary').v2;
+const cloudinary = require('cloudinary').v2;
 const { cloudinary } = require("../middleware/cloudinary");
 const path = require("path");
 //créer post comment
 module.exports.createComment  = async (req, res) => {
   try {
-   const result = await cloudinary.uploader.upload(req.file.path)
+   const result = await cloudinary.uploader.upload(req.file.path);
+    res.json(result);
   } catch (error) {
     console.log(error);
     return res.send(`Error: ${error}`);
