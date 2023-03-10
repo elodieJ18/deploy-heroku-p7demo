@@ -1,13 +1,25 @@
 const { Comment } = require("../models");
-const cloudinary = require("../middleware/cloudinary");
-const { image } = require("../middleware/cloudinary");
-const path = require("path");
 
 //créer post comment
 module.exports.createComment  = async (req, res) => {
   try {
-   const result = await cloudinary.uploader.upload(req.file.path);
-   res.json(result);
+    if (!req.body.message) {
+      return res.status(400).send({
+        message: "Content can not be empty!"
+      });
+    }
+    console.log(req.body);
+    console.log(req.file);
+    let { id, idObject, message, date, image} = req.body;
+    if (req.file) {
+       image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+      }
+      else {
+        image = null;
+    }
+    Comment.create({
+      id, idObject, message, date, image
+    }).then((comment) => res.status(201).send(comment))
   } catch (error) {
     console.log(error);
     return res.send(`Error: ${error}`);
