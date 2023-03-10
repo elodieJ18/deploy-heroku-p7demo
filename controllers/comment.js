@@ -1,5 +1,5 @@
-const { Comment } = require("../models");  
-const { cloudinary } = require("../middleware/cloudinary");
+const { Comment } = require("../models"); 
+const cloudinary = require('cloudinary').v2;
 const path = require("path");
 //créer post comment
 module.exports.createComment  = async (req, res) => {
