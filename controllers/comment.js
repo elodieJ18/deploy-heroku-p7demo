@@ -1,5 +1,4 @@
-const { Comment } = require("../models"); 
-const cloudinary = require('cloudinary').v2;
+const { Comment } = require("../models");  
 const { cloudinary } = require("../middleware/cloudinary");
 const path = require("path");
 //créer post comment
