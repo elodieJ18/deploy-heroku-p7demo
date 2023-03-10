@@ -13,3 +13,5 @@ module.exports = multer({
     callback(null, true);
   },
 });
+
+module.exports = multer;

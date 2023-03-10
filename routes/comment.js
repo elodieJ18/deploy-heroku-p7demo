@@ -3,18 +3,9 @@ const router = express.Router();
 const commentCtrl = require("../controllers/comment");
 const { authJwt } = require("../middleware");
 const upload = require("../middleware/multer");
-const cloudinary = require('cloudinary').v2; 
 
 //creation d'une nouvelle sauce
-router.post("/upload", upload.single('image'), [authJwt.verifyToken], async (req, res) => {
-    try {
-     const result = await cloudinary.uploader.upload(req.file.path); 
-      res.json(result);
-    } catch (error) {
-      console.log(error);
-      return res.send(`Error: ${error}`);
-    }
-  });
+router.post("/upload", upload.single('image'), [authJwt.verifyToken], commentCtrl.createComment);
 //afficher toutes les sauces
 router.get("/",[authJwt.verifyToken], commentCtrl.getallComment);
 //affichage du produit dans sa propre page
