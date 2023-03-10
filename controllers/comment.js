@@ -1,25 +1,10 @@
-const { Comment } = require("../models");
-
+const { Comment } = require("../models"); 
+const { cloudinary } = require("../middleware/cloudinary");
+const path = require("path");
 //créer post comment
 module.exports.createComment  = async (req, res) => {
   try {
-    if (!req.body.message) {
-      return res.status(400).send({
-        message: "Content can not be empty!"
-      });
-    }
-    console.log(req.body);
-    console.log(req.file);
-    let { id, idObject, message, date, image} = req.body;
-    if (req.file) {
-       image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
-      }
-      else {
-        image = null;
-    }
-    Comment.create({
-      id, idObject, message, date, image
-    }).then((comment) => res.status(201).send(comment))
+   const result = await cloudinary.uploader.upload(req.file.path)
   } catch (error) {
     console.log(error);
     return res.send(`Error: ${error}`);
@@ -77,7 +62,7 @@ module.exports.modifyComment = (req, res, next) => {
 
 
 //supprimer
-exports.deleteComment = (req, res, next) => {
+module.exports.deleteComment = (req, res, next) => {
   let idObject = req.params.idObject;
   try {
         Comment.destroy({ where: { idObject: idObject } })

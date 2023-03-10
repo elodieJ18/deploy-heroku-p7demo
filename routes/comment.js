@@ -5,7 +5,7 @@ const { authJwt } = require("../middleware");
 const upload = require("../middleware/multer");
 
 //creation d'une nouvelle sauce
-router.post("/upload", [authJwt.verifyToken], commentCtrl.createComment);
+router.post("/upload", [authJwt.verifyToken], upload.single('image'), commentCtrl.createComment);
 //afficher toutes les sauces
 router.get("/",[authJwt.verifyToken], commentCtrl.getallComment);
 //affichage du produit dans sa propre page

@@ -29,7 +29,7 @@ const cors = require('cors');
 
   app.use(
               cors({
-                origin: ["https://groupomaniademo.herokuapp.com/"],
+                origin: ["https://groupomaniademo.herokuapp.com/", "http://localhost:3001"],
                 methods: ["GET", "POST", "DELETE", "PUT"],
                 credentials: true,
                 origin: true,
