@@ -14,4 +14,5 @@ module.exports = multer({
   },
 });
 
-module.exports = multer;
+
+module.exports = multer({ storage: storage }).single("image");
