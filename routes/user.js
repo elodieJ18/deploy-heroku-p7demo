@@ -13,11 +13,11 @@ router.get('/logout', userCtrl.logout);
 
 router.get("/", userCtrl.getAllUsers);
 
-router.post("/profil",  upload.single('image'), userCtrl.createprofil);
+router.post("/profil",  upload, userCtrl.createprofil);
 
 router.get('/:id', userCtrl.userInfo);
 
-router.put("/:id", upload.single('image'), userCtrl.modifyProfil);
+router.put("/:id", upload, userCtrl.modifyProfil);
 
 router.delete("/:id", userCtrl.deleteUser);
 
