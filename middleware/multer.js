@@ -1,18 +1,17 @@
-const multer = require("multer");
-const path = require("path");
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const multer = require('multer');
+
 
 // Multer config
-module.exports = multer({
-  storage: multer.diskStorage({}),
-  fileFilter: (req, file, callback) => {
-    let ext = path.extname(file.originalname);  
-    if (ext !== ".jpg" && ext !== ".jpeg" && ext !== ".png") {
-      cb(new Error("File type is not supported"), false);
-      return;
-    }
-    callback(null, true);
-  },
-});
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+      folder: 'samples',
+      format: async (req, file) => ('png', "jpg", "jpeg"),// supports promises as well
+      public_id: (req, file) => 'computed-filename-using-request',
+    },
+  });
 
 
-module.exports = multer({ storage: storage }).single("image");
+module.exports = multer({ storage: storage });

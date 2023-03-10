@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const commentCtrl = require("../controllers/comment");
 const { authJwt } = require("../middleware");
-const upload = require("../middleware/multer");
+const multer = require("../middleware/multer");
 
 //creation d'une nouvelle sauce
 router.post("/upload", [authJwt.verifyToken], multer, commentCtrl.createComment);
