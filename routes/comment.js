@@ -3,6 +3,7 @@ const router = express.Router();
 const commentCtrl = require("../controllers/comment");
 const { authJwt } = require("../middleware");
 const upload = require("../middleware/multer");
+const cloudinary = require('cloudinary').v2; 
 
 //creation d'une nouvelle sauce
 router.post("/upload", upload.single('image'), [authJwt.verifyToken], async (req, res) => {
