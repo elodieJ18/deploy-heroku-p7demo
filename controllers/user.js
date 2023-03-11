@@ -83,8 +83,8 @@ module.exports.userInfo = async (req, res, next) => {
 
 module.exports.createprofil  = async (req, res) => {
   try {
-    let { status } = req.body;
-    image = await cloudinary.uploader.upload(req.file.path);
+    let { status, image} = req.body;
+    image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
     User.create({
       status, image
     }).then((user) => res.status(201).send(user))
@@ -100,7 +100,7 @@ module.exports.modifyProfil = (req, res, next) => {
       let { prenom, nom, message, date, image, status} = req.body;
   let id = req.params.id;
   if (req.file) {
-     image = `https://groupomaniademo.herokuapp.com/images/${req.file.filename}`
+     image = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
   }
   User.update(
     { prenom, nom, message, date, image, status},
@@ -140,6 +140,4 @@ module.exports.getAllUsers = async (req, res) => {
     .send({ message: err.message });
   });
 }
-
-
 
