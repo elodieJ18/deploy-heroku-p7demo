@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const commentCtrl = require("../controllers/comment");
+const commentCtrl = require("../deploy-heroku-p7demo/controllers/comment");
 const { authJwt } = require("../middleware");
-const multer = require("../middleware/multer");
+const  multer  = require("../middleware/multer-config");
 
 //creation d'une nouvelle sauce
 router.post("/upload", [authJwt.verifyToken], multer, commentCtrl.createComment);
-
 //afficher toutes les sauces
 router.get("/",[authJwt.verifyToken], commentCtrl.getallComment);
 //affichage du produit dans sa propre page
