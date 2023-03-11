@@ -45,12 +45,12 @@ app.get('/jwtid', verifyToken, (req, res) => {
 
 
 
-// Serve static files from the React frontend app
-//app.use(express.static(path.join(__dirname, '/front/build')))
+ //Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '/front/build')))
 // Anything that doesn't match the above, send back index.html
-//app.get('*', (req, res) => {
-  //res.sendFile(path.join(__dirname + '/front/build'))
-//})
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/front/build'))
+})
 
 //routes
 app.use("/api/auth", authRoutes);
