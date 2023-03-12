@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const replyCtrl = require("../deploy-heroku-p7demo/controllers/reply");
+const replyCtrl = require("../controllers/reply");
 const { authJwt } = require("../middleware");
-const  multer  = require("../middleware/multer-config");
+const  multer  = require("../middleware/multer");
 
 //creation d'une nouvelle sauce
 router.post("/upload", [authJwt.verifyToken], multer, replyCtrl.createReply);

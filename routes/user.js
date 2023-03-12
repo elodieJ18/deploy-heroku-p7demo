@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const userCtrl = require("../deploy-heroku-p7demo/controllers/user");
+const userCtrl = require("../controllers/user");
 const { verifySignUp } = require("../middleware");
-const  multer  = require("../middleware/multer-config");
+const  multer  = require("../middleware/multer");
 
 router.post("/signup", [
     verifySignUp.checkDuplicateEmail

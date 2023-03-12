@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const LikesCtrl = require("../deploy-heroku-p7demo/controllers/likes");
+const LikesCtrl = require("../controllers/likes");
 const { authJwt } = require("../middleware");
 //likes
 router.post("/", [authJwt.verifyToken], LikesCtrl.likeComment);
