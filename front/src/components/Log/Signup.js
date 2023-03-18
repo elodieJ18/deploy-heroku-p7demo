@@ -75,7 +75,6 @@ export const Signup = () => {
             { formik => (
                 <div className="size-column-form">
                     <h1>Signup</h1>
-                    
                     <Form>
                         <TextField label="Prenom *" name="prenom" type="text"/>
                         <TextField label="Nom *" name="nom" type="text"/> 
@@ -83,7 +82,6 @@ export const Signup = () => {
                         <TextField label="Email *" name="email" type="email"/> 
                         <TextField label="password *" name="password" type="password"/>  
                         <button className="btn-bleu btn-connexion" type="submit">Signup</button> 
-                        
                     </Form>
                 </div>
             )}

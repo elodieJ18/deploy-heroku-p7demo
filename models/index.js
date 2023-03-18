@@ -5,12 +5,18 @@ const Sequelize = require("sequelize");
 const db = {};
 const basename = path.basename(__filename);
 
-let sequelize = new Sequelize("heroku_68e4acbf7af7f8e", process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+let sequelize = new Sequelize("heroku_b5b04f26875bf49", process.env.DB_USERNAME, process.env.DB_PASSWORD, {
   host: "eu-cdbr-west-03.cleardb.net",
   dialect: "mysql",
   define:{
       timestamps: false
   },
+  pool: {
+    max: 90,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 });
 
 sequelize
