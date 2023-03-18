@@ -1039,6 +1039,7 @@ button {
   background-color: rgb(247, 101, 101);
   color: white;
   padding: 10px;
+  flex-direction: column;
 }
 
 @media (max-width: 1245px) {
