@@ -15,17 +15,14 @@ function Home() {
    
     
     {uid ? ( 
-      <div>
-      <div className="alert-image">
-      <p>API S3 en cours d'installation (les images ne sont pas opérationnelle)</p>
-    </div>
-    <div className="home"> 
-      <Navbar />
-      <div className="home-container">
-      <NewComment/>
-      <Thread />
-      </div>
-      </div>
+      <div> 
+        <div className="home"> 
+          <Navbar />
+          <div className="home-container">
+            <NewComment/>
+            <Thread />
+          </div>
+        </div>
       </div>) : (
       <div>
           <Connexion/>
