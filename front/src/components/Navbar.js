@@ -12,10 +12,7 @@ library.add(fas, faHomeLg, faComments, faCommentDots,faUserPen, faUser, faCircle
 export const Navbar = () => {
 
   return (
-    <div>
-      <div className="alert-image">
-        <p>API S3 en cours d'installation (les images ne sont pas opérationnelle)</p>
-      </div>
+  
     <div className="header">
       <div className="header-content">
       <NavLink  to="/">
@@ -50,7 +47,7 @@ export const Navbar = () => {
         </div>
       </div>
     </div>
-    </div>
+  
   );
 }
 
