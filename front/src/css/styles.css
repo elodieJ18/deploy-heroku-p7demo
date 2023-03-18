@@ -1033,6 +1033,14 @@ button {
   text-align: center;
 }
 
+.alert-image {
+  display: flex;
+  align-items: center;
+  background-color: rgb(247, 101, 101);
+  color: white;
+  padding: 10px;
+}
+
 @media (max-width: 1245px) {
   .navbar-container {
     column-gap: 28px;
