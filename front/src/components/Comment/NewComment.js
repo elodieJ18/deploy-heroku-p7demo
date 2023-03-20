@@ -55,7 +55,7 @@ export const NewComment = () => {
                 </div>
                 <form >
                     <div className="new-post-text-and-picture"> 
-                        <textarea name="message" id="message" placeholder="Partage ta vie" onChange={(e) => setMessage(e.target.value)} value={message} />
+                        <textarea name="message" id="message" placeholder="Ici tu peux partager" onChange={(e) => setMessage(e.target.value)} value={message} />
                          <div className="new-post-picture">
                             <label htmlFor="file"> <FontAwesomeIcon icon="camera" /></label>
                             <input  type="file" id="file" name="image" accept=".jpg, .jpeg, .png" 

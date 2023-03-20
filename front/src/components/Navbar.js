@@ -15,7 +15,7 @@ export const Navbar = () => {
   
     <div className="header">
       <div className="alert-image">
-        <p>API S3 en cours d'installation (les images ne sont pas opérationnelle)</p>
+        <p>API S3 en cours d'installation (l'upload images ne sont pas opérationnelle)</p>
       </div>
       <div className="header-content">
       <NavLink  to="/">
